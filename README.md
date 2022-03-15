@@ -11,7 +11,7 @@
 - **[Support Discord Server](https://dsc.gg/feltax)**
 
 <hr>
-
+PLACEHOLDER
 ><h3><b>🛡️ - TEAM INFORMATION</b></h3>
 - _`Discord Verifed BOT Developer`_
 - _`"☑ FORTNITE API BOT" Owner`_
