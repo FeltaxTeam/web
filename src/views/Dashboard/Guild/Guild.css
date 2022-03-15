@@ -1,0 +1,25 @@
+.page {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+}
+.body {
+  width: calc(100% - 380px);
+  height: -webkit-fill-available;
+  left: 300px;
+  padding: 40px;
+  position: relative;
+  background: var(--pageBgColor);
+  transition: left 0.2s ease-in, width 0.2s ease-in;
+}
+.body > div.embed {
+  width: -webkit-fill-available;
+  height: fit-content;
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--navBgColor);
+  padding: 20px;
+}

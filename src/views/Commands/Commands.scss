@@ -1,0 +1,109 @@
+.webBody {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  width: calc(100% - 340px);
+  left: 300px;
+  position: relative;
+  min-height: calc(100vh - 120px);
+  .command-panel {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    position: relative;
+    border: none;
+  }
+  div.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    left: 0;
+    top: 0;
+    top: 80px;
+    bottom: 0px;
+    padding-top: 10px;
+    width: 300px; 
+    background-color: var(--navBgColor);
+    overflow: hidden;
+    border-right: 1px solid var(--lineColor);
+    z-index: 999;
+    box-sizing: border-box;
+    ul.list {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: -webkit-fill-available;
+      padding: 20px 0px;
+      margin: 0px 20px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      gap: 30px;
+      &::-webkit-scrollbar {
+        width: 0.1vh;
+      }
+      div.section {
+        display: flex;
+        flex-direction: column;
+        div.name {
+          color: white;
+          text-transform: uppercase;
+          font-weight: bolder;
+          margin-bottom: 10px;
+          font-size: 14px;
+        }
+        ul {
+          display: flex;
+          margin: 0;
+          padding: 0;
+          gap: 8px;
+          a {
+            text-decoration: none;
+            color: white;
+            b.command {
+              display: flex;
+              align-items: center;
+              height: 30px;
+              position: relative;
+              width: -webkit-fill-available;
+              justify-content: space-between;
+              div.name {
+                color: white;
+                font-weight: 500;
+                font-size: 20px;
+                text-transform: capitalize;
+              }
+              div.features {
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                height: 30px;
+                gap: 10px;
+                div {
+                  color: var(--navBgColor);
+                  font-size: 18px;
+                  position: relative;
+                  height: 30px;
+                  border-radius: 7px;
+                  right: 0;
+                  text-transform: uppercase;
+                  padding: 0;
+                  width: 30px;
+                  font-weight: 800;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+                .premium {
+                  background-color: gold;
+                }
+                .slash {
+                  background-color: lightgrey;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

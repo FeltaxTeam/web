@@ -1,0 +1,113 @@
+{
+  "languages": [
+    {
+      "displayName": "JavaScript",
+      "hexColor": "#f7e018",
+      "knowing": 96,
+      "awesomeIcon": "fa-brands fa-js"
+    },
+    {
+      "displayName": "TypeScript",
+      "hexColor": "#2d79c7",
+      "knowing": 40,
+      "awesomeIcon": "fa-brands fa-js"
+    },
+    {
+      "displayName": "React.ts",
+      "hexColor": "#61dbfb",
+      "knowing": 54,
+      "awesomeIcon": "fa-brands fa-react"
+    },
+    {
+      "displayName": "Node.js",
+      "hexColor": "#7faf1b",
+      "knowing": 98,
+      "awesomeIcon": "fa-brands fa-node-js"
+    },
+    {
+      "displayName": "discord.js",
+      "hexColor": "#5865F2",
+      "knowing": 100,
+      "awesomeIcon": "fa-brands fa-discord"
+    },
+    {
+      "displayName": "HTML 5",
+      "hexColor": "#e54c21",
+      "knowing": 86,
+      "awesomeIcon": "fa-brands fa-html5"
+    },
+    {
+      "displayName": "CSS 3",
+      "hexColor": "#2965f1",
+      "knowing": 92,
+      "awesomeIcon": "fa-brands fa-css3"
+    },
+    {
+      "displayName": "SASS",
+      "hexColor": "#CD6799",
+      "knowing": 29,
+      "awesomeIcon": "fa-brands fa-sass"
+    }
+  ],
+  "guilds": [
+    {
+      "name": "Fortnite Hispanohablante",
+      "icon": "https://cdn.discordapp.com/icons/405699020564987914/c7738b32c31cf6b0bda6dc3160521555.webp?size=512",
+      "moderatingSince": "02 / 11 / 2020",
+      "aproxMembers": 221000,
+      "verified": true,
+      "partnered": true
+    },
+    {
+      "name": "DiscordThings",
+      "icon": "https://cdn.discordapp.com/icons/806611727684599838/921db306e6a8e8e785fe5b5b8ad6ff2e.webp?size=512",
+      "moderatingSince": null,
+      "aproxMembers": 1000,
+      "verified": false,
+      "partnered": false
+    },
+    {
+      "name": "GREFG ( ͡° ͜ʖ ͡°)",
+      "icon": "https://cdn.discordapp.com/icons/715742955347902504/e0205cb211f0a7c5f10e088e2675752a.webp?size=512",
+      "moderatingSince": null,
+      "aproxMembers": 324000,
+      "verified": true,
+      "partnered": true
+    },
+    {
+      "name": "ESP CUSTOMS",
+      "icon": "https://cdn.discordapp.com/icons/597084607447564319/a_8affa43a84ab6af5734315a2b1d2857c.gif?size=512",
+      "moderatingSince": "19 / 09 / 2021",
+      "aproxMembers": 6000,
+      "verified": false,
+      "partnered": false
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/iron__________",
+      "icon": "fa-twitter"
+    },
+    {
+      "name": "Discord",
+      "url": "https://dsc.gg/feltax",
+      "icon": "fa-discord"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/iron7iii/",
+      "icon": "fa-instagram"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/Iron7III",
+      "icon": "fa-github"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/in/iron7iii/",
+      "icon": "fa-linkedin-in"
+    }
+  ]
+}

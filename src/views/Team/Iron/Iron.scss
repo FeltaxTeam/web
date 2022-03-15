@@ -1,0 +1,285 @@
+/* Scroll Bar */
+div.portfolio::-webkit-scrollbar {
+  width: 0.6vh;
+  height: 1vh;
+  background: rgba(0, 0, 0, 0);
+  margin-top: 0;
+}
+div.portfolio::-webkit-scrollbar-thumb {
+  background-color: rgb(112, 112, 112);
+  border-radius: 10px;
+  margin-top: 0;
+}
+div.portfolio::-webkit-scrollbar-track {
+  margin-top: 0px;
+}
+/* yes */
+div.gotofeltax {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  box-sizing: border-box;
+  background: red;
+  padding: 10px;
+  display: flex;
+  height: 50px;
+  width: 180px;
+  gap: 16px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 8px 0px;
+  background: var(--navBgColor);
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+  pointer-events: auto;
+  position: fixed;
+  z-index: 10000;
+  padding: 0;
+  &:hover {
+    transform: scale(1.1);
+  }
+  a {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    width: 180px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+/* Page */
+div.portfolio {
+  min-height: 100vh;
+  display: flex;
+  overflow-y: scroll;
+  justify-content: center;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: 60px;
+  div.knowledge, div.moderation, div.contact {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+  div h1.title {
+    width: fit-content;
+    justify-content: center;
+    display: flex;
+    user-select: none;
+  }
+  /* Knowledge */
+  div.knowledge ul.languages {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    gap: 20px;
+    li.language {
+      display: flex;
+      flex-direction: column;
+      background: rgb(21, 21, 35);
+      box-sizing: border-box;
+      padding: 3px 20px 10px 20px;
+      height: 70px;
+      justify-content: space-between;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
+      div.header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        h2 {
+          margin: 0;
+          display: flex;
+          user-select: none;
+          align-items: center;
+          gap: 14px;
+        }
+        span {
+          height: 25px;
+          width: 1px;
+          display: block;
+          background: #343759;
+        }
+        i {
+          height: 30px;
+          width: 30px;
+          justify-content: center;
+          object-fit: contain;
+          font-size: 24px;
+          align-items: center;
+          display: flex;
+          user-select: none;
+        }
+      }
+      div.bar {
+        width: 100%;
+        background: rgb(87, 87, 87);
+        height: 10px;
+        border-radius: 5px;
+        div.progress {
+          width: 50%;
+          height: 10px;
+          border-radius: 5px;
+          animation: 2s cubic-bezier(0.1, 0.3, 0.5, 0.7) 0s 1 load;
+          @keyframes load {
+            0% {
+               width: 0%;
+            }
+            100% {
+              width: max-width;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* Moderation */
+  div.moderation ul.guilds {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    li.guild {
+      display: flex;
+      flex-direction: row;
+      background: rgb(21, 21, 35);
+      box-sizing: border-box;
+      padding: 0;
+      height: 100px;
+      justify-content: space-between;
+      border-radius: 50px 10px 10px 50px;
+      border: none;
+      margin: 0;
+      width: 400px;
+      gap: 20px;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
+      div.icon {
+        height: 100px;
+        top: 0;
+        left: 0;
+        width: 100px;
+        position: relative;
+        margin: 0;
+        border: 0;
+        display: flex;
+        img.icon {
+          border: none;
+          left: 0;
+          position: relative;
+          height: 100px;
+          user-select: none;
+          width: 100px;
+          top: 0;
+          div.badge {
+            background: red;
+            display: flex;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: rgb(21, 21, 35);
+            height: 30px;
+            width: 30px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            svg {
+              height: 23px;
+              width: 23px;
+            }
+            svg.verified path.star {
+              fill: #3ba55d;
+            }
+            svg.partnered path.star {
+              fill: #5865f2;
+            }
+            svg path.shard {
+              fill: white;
+            }
+          }
+        }
+      }
+      div.stats {
+        padding: 10px 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h4, h5, h6 {
+        margin: 0;
+        }
+        h4 {
+          display: flex;
+          align-items: center;
+          color: white;
+          font-size: 20px;
+        }
+        h5.members {
+          display: flex;
+          gap: 6px;
+          align-items: center;
+          color: lightgrey;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        h6.moderating {
+          display: flex;
+          user-select: none;
+          gap: 6px;
+          align-items: center;
+          font-size: 14px;
+          font-weight: 100;
+        }
+        h6.moderating.no {
+          color: rgb(255, 0, 0);
+        }
+        h6.moderating.yes {
+          color: rgb(0, 255, 0);
+        }
+      }
+    }
+  }
+  /* Contact */
+  ul.contacts {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li.contact {
+      margin: 0;
+      font-size: 24px;
+      i {
+        color: white;
+      }
+      &:nth-child(1) i:hover {
+      color: #1DA1F2;
+      }
+      &:nth-child(2) i:hover {
+        color: #5865F2;
+      }
+      &:nth-child(3) i:hover {
+        color: #E1306C;
+      }
+      &:nth-child(4) i:hover {
+        color: #171515;
+      }
+      &:nth-child(5) i:hover {
+        color: #2867B2;
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  div.portfolio {
+    padding: 20px 20px;
+  }
+}
