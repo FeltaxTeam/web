@@ -281,5 +281,8 @@ div.portfolio {
 @media (max-width: 450px) {
   div.portfolio {
     padding: 20px 20px;
+    div.moderation ul.guilds li.guild {
+      width: 350px;
+    }
   }
 }
