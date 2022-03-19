@@ -1,4 +1,4 @@
-.descriptionTxtA {
+#descriptionTxtA {
   border: 1px solid rgb(41, 120, 230);
   background: var( --navBgColor);
   border-radius: 8px;
