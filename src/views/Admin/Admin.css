@@ -1,0 +1,16 @@
+.descriptionTxtA {
+  border: 1px solid rgb(41, 120, 230);
+  background: var( --navBgColor);
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 40%) 0px 0px 8px 0px;
+  color: white;
+  font-family: "Baloo 2";
+  min-height: 32px;
+  min-width: 115px;
+  padding: 8px;
+  min-width: 120px;
+  max-width: 120px;
+  line-height: 14px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
