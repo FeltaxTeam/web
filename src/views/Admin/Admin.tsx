@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navigate from "../.././utility/navigation";
 import { fetchURL, fetchApi, postApi } from "../../utility/fetching";
+import './Admin.css';
 
 let user = null;
 let authIds = ['438390132538605589', '417407496286633995'];
