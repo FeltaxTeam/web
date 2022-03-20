@@ -131,6 +131,7 @@ nav .container li.navbar-hamburguer {
 }
 .navbar-logo {
   height: 70px;
+  width: 70px;
   position: relative;
   box-sizing: border-box;
   align-items: baseline;

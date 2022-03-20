@@ -61,6 +61,7 @@ function Description() {
   return <>
 
   <textarea defaultValue={description} id="descriptionTxtA"></textarea>
+  <input type="text" name="Description" id="descriptionTxtA" />
   <input type="button" onClick={postDescription} value="Update!" />
   </>
 }
