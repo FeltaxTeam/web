@@ -77,7 +77,7 @@ class NavComponent extends React.Component {
 						</div>
 						<div className="navbar-logo-container">
 							<Link to="/">
-								<img src="https://feltax-app.herokuapp.com/favicon.ico" alt="awd" title="logo" className="navbar-logo" />
+								<img src="https://feltax-app.herokuapp.com/favicon.ico" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
 							</Link>
 						</div>
 						<div className="navbar-user">
