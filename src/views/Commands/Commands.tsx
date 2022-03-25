@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import Navigate from '../../utility/navigation';
 import './Commands.scss'
@@ -19,7 +19,7 @@ export default class Commands extends React.Component {
 		let commandElements = [];
 		for (var i in commandComponents) {
 			commandElements.push(
-				<Route path={`/${i}`} element={<>{commandComponents[i].map((el: any) => { return el(); })}</>} />
+				<Route key={i} path={`/${i}`} element={<>{commandComponents[i].map((el: any) => { return <div className='command'>{el()}</div> })}</>} />
 			);
 		}
 		return (
@@ -53,9 +53,6 @@ class CommandList extends React.Component {
 	constructor(props: { commandInfos: any }) {
 		super(props);
 		this.commandInfos = props.commandInfos;
-	}
-	componentWillUpdate() {
-		return false;
 	}
 	render() {
 		const tagIcon: any = { 'premium': 'P', 'slash': '/' };
