@@ -14,12 +14,12 @@ export default function Guild() {
 	let [guildInDb, setGuildInDb] = useState('');
 	useEffect(() => {
 		async function getGuild() {
-			let data: any = await fetchApi(`/discord/guilds/${guildId}`);
+			let data: any = await fetchApi(`https://feltax-api.herokuapp.com/discord/guilds/${guildId}`);
 			setGuild(data);
 		}
 		getGuild();
 		async function getGuildInDb() {
-			let data: any = JSON.parse(await fetchApi(`/mongo/getDbGuild/${guildId}`));
+			let data: any = JSON.parse(await fetchApi(`https://feltax-api.herokuapp.com/mongo/getDbGuild/${guildId}`));
 			if (data.error){
 				console.log(`Error fetching the guild in the db: ${data.error} / ${data.message}`);
 				data = null;

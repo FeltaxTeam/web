@@ -42,7 +42,7 @@ function Description() {
     if (user == null) return;
     async function getDesc() {
       if (tokenType && accessToken) {
-        let adminProfile:any = JSON.parse(await fetchApi(`/admin/getDescription/${user.id}`));
+        let adminProfile:any = JSON.parse(await fetchApi(`https://feltax-api.herokuapp.com/admin/getDescription/${user.id}`));
         setDescription(adminProfile.description);
       }
     }

@@ -4,7 +4,7 @@ import {postApi} from '../../../../utility/fetching';
 const defaultPrefix = 'f-';
 
 async function setGuildPrefix(){
-  postApi(`/mongo/setGuildPrefix`, {tokenType : localStorage.getItem('tokenType'), accessToken: localStorage.getItem('accessToken'),
+  postApi(`https://feltax-api.herokuapp.com/mongo/setGuildPrefix`, {tokenType : localStorage.getItem('tokenType'), accessToken: localStorage.getItem('accessToken'),
   //@ts-ignore
   newPrefix: document.getElementById('prefixInp').value,
   //@ts-ignore
