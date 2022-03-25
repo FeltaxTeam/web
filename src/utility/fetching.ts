@@ -30,5 +30,6 @@ export async function fetchWorkerProfile(name:string) {
 	const workerNames = {iron: '438390132538605589', thebluebanana: '417407496286633995'};
 	let a = await fetchApi(`/admin/getDescription/${workerNames[name]}`);
 	if (a == '') a = JSON.stringify({"description": "no description added yet."});
+	console.log(`string recived: ${a}`);
 	return JSON.parse(a);
 }
