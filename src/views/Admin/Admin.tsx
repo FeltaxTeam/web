@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navigate from "../.././utility/navigation";
 import { fetchURL, fetchApi, postApi } from "../../utility/fetching";
 import './Admin.css';

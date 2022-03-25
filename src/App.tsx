@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route, BrowserRouter as Router} from 'react-router-dom';
 import Navigate from './utility/navigation';
 import './App.css';

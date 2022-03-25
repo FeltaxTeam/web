@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Home/Home';
 import Iron from './Iron/Iron';
 import NotFoundTeamMember from './NotFoundTeamMember/NotFoundTeamMember';

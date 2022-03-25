@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchWorkerProfile } from '../../../utility/fetching';
 
 export default function Home() {

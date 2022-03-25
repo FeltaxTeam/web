@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Widget.css';
-import { fetchURL } from '../../../../utility/fetching';
-import useSWR from 'swr';
-import guild from '../Guild'
-import Discord from 'discord.js';
 
 export default function Widget(props: { guild: string }) {
   const guild = JSON.parse(props.guild);
