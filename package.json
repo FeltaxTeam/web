@@ -49,5 +49,6 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "sass": "^1.49.8"
-  }
+  },
+  "proxy": "https://feltax-api.herokuapp.com/"
 }
