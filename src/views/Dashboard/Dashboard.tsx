@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigate from '../.././utility/navigation';
 import { fetchApi } from '../../utility/fetching';
 import './Dashboard.css';
-import Discord, { Permissions } from 'discord.js';
+import Discord from 'discord.js';
 
 function Guild(props: { name: string, id: string, icon: string | null }) {
 	return (
@@ -16,8 +16,8 @@ function Guild(props: { name: string, id: string, icon: string | null }) {
 			</div>
 			<div className="container">
 				<div className="name">{props.name}</div>
-				{botGuildsId.includes(props.id) ? <Link to={`/dashboard/${props.id}`}>Configurar</Link> :
-					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax-app.herokuapp.com%2Fauth%2F&permissions=1644972474359&client_id=568435616153337916&guild_id=${props.id}`}>Invitar</a>
+				{botGuildsId.includes(props.id) ? <Link to={`/dashboard/${props.id}`} className="configuration" >Configurar</Link> :
+					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax-app.herokuapp.com%2Fauth%2F&permissions=1644972474359&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
 				}
 			</div>
 		</div>
@@ -47,7 +47,6 @@ export default function DashboardComponent() {
 	let [botGuilds, setBotGuilds]: [any, Function] = useState(null);
 	useEffect(() => {
 		async function getGuilds() {
-			console.log('getting movidas');
 			//setGuilds(await fetchURL(tokenType, accessToken, 'https://discord.com/api/users/@me/guilds'));
 			setGuilds(JSON.parse(await fetchApi(`/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
 			setBotGuilds(JSON.parse(await fetchApi('/discord/users/@me/guilds')));
@@ -61,7 +60,7 @@ export default function DashboardComponent() {
 	//sorting guilds
 	if (guilds && botGuilds) {
 		botGuildsId = botGuilds.map((el: any) => { return el.id });
-		guilds = guilds.filter(guild => guild.owner == true).sort((a: any, b: any) => {
+		guilds = guilds.filter(guild => guild.owner == true).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
 			return botGuildsId.includes(b.id) - botGuildsId.includes(a.id);
 		});
 	}
