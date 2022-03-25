@@ -68,3 +68,14 @@
   border-color: rgb(15 57 219);
   outline: none;
 }
+#submitBtn {
+  background: rgba(87, 242, 135, 0.5);
+  border: 1px solid #57F287;
+  color: white;
+  font-weight: bolder;
+  height: 30px;
+  border-radius: 6px;
+}
+#submitBtn:hover {
+  background: #57F287;
+}
