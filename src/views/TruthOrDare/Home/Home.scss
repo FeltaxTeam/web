@@ -1,0 +1,343 @@
+main.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  
+  div.title {
+    h1 {
+      font-size: calc(1vw * 10);
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      margin: 0;
+      gap: 1rem;
+
+      span {
+        &:nth-child(1) {
+          color: var(--blue);
+        }
+
+        &:nth-child(2) {
+          color: var(--red);
+        }
+      }
+    }
+  }
+
+  ul.players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+    max-width: 400px;
+    width: fit-content;
+    height: fit-content;
+
+    li.player {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 50px calc(100% - 120px) 50px;
+      grid-template-rows: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 400px;
+      width: calc(100vw - 20px);
+      gap: 10px;
+      box-sizing: border-box;
+      height: 50px;
+
+      button.removePlayer {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 40px;
+        line-height: 40px;
+        grid-column: 1;
+        font-weight: 300;
+        border: none;
+        cursor: pointer;
+        width: 50px;
+        gap: 0;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        font-family: 'Rubik', sans-serif;
+        justify-content: center;
+        border-radius: 50%;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 30px;
+          height: 4px;
+          background: rgba($color: white, $alpha: 1);
+          border-radius: 2px;
+          transform: rotate(45deg);
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          transform: rotate(45deg);
+          height: 30px;
+          background: rgba($color: white, $alpha: 1);
+          border-radius: 2px;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+          background: rgba($color: var(--blue), $alpha: 0.4);
+        }
+      }
+
+      div {
+        border: 2px solid var(--blue);
+        height: 100%;
+        box-sizing: border-box;
+        border-radius: 10px;
+
+        &.name {
+          grid-column: 2;
+          grid-row: 1;
+          max-width: 280px;
+          width: calc(100%);
+
+          input {
+            height: 100%;
+            width: inherit;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 0.5rem;
+            background: none;
+            color: #fff;
+            background: rgba($color: var(--bg), $alpha: 0.5);
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px;
+            color: #fff;
+
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+
+        &.gender {
+          display: flex;
+          grid-column: 3;
+          width: 50px;
+          height: 50px;
+          align-items: center;
+          justify-content: center;
+
+          label {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            cursor: pointer;
+
+            input[type='checkbox'] {
+              border: none;
+              padding: 4px 8px;
+              border-radius: 0.5rem;
+              background: none;
+              color: #18213e;
+              font-size: 1rem;
+              font-weight: bold;
+              color: #fff;
+              cursor: pointer;
+              visibility: hidden;
+              display: none;
+              align-items: center;
+              justify-content: center;
+              gap: 6px;
+
+              &:checked~i {
+                &.fa-child {
+                  color: rgba($color: #000000, $alpha: 0.6);
+                }
+
+                &.fa-child-dress {
+                  color: var(--red);
+                }
+              }
+            }
+
+            input:checked {
+              i {
+                &.fa-child {
+                  color: rgba($color: #000000, $alpha: 0.6);
+                }
+
+                &.fa-child-dress {
+                  color: var(--red);
+                }
+              }
+            }
+
+            i {
+              font-size: 1.5rem;
+              cursor: pointer;
+              color: rgba($color: #000000, $alpha: 0.6);
+
+              &.fa-child {
+                color: var(--blue);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.set {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    gap: 40px;
+
+    button.settings {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border: none;
+      border-radius: 50%;
+      background: rgb(31, 41, 55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+      cursor: pointer;
+
+      i {
+        font-size: 1.6rem;
+        color: #fff;
+      }
+    }
+
+    button.addPlayer {
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-size: 40px;
+      line-height: 40px;
+      font-weight: 300;
+      border: 2px solid rgba($color: var(--red), $alpha: 0.8);
+      cursor: pointer;
+      width: 50px;
+      margin: 0;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      font-family: 'Rubik', sans-serif;
+      justify-content: center;
+      border-radius: 50%;
+      box-sizing: border-box;
+      transition: all 0.3s ease-in-out;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 4px;
+        background: rgba($color: white, $alpha: 1);
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 30px;
+        background: rgba($color: white, $alpha: 1);
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover {
+        background: rgba($color: var(--red), $alpha: 0.8);
+      }
+    }
+  }
+
+  button.startGame {
+    background: var(--red);
+    border: none;
+    cursor: pointer;
+    max-width: 400px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-family: 'Rubik', sans-serif;
+      font-size: 30px;
+      line-height: 40px;
+      font-weight: 600;
+      width: inherit;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  div#modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: black, $alpha: 0.3);
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+    transition: all 0.14s ease-in-out;
+
+    div.box {
+      border: 2px solid var(--blue);
+      width: fit-content;
+      height: fit-content;
+      height: 100%;
+      background: var(--bg);
+      width: 100%;
+    }
+  }
+}

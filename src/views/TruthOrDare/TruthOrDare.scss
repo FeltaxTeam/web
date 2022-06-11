@@ -1,0 +1,23 @@
+:root {
+  --blue: rgb(88, 101, 242);
+  --red: rgb(228, 86, 88);
+  --bg: rgb(10, 16, 35);
+  font-family: 'Rubik', sans-serif;
+}
+
+html {
+  #root {
+    .App {
+      .page {
+        display: flex;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        min-width: 100vw;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

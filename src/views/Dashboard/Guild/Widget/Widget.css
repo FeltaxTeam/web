@@ -177,13 +177,14 @@ div.embed ul {
 .assets {
   gap: 20px;
   display: flex;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
 }
 .assets div {
   width: calc(50% - 10px);
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
 .assets div .title {
   font-size: 16px;
@@ -192,7 +193,7 @@ div.embed ul {
   justify-content: center;
   width: 100%;
 }
-div.assets div img {
+div.assets div img.banner {
   gap: 20px;
   display: flex;
   flex-direction: row;
@@ -200,15 +201,22 @@ div.assets div img {
   border-radius: 10px;
   margin: 0;
 }
+div.assets div div.placeholder {
+  gap: 20px;
+  display: flex;
+  aspect-ratio: 16/9;
+  width: 100%;
+  border-radius: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  border: 2px dashed #b9bbbe;
+}
 @media (max-width: 900px) {
   div.assets {
       flex-direction: column;
   }
   div.assets div {
       width: 100%;
-  }
-  .assets div .title {
-      justify-content: left;
   }
 }
 /* Default List */
@@ -229,9 +237,9 @@ div.embed div .title {
 /* ID */
 div.id {
   display: flex;
-  height: 60px;
-  gap: 10px;
-  align-items: end;
+  height: fit-content;
+  gap: 14px;
+  align-items: center;
 }
 div.id .container h4 {
   position: absolute;
@@ -245,22 +253,28 @@ div.id .container h4 {
 div.id .container{
   height: calc(50px - 16px - 6px);
   display: flex;
-  align-items: center; 
-}
-div.id button {
-  height: 50px;
-  margin: 0;
-  display: flex;
-  background: none;
-  align-items: center; 
-}
-div.id .container, div.id button {
+  align-items: center;
+  user-select: none;
+  color: white;
   border: 3px solid var(--pageBgColor);
   border-radius: 10px;
   color: white;
   font-weight: bold;
   padding: 8px;
   font-size: 18px;
+}
+div.id button {
+  height: fit-content;
+  margin: 0;
+  display: flex;
+  color: white;
+  background: none;
+  align-items: center;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0px;
+  font-size: 18px;
+  border: none;
 }
 /* Emoji List */
 div.emojis {

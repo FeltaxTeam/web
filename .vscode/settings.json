@@ -1,4 +1,21 @@
 {
     "editor.tabSize": 2,
-    "editor.maxTokenizationLineLength": 100000000
+    "editor.maxTokenizationLineLength": 100000000,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.language.brackets": [
+        ["[", "]"],
+        ["(", ")"],
+        ["{", "}"],
+        ["<", "</"],
+        ["<", "/>"],
+    ],
+    "editor.language.colorizedBracketPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["{", "}"],
+        ["<", "</"],
+        ["<", "/>"],
+    ],
+    "discord.lowerDetailsEditing": "📋 Workspace: {workspace} - {file_size}"
 }

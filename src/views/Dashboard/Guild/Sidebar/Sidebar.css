@@ -2,7 +2,7 @@
   transition: opacity 0.2s ease-in;
 }
 /* NEW SIDEBAR */
-.sidebar {
+nav.sidebar {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -23,10 +23,10 @@
   box-sizing: border-box;
 }
 /* Sidebar Scroll Bar */
-.sidebar::-webkit-scrollbar {
+nav.sidebar::-webkit-scrollbar {
   width: 0.1vh;
 }
-.guild-resume .name, .sidebar ul li a .title, .sidebar .section .title, .section ul a .name {
+.guild-resume .name, nav.sidebar ul li a .title, nav.sidebar .section .title, .section ul a .name {
   transition: opacity 0.2s ease-in;
 }
 .guild-resume {
@@ -39,6 +39,7 @@
   box-sizing: border-box;
   padding: 10px;
   border-radius: 10px;
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px 0px;
 }
 .guild-resume .icon {
@@ -57,8 +58,11 @@
   justify-content: start;
   transition: opacity 0.2s ease-in;
   margin-left: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.sidebar ul {
+nav.sidebar ul {
   width: -webkit-fill-available;
   list-style: none;
   display: flex;
@@ -67,7 +71,7 @@
   margin: 20px 0px;
   padding: 0px 20px;
 }
-.sidebar ul > li a {
+nav.sidebar ul > li a {
   display: flex;
   gap: 10px;
   width: -webkit-fill-available;
@@ -76,28 +80,28 @@
   border-radius: 30px;
   text-decoration: none;
 }
-.sidebar > ul > li.menu > a {
+nav.sidebar > ul > li.menu > a {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
   text-decoration: none;
 }
-.sidebar > ul > li a svg {
+nav.sidebar > ul > li a svg {
   min-width: 30px;
   height: 30px;
 }
-.sidebar > ul > li a i {
+nav.sidebar > ul > li a i {
   font-size: 22px;
 }
-.sidebar > ul > li a > div {
+nav.sidebar > ul > li a > div {
   font-size: 20px;
   justify-content: start;
   width: -webkit-fill-available;
   font-weight: 600;
   color: rgb(140, 143, 167);
 }
-.sidebar > ul > li:hover a > div {
+nav.sidebar > ul > li:hover a > div {
   font-size: 20px;
   justify-content: start;
   width: -webkit-fill-available;
@@ -117,7 +121,7 @@
   nav.sidebar .guild-resume {
     width: 60px;
   }
-  .body {
+  .guildPage .body {
       width: calc(100% - 160px);
       left: 80px;
   }

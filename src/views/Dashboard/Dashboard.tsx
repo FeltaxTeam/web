@@ -17,7 +17,7 @@ function Guild(props: { name: string, id: string, icon: string | null }) {
 			<div className="container">
 				<div className="name">{props.name}</div>
 				{botGuildsId.includes(props.id) ? <Link to={`/dashboard/${props.id}`} className="configuration" >Configurar</Link> :
-					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax-app.herokuapp.com%2Fauth%2F&permissions=1644972474359&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
+					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax.xyz%2Fauth%2F&permissions=1644972474359&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
 				}
 			</div>
 		</div>
@@ -43,13 +43,13 @@ function DefaultGuild() {
 
 let botGuildsId: any = [];
 export default function DashboardComponent() {
-	let [guilds, setGuilds]: [any, Function] = useState(null);
-	let [botGuilds, setBotGuilds]: [any, Function] = useState(null);
+	let [guilds, setGuilds] = useState(null);
+	let [botGuilds, setBotGuilds] = useState(null);
 	useEffect(() => {
 		async function getGuilds() {
 			//setGuilds(await fetchURL(tokenType, accessToken, 'https://discord.com/api/users/@me/guilds'));
-			setGuilds(JSON.parse(await fetchApi(`https://feltax-api.herokuapp.com/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
-			setBotGuilds(JSON.parse(await fetchApi('https://feltax-api.herokuapp.com/discord/users/@me/guilds')));
+			setGuilds(JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
+			setBotGuilds(JSON.parse(await fetchApi('https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds')));
 		}
 		getGuilds();
 	}, []);
@@ -60,13 +60,14 @@ export default function DashboardComponent() {
 	//sorting guilds
 	if (guilds && botGuilds) {
 		botGuildsId = botGuilds.map((el: any) => { return el.id });
-		guilds = guilds.filter(guild => guild.owner == true).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
+		guilds = guilds.filter(guild => guild.owner === true).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
 			return botGuildsId.includes(b.id) - botGuildsId.includes(a.id);
 		});
 	}
 	function LoadingDashboard() {
 		return (
 			<div className="loading">
+				<DefaultGuild />
 				<DefaultGuild />
 				<DefaultGuild />
 				<DefaultGuild />
@@ -79,7 +80,7 @@ export default function DashboardComponent() {
 				(!guilds || !botGuilds)? <LoadingDashboard /> :
 					<div className="serverHolder">
 						{
-							(guilds[0]!= undefined)? guilds.map((guild: Discord.Guild, i: any) => { return <Guild key={i} name={guild.name} id={guild.id} icon={guild.icon} /> })
+							(guilds[0]!== undefined)? guilds.map((guild: Discord.Guild, i: any) => { return <Guild key={i} name={guild.name} id={guild.id} icon={guild.icon} /> })
 							: <h2>You don't have any guild you can manage :c</h2>
 						}
 					</div>

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css'
 
-export default function Sidebar(props: { guild: string }) {
-  const guild = (props.guild != '')? JSON.parse(props.guild) : {name: 'GUILD'};
-  if (guild.name == 'GUILD') return <></>;
+export default function Sidebar(props: { guild: any }) {
+  const guild = (props.guild !== '')? props.guild : {name: 'GUILD'};
+  if (guild == null || guild.name === 'GUILD') return <></>;
   return (
     <React.Fragment>
       <nav className="sidebar">

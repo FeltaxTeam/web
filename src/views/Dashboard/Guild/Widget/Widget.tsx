@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchApi } from '../../../../utility/fetching';
 import './Widget.css';
 
-export default function Widget(props: { guild: string }) {
-  const guild = JSON.parse(props.guild);
+export default function Widget(props: { guild, owner?}) {
+  const guild = props.guild;
   console.dir(guild);
   function Emoji(props: { id: string, animated: boolean, name: string }) {
     return (
@@ -12,7 +13,7 @@ export default function Widget(props: { guild: string }) {
   function Sticker(props: { id: string, name: string }) {
     return (
       <div className="sticker">
-        <img src={`https://cdn.discordapp.com/stickers/${props.id}.png?size=80`} className="image" />
+        <img src={`https://cdn.discordapp.com/stickers/${props.id}.png?size=80`} className="image" alt={props.name} />
         <div className="name">
           {props.name}
         </div>
@@ -22,7 +23,7 @@ export default function Widget(props: { guild: string }) {
   function decimalToHex(d: number) {
     var hex = Number(d).toString(16);
     hex = "000000".slice(0, 6 - hex.length) + hex;
-    return hex=='000000'?'b9bbbe':hex;
+    return hex === '000000' ? 'b9bbbe' : hex;
   }
   function Role(props: { color: number, name: string }) {
     return (
@@ -34,12 +35,20 @@ export default function Widget(props: { guild: string }) {
       </span>
     )
   }
+  let [owner, setOwner] = useState(null);
+  useEffect(() => {
+    async function getOwner() {
+      setOwner(JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guild.owner_id}`)));
+    }
+    getOwner();
+  }, []);
+  let premium_subscription_count_goal = [2, 7, 14];
   return (
     <React.Fragment>
       <div className="embed">
         <div className="stats-container">
           <div className="guild-header">
-            <img className="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} />
+            <img className="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} alt={guild.name} />
             <div className="info">
               <div className="title">
                 <div className="name">{guild.name}</div>
@@ -63,7 +72,7 @@ export default function Widget(props: { guild: string }) {
                   </svg>
                 </div>
               </div>
-              <div className="description">{guild.de}</div>
+              <div className="description">{guild.description !== null ? guild.description : 'No description'}</div>
             </div>
           </div>
           <div className="progress-bar">
@@ -76,7 +85,7 @@ export default function Widget(props: { guild: string }) {
                   viewBox="0 0 16 15.2">
                   <path
                     fill="#4f545c"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="m16 7.6c0 .79-1.28 1.38-1.52 2.09s.44 2 0 2.59-1.84.35-2.46.8-.79 1.84-1.54 2.09-1.67-.8-2.47-.8-1.75 1-2.47.8-.92-1.64-1.54-2.09-2-.18-2.46-.8.23-1.84 0-2.59-1.54-1.3-1.54-2.09 1.28-1.38 1.52-2.09-.44-2 0-2.59 1.85-.35 2.48-.8.78-1.84 1.53-2.12 1.67.83 2.47.83 1.75-1 2.47-.8.91 1.64 1.53 2.09 2 .18 2.46.8-.23 1.84 0 2.59 1.54 1.3 1.54 2.09z">
                   </path>
                 </svg>
@@ -88,7 +97,7 @@ export default function Widget(props: { guild: string }) {
                     viewBox="0 0 6 11">
                     <g
                       fill="currentColor"
-                      fill-rule="evenodd">
+                      fillRule="evenodd">
                       <path d="M3 0.625305L0 3.62531V7.62531L3 10.6253L6 7.62531V3.62531L3 0.625305ZM5 7.24531L3 9.24531L1 7.24531V4.04531L3 2.04531L5 4.04531V7.24531Z"></path>
                       <path d="M3.76 4.21526L3 3.45526L2 4.45526V5.97526L3.76 4.21526Z"></path>
                       <path d="M2.28003 7.11532L3.00003 7.83532L4.00003 6.83532V5.39532L2.28003 7.11532Z"></path>
@@ -98,23 +107,28 @@ export default function Widget(props: { guild: string }) {
                 <b className="goal">Goal: Level {guild.premium_tier + 1}</b>
               </div>
               <div className="count">
-                <b>{'PREMIUM_SUBSCRIPTION_COUNT'}/{'GOAL'}</b> boosts</div>
+                <b>{guild.premium_subscription_count}/{premium_subscription_count_goal[guild.premium_tier]}</b> boosts</div>
             </header>
             <div className="bar">
-              <div className="progress" style={{ width: '70%' }}></div>
+              <div className="progress" style={{ width: `${(((guild.premium_subscription_count) - (guild.premium_tier - 1 < 0 ? 0 : premium_subscription_count_goal[guild.premium_tier - 1])) * 100) / (premium_subscription_count_goal[guild.premium_tier] - (guild.premium_tier - 1 < 0 ? 0 : premium_subscription_count_goal[guild.premium_tier - 1]))}%` }}></div>
             </div>
           </div>
           <div className="id">
             <div className="container">
               <h4 className="title">Server ID</h4>
               {guild.id}</div>
-            <button>Copy</button>
+            <button><i className="fa-regular fa-copy" /></button>
           </div>
           <div className="owner">
-            <img
-              src={`https://cdn.discordapp.com/avatars/a/<%= owner.avatar %>.<%= owner.avatar.startsWith('a_')?'gif':'webp' %>?size=64`}
-              className="avatar" />
-            <div className="name">{'OWNER_USERNAME'}#{'OWNER_DISCRIMIANTOR'}</div>
+            {
+              owner!==null?
+              <img
+              src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.webp?size=64`}
+              className="avatar" alt='Avatar' />
+              :
+              <></>
+            }
+            <div className="name">{owner !== null ? owner.username : ''}#{owner !== null ? owner.discriminator : ''}</div>
             <svg
               aria-hidden="false"
               className="icon"
@@ -126,23 +140,35 @@ export default function Widget(props: { guild: string }) {
             </svg>
           </div>
           <ul className="stats">
-            <li>{'MAX_MEMBERS'}</li>
+            <li>{guild.max_members}</li>
           </ul>
           <div className="assets">
             <div className="banner">
               <b className="title">Banner</b>
-              <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" />
+              {
+                guild.banner === null ?
+                  <div className="placeholder">
+                  </div>
+                  :
+                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" alt={guild.id} />
+              }
             </div>
             <div className="splash">
               <b className="title">Splash</b>
-              <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" />
+              {
+                guild.splash === null ?
+                  <div className="placeholder">
+                  </div>
+                  :
+                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" alt={guild.id} />
+              }
             </div>
           </div>
           <div className="emojis">
             <div className="title">{guild.emojis.length} EMOJIS</div>
             <div className="container">
-              {guild.emojis.map((emoji) => {
-                return <Emoji id={emoji.id} animated={emoji.animated} name={emoji.name} />
+              {guild.emojis.map((emoji, i) => {
+                return <Emoji key={i} id={emoji.id} animated={emoji.animated} name={emoji.name} />
               })}
             </div>
             <div className="title">No hay emojis en este servidor :(</div>
@@ -150,8 +176,8 @@ export default function Widget(props: { guild: string }) {
           <div className="stickers">
             <div className="title">{guild.stickers.length} STICKERS</div>
             <div className="container">
-              {guild.stickers.map((sticker) => {
-                return <Sticker id={sticker.id} name={sticker.name} />
+              {guild.stickers.map((sticker, i) => {
+                return <Sticker key={i} id={sticker.id} name={sticker.name} />
               })}
             </div>
             <div className="title">No hay stickers en este servidor :(</div>
@@ -159,8 +185,8 @@ export default function Widget(props: { guild: string }) {
           <div className="roles">
             <div className="title">{guild.roles.length} ROLES</div>
             <div className="container">
-              {guild.roles.map((role) => {
-                return <Role color={role.color} name={role.name} />
+              {guild.roles.map((role, i) => {
+                return <Role key={i} color={role.color} name={role.name} />
               })}
             </div>
           </div>

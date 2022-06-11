@@ -1,0 +1,76 @@
+canvas#canvas {
+  width: 750px;
+  height: 500px;
+}
+ul.operations {
+  display: grid;
+  list-style: none;
+  grid-gap: 10px;
+  width: fit-content;
+  margin: 0;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  padding: 0;
+}
+ul.operations li.operation {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.operations li.operation h3.type {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+ul.operations li.operation h3.type i {
+  border: 1px solid var(--mainColor);
+  height: 20px;
+  display: flex;
+  align-items: center;
+  width: 20px;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 4px;
+}
+ul.operations li.operation div.formula {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.operations li.operation div.formula span.x:after {
+  content: "x";
+  color: red;
+}
+ul.operations li.operation div.formula span.sign {
+  color: lightgrey;
+}
+ul.operations li.operation div.formula span.y:after {
+  content: "y";
+  color: blue;
+}
+div#disabled {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 10px;
+  filter: blur(10px);
+  z-index: 100000;
+}
+canvas#card {
+  width: fit-content;
+  height: fit-content;
+}

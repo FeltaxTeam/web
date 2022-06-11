@@ -1,0 +1,72 @@
+div.players {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	div.circle {
+		width: 300px;
+		height: 300px;
+		display: flex;
+		border-radius: 50%;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		animation: rotate 4s ease infinite;
+
+		span.player {
+			position: absolute;
+			inset: 20px;
+			color: white;
+			text-align: center;
+
+			b {
+				font-size: 1rem;
+				font-weight: bolder;
+				display: inline-flex;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				align-items: center;
+				justify-content: center;
+				transform: rotate(calc(-36deg * var(--i)));
+
+				i {
+					font-size: 1.2rem;
+					display: inline-block;
+					color: var(--bg);
+				}
+			}
+		}
+
+		@keyframes rotate {
+			0% {
+				transform: rotateZ(0deg);
+			}
+
+			100% {
+				transform: rotateZ(360deg);
+			}
+		}
+	}
+	div.selector {
+		position: absolute;
+		background: none;
+		width: 40px;
+		top: 20px;
+		height: 130px;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		align-items: center;
+
+		div.marker {
+			border: 3px solid white;
+			height: 40px;
+			width: 40px;
+			border-radius: 50%;
+			box-sizing: border-box;
+      box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 8px 0px;
+		}
+	}
+}
