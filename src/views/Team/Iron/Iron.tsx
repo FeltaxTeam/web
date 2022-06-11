@@ -1,19 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Iron.scss';
 import languages from './stats.json';
 const langs = languages['languages'];
 const guilds = languages['guilds'];
 const contacts = languages['contacts'];
-function Language(props: { displayName: string, hexColor: string, knowing: number, awesomeIcon: string }) {
+const skills = languages['skills'];
+function Language(props: { displayName: string, hexColor: string, knowing: number, years: number, awesomeIcon: string }) {
 	return (
 		<li className='language'>
 			<div className="header">
-				<h2 className="name"><i className={props.awesomeIcon} style={{ color: props.hexColor }}></i><span></span>{props.displayName}</h2>
-				<h2 className="percentage">{props.knowing}%</h2>
+				<i className={props.awesomeIcon} style={{ color: props.hexColor }}></i>
+				<span></span>
+				<div className="data">
+					<h2 className="name">{props.displayName}</h2>
+				</div>
 			</div>
 			<div className="bar">
-				<div className="progress" style={{ background: props.hexColor, width: `${props.knowing}%` }} />
+				<div className="type"><i className="fa-solid fa-brain"></i></div>
+				<div className="progress-container">
+					<span className="progress" style={{
+						background: props.hexColor,
+						width: `${props.knowing}%`,
+						boxShadow: `${props.hexColor} 0px 0px 8px 0px`
+					}} />
+				</div>
+				<div className="percentage">{props.knowing}%</div>
 			</div>
+			<div className="bar">
+				<div className="type"><i className="fa-regular fa-clock"></i></div>
+				<div className="progress-container">
+					<span className="progress" style={{
+						background: '#57F287',
+						width: `${(props.years * 100) / 5}%`,
+						boxShadow: `#57F287 0px 0px 8px 0px`
+					}} />
+				</div>
+				<div className="percentage">{props.years} y</div>
+			</div>
+		</li>
+	)
+}
+function Skill(props: { hexColor: string, displayName: string }) {
+	return (
+		<li className="skill">
+			<svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+				<defs>
+					<filter id="round">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+						<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+						<feComposite in="SourceGraphic" in2="goo" operator="atop" />
+					</filter>
+				</defs>
+			</svg>
+
+			<div className="hexagone" style={{ color: props.hexColor }}></div>
+			<div className="name">{props.displayName}</div>
 		</li>
 	)
 }
@@ -48,7 +89,7 @@ function Guild(props: { name: string, icon: string, moderatingSince: string | nu
 	return (
 		<li className='guild'>
 			<div className="icon">
-				<img src={props.icon} className="icon" />
+				<img src={props.icon} alt='Icon' className="icon" />
 				{props.verified === true ? <Verified /> : (props.partnered === true ? <Partnered /> : <></>)}
 			</div>
 			<div className="stats">
@@ -73,28 +114,57 @@ function Guild(props: { name: string, icon: string, moderatingSince: string | nu
 function Contact(props: { name: string, url: string, icon: string }) {
 	return (
 		<li className='contact'>
-			<a href={props.url}>
+			<a target="_blank" rel="noreferrer" href={props.url}>
 				<i className={`fa-brands ${props.icon}`} />
 			</a>
 		</li>
 	)
 }
 export default function Iron() {
+	let [githubProfile, setGithubProfile] = useState(null);
+	let [githubOrganization, setGithubOrganization] = useState(null);
+	useEffect(() => {
+		async function getGithubProfile() {
+			let data = await fetch('https://api.github.com/users/Iron7III');
+			let json = await data.json();
+			console.log(json);
+			setGithubProfile(json);
+		}
+		getGithubProfile();
+		async function getGithubOrganization() {
+			let data = await fetch('https://api.github.com/orgs/Feltax-Team');
+			let json = await data.json();
+			console.log(json);
+			setGithubOrganization(json);
+		}
+		getGithubOrganization();
+	}, []);
 	return (
 		<>
 			<React.Fragment>
 				<div className="gotofeltax">
 					<a href="/">
-					<i className="fa-solid fa-arrow-left"></i>Go to Feltax
+						<i className="fa-solid fa-arrow-left"></i><span className="text">Go to Feltax</span>
 					</a>
+				</div>
+				<div className="iron">
+					<div className="intro">
+						<h1 className='name'>Iron</h1>
+						<p className="bio">I'm a 16 years old full-stack developer.</p>
+					</div>
+					<img src="https://avatars.githubusercontent.com/u/73746664?v=4" alt="Iron" />
 				</div>
 				<div className='portfolio'>
 					<div className="knowledge">
 						<h1 className="title">Knowledge</h1>
 						<ul className='languages'>
 							{
-								//@ts-ignore
-								langs.map((language, i) => { return <Language key={i} displayName={language.displayName} hexColor={language.hexColor} knowing={language.knowing} awesomeIcon={language.awesomeIcon} /> })
+								langs.map((language, i) => { return <Language key={i} displayName={language.displayName} hexColor={language.hexColor} knowing={language.knowing} years={language.years} awesomeIcon={language.awesomeIcon} /> })
+							}
+						</ul>
+						<ul className="skills">
+							{
+								skills.map((skill, i) => { return <Skill key={i} hexColor={skill.hexColor} displayName={skill.displayName} /> })
 							}
 						</ul>
 					</div>
@@ -102,16 +172,86 @@ export default function Iron() {
 						<h1 className="title">Discord Moderating / Moderated</h1>
 						<ul className='guilds'>
 							{
-								//@ts-ignore
 								guilds.map((guild, i) => { return <Guild key={i} name={guild.name} icon={guild.icon} moderatingSince={guild.moderatingSince} aproxMembers={guild.aproxMembers} verified={guild.verified} partnered={guild.partnered} /> })
 							}
 						</ul>
 					</div>
+					{
+						githubProfile !== null && githubOrganization !== null ?
+							<div className="github">
+								<h1 className="title">Github</h1>
+								<ul className='profiles'>
+									<li className="profile">
+										<img className="icon" alt='Icon' src={githubProfile.avatar_url} />
+										<div className="data">
+											<h2 className="name">{githubProfile.name}<span className="login">{githubProfile.login}</span></h2>
+											<p className="bio">
+												{githubProfile.bio}
+											</p>
+											<div className="followage">
+												<a className="followers" href={`${githubProfile.html_url}?tab=followers`} target="_blank" rel="noreferrer" ><i className="fa-solid fa-user-group"></i><span className='bold'>{githubProfile.followers.toLocaleString('es-ES')}</span> followers</a>
+												<a className="following" href={`${githubProfile.html_url}?tab=following`} target="_blank" rel="noreferrer" ><span className='bold'>{githubProfile.following.toLocaleString('es-ES')}</span> following</a>
+											</div>
+										</div>
+										<ul className="details">
+											{
+												githubProfile.company !== null ?
+													<li className="org">
+														<i className="fa-regular fa-building"></i>
+														{
+															githubProfile.company.startsWith('@') ?
+																<a href={`https://github/${githubProfile.company}`} target="_blank" rel="noreferrer">{githubProfile.company}</a>
+																: <div>{githubProfile.company}</div>
+														}
+													</li>
+													: <></>
+											}
+											{
+												githubProfile.location !== null ?
+													<li className="location">
+														<i className="fa-solid fa-location-dot"></i>
+														<span>{githubProfile.location}</span>
+													</li>
+													: <></>
+											}
+											<li className="website">
+												<i className="fa-solid fa-link"></i>
+												<a href={githubProfile.blog} target="_blank" rel="noreferrer">{githubProfile.blog}</a>
+											</li>
+											<li className="twitter">
+												<i className="fa-brands fa-twitter"></i>
+												<a href={`https://twitter.com/${githubProfile.twitter_username}`} target="_blank" rel="noreferrer">@{githubProfile.twitter_username}</a>
+											</li>
+										</ul>
+									</li>
+									<li className="organization">
+										<div className="header">
+											<img className="icon" alt='Icon' src={githubOrganization.avatar_url} />
+											<div className="data">
+												<h2 className="name"><span>{githubOrganization.name}</span><span className="login">{githubOrganization.login}</span></h2>
+												<div className="general">
+													<h3 className="location">
+														<i className="fa-solid fa-map-marker-alt"></i>{githubOrganization.location}
+													</h3>
+													<h3 className="blog">
+														<i className="fa-solid fa-link"></i><a target="_blank" rel="noreferrer" href={githubOrganization.blog}>{githubOrganization.blog}</a>
+													</h3>
+													<h3 className="twitter">
+														<i className="fa-brands fa-twitter"></i><a target="_blank" rel="noreferrer" href={`https://twitter.com/${githubOrganization.twitter_username}`}>@{githubOrganization.twitter_username}</a>
+													</h3>
+													<span className="verified">Verified</span>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							: null
+					}
 					<div className="contact">
 						<h1 className="title">Contact Me</h1>
 						<ul className='contacts'>
 							{
-								//@ts-ignore
 								contacts.map((contact, i) => { return <Contact key={i} name={contact.name} url={contact.url} icon={contact.icon} /> })
 							}
 						</ul>

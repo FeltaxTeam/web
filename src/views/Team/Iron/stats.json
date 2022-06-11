@@ -4,55 +4,92 @@
       "displayName": "JavaScript",
       "hexColor": "#f7e018",
       "knowing": 96,
+      "years": 5,
       "awesomeIcon": "fa-brands fa-js"
     },
     {
       "displayName": "TypeScript",
       "hexColor": "#2d79c7",
       "knowing": 40,
+      "years": 0.4,
       "awesomeIcon": "fa-brands fa-js"
     },
     {
       "displayName": "React.ts",
       "hexColor": "#61dbfb",
       "knowing": 54,
+      "years": 0.3,
       "awesomeIcon": "fa-brands fa-react"
     },
     {
       "displayName": "Node.js",
       "hexColor": "#7faf1b",
       "knowing": 98,
+      "years": 5,
       "awesomeIcon": "fa-brands fa-node-js"
     },
     {
       "displayName": "discord.js",
       "hexColor": "#5865F2",
       "knowing": 100,
+      "years": 5,
       "awesomeIcon": "fa-brands fa-discord"
+    },
+    {
+      "displayName": "MarkDown",
+      "hexColor": "#005b96",
+      "knowing": 67,
+      "years": 5,
+      "awesomeIcon": "fa-brands fa-markdown"
     },
     {
       "displayName": "HTML 5",
       "hexColor": "#e54c21",
       "knowing": 86,
+      "years": 4,
       "awesomeIcon": "fa-brands fa-html5"
     },
     {
       "displayName": "CSS 3",
       "hexColor": "#2965f1",
       "knowing": 92,
+      "years": 4,
       "awesomeIcon": "fa-brands fa-css3"
     },
     {
       "displayName": "SASS",
       "hexColor": "#CD6799",
-      "knowing": 29,
+      "knowing": 43,
+      "years": 0.3,
       "awesomeIcon": "fa-brands fa-sass"
+    }
+  ],
+  "skills": [
+    {
+      "hexColor": "#0098FF",
+      "displayName": "VS Code"
+    },
+    {
+      "hexColor": "#430098",
+      "displayName": "Heroku"
+    },
+    {
+      "hexColor": "#4DB33D",
+      "displayName": "MongoDB"
+    },
+    {
+      "hexColor": "#F48120",
+      "displayName": "CloudFlare"
+    },
+    {
+      "hexColor": "#FFCA28",
+      "displayName": "Firebase"
     }
   ],
   "guilds": [
     {
       "name": "Fortnite Hispanohablante",
-      "icon": "https://cdn.discordapp.com/icons/405699020564987914/c7738b32c31cf6b0bda6dc3160521555.webp?size=512",
+      "icon": "https://cdn.discordapp.com/icons/405699020564987914/af23b75e3deaefbe6934745cee875074.webp?size=512",
       "moderatingSince": "02 / 11 / 2020",
       "aproxMembers": 221000,
       "verified": true,
@@ -60,7 +97,7 @@
     },
     {
       "name": "DiscordThings",
-      "icon": "https://cdn.discordapp.com/icons/806611727684599838/921db306e6a8e8e785fe5b5b8ad6ff2e.webp?size=512",
+      "icon": "https://cdn.discordapp.com/icons/806611727684599838/921db306e6a8e8e785fe5b5b8ad6ff2e.gif?size=512",
       "moderatingSince": null,
       "aproxMembers": 1000,
       "verified": false,
@@ -68,7 +105,7 @@
     },
     {
       "name": "GREFG ( ͡° ͜ʖ ͡°)",
-      "icon": "https://cdn.discordapp.com/icons/715742955347902504/a_1c915c206bcf91718b61a664e5303fed.gif?size=512",
+      "icon": "https://cdn.discordapp.com/icons/715742955347902504/a_472dfb584827e4ea5dcda3d34ef9b453.gif?size=512",
       "moderatingSince": null,
       "aproxMembers": 324000,
       "verified": true,
@@ -79,6 +116,14 @@
       "icon": "https://cdn.discordapp.com/icons/597084607447564319/a_8affa43a84ab6af5734315a2b1d2857c.gif?size=512",
       "moderatingSince": "19 / 09 / 2021",
       "aproxMembers": 6000,
+      "verified": false,
+      "partnered": false
+    },
+    {
+      "name": "CactusFire - Soporte Oficial",
+      "icon": "https://cdn.discordapp.com/icons/551632213767094272/a_d9a0be9e3d855cf85e56cb8b2ddd8558.gif?size=512",
+      "moderatingSince": "08 / 05 / 2022",
+      "aproxMembers": 12000,
       "verified": false,
       "partnered": false
     }
