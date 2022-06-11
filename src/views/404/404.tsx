@@ -1,5 +1,4 @@
-import React from 'react';
-import { Routes, Route, BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './404.css';
 
 export default function NotFoundElement() {
