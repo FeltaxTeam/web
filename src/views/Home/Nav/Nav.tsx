@@ -1,39 +1,86 @@
 import React from 'react';
-import { fetchURL } from '../../../utility/fetching';
-import './Nav.css'
+import './Nav.scss'
 import { Link, Routes, Route } from 'react-router-dom';
-import LogoSVG from '../../LogoSVG'
+import LogoSVG from '../../prefabs/LogoSVG';
+
+const languages = [
+	{
+		name: 'English',
+		code: 'en',
+		flag: 'gb'
+	},
+	{
+		name: 'Français',
+		code: 'fr',
+		flag: 'fr'
+	},
+	{
+		name: 'Catalá',
+		code: 'ca',
+		flag: 'es-ct'
+	},
+	{
+		name: 'Español',
+		code: 'es',
+		flag: 'es'
+	},
+	{
+		name: 'Deutsch',
+		code: 'de',
+		flag: 'de'
+	},
+	{
+		name: '日本語',
+		code: 'ja',
+		flag: 'jp'
+	},
+	{
+		name: '한국어',
+		code: 'ko',
+		flag: 'kr'
+	},
+	{
+		name: 'Português',
+		code: 'pt',
+		flag: 'pt'
+	}
+];
+
 class NavComponent extends React.Component {
-	shouldReload: boolean;
-	constructor(props) {
+	constructor(props: any) {
 		super(props);
-		this.state = { user: null };
+		this.state = { user: props.user };
 	}
-	getToken = async () => {
-		let tokenType = localStorage.getItem('tokenType'), acessToken = localStorage.getItem('accessToken');
-		console.log('user:');
-		//@ts-ignore
-		console.dir(this.state.user);
-		if ((tokenType == null || acessToken == null) && /*@ts-ignore*/
-			this.state.user != null) {
-			console.log('noUser');
-			this.setState({ user: null });
-			this.shouldReload = true;
-		} if ((tokenType != null && acessToken != null) &&/*@ts-ignore*/
-			this.state.user == null) {
-			console.log('SiUser');
-			this.setState({ user: await fetchURL(tokenType, acessToken, 'https://discord.com/api/users/@me') });
-			this.shouldReload = true;
+	options = (e) => {
+		if (document.getElementById('user-options').style.display === 'flex') {
+			document.getElementById('user-options').style.display = 'none';
+			document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
+			document.getElementById('language-selector').style.display = 'none';
+		} else {
+			document.getElementById('user-options').style.display = 'flex';
+			document.getElementsByClassName('arrow-icon')[0].classList.add("open");
 		}
-		this.shouldReload = false;
-	}
-	shoudlComponentUpdate() {
-		let b = this.shouldReload;
-		this.shouldReload = false;
-		return b;
+	};
+	languageSelector = (e) => {
+		if (document.getElementById('language-selector').style.display === 'flex') {
+			document.getElementById('language-selector').style.display = 'none';
+		} else {
+			document.getElementById('language-selector').style.display = 'flex';
+		}
+	};
+	openMenu = (e) => {
+		if (document.getElementById('menu').style.display === 'flex') {
+			document.getElementById('menu').style.display = 'none';
+		} else {
+			document.getElementById('menu').style.display = 'flex';
+		}
+	};
+	componentDidUpdate(prevProps) {//@ts-ignore
+		if (this.props.user !== prevProps.user) {//@ts-ignore
+			this.setState({ user: this.props.user });
+		}
 	}
 	render() {
-		this.getToken();
 		//@ts-ignore
 		let user = this.state.user;
 		let authIds = ['438390132538605589', '417407496286633995'];
@@ -71,13 +118,15 @@ class NavComponent extends React.Component {
 									</Link>
 								</li>
 								<li className="navbar-hamburguer">
-									<i className="fa-solid fa-bars"></i>
+									<button className="navbar-hamburguer" onClick={this.openMenu}>
+										<i className="fa-solid fa-bars"></i>
+									</button>
 								</li>
 							</ul>
 						</div>
 						<div className="navbar-logo-container">
 							<Link to="/">
-								<img src="https://feltax-app.herokuapp.com/favicon.ico" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
+								<img src="https://feltax.xyz/assets/favicon.ico" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
 							</Link>
 						</div>
 						<div className="navbar-user">
@@ -96,16 +145,7 @@ class NavComponent extends React.Component {
 								{
 									user ?
 										(<React.Fragment>
-											{
-												authIds.includes(user.id) ? (
-													<li className='navbar-item'>
-														<Link to="/admin" className='navbar-item'>
-															<b><LogoSVG size={20} strokeWidth={12} />Admin</b>
-														</Link>
-													</li>
-												) : ''
-											}
-											<li className="user-loged">
+											<li className="user-loged" id='user' onClick={this.options}>
 												<img
 													src={
 														`https://cdn.discordapp.com/avatars/${user['id']}/${user['avatar']}.${user['avatar'].startsWith('a_') ? 'gif' : 'webp'}?size=512`
@@ -115,10 +155,30 @@ class NavComponent extends React.Component {
 												<div className="username">
 													{user['username']}
 												</div>
-												<Link className="logout-button" to="/logout">
-													<i className="fas fa-sign-out-alt"></i>
-												</Link>
+												<button className="arrow-icon">
+													<span className="left-bar"></span>
+													<span className="right-bar"></span>
+												</button>
 											</li>
+											<ul id="user-options">
+												<li className="option dashboard">Dashboard</li>
+												<li className="option language" onClick={this.languageSelector}>Language<span className="selector"><img src="assets/flags/1x1/gb.svg" alt="" /></span>
+												</li>
+												<li className="option">Settings</li>
+												{
+													authIds.includes(user.id) ? (<li className="option"><Link to="/admin"><LogoSVG size={20} strokeWidth={12} color="#2978e6" />Admin</Link></li>) : ''
+												}
+												<li className="option premium"><Link to="/premium"><i className="fa-solid fa-crown" />Premium</Link></li>
+												<li className="option logout"><Link to="/logout">Logout</Link></li>
+												<ol id='language-selector'>
+													{languages.map(language =>
+														<li className="language" key={language.code}>
+															<img src={`assets/flags/4x3/${language.flag}.svg`} alt={language.code} />
+															{language.name}
+														</li>
+													)}
+												</ol>
+											</ul>
 										</React.Fragment>
 										) : (
 											<li className="navbar-login">
@@ -137,16 +197,13 @@ class NavComponent extends React.Component {
 	}
 }
 export default function Nav(props: any) {
-	let { paths } = props;
-	// return (useRoutes(paths.map((el: string, i) => {
-	// 	return { path: el, element: <></> }
-	// })));
-
+	let { paths, user } = props;
+	const navProps = { "user": user }
 	return <Routes>
-		<Route path={'*'} element={<NavComponent />} />
-		<Route path={'/'} element={<NavComponent />} />
-		{paths.map((el: string) => {
-			return <Route path={el} element={<></>} />
+		<Route path={'*'} element={<NavComponent {...navProps} />} />
+		<Route path={'/'} element={<NavComponent {...navProps} />} />
+		{paths.map((el: string, i) => {
+			return <Route key={i} path={el} element={<></>} />
 		})}
 	</Routes>
 };
