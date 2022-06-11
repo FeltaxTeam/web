@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRoutes, Link } from 'react-router-dom';
+import LogoSVG from '../../prefabs/LogoSVG';
 import './Footer.css'
 
 function FooterComponent() {
@@ -41,7 +42,7 @@ function FooterComponent() {
 									<Link to="/commands">Commands</Link>
 								</li>
 								<li>
-									<a href="https://discordapp.com/users/438390132538605589">Contact Us!</a>
+									<a href="https://discordapp.com/users/438390132538605589" target="_blank" rel="noreferrer">Contact Us!</a>
 								</li>
 							</ul>
 						</div>
@@ -49,16 +50,16 @@ function FooterComponent() {
 							<h1>Find Us</h1>
 							<ul>
 								<li>
-									<a href="https://top.gg/bot/568435616153337916">Top.gg</a>
+									<a href="https://top.gg/bot/568435616153337916" target="_blank" rel="noreferrer">Top.gg</a>
 								</li>
 								<li>
-									<a href="https://discordthings.com/bot/568435616153337916">Dthings</a>
+									<a href="https://discordthings.com/bot/568435616153337916" target="_blank" rel="noreferrer">Dthings</a>
 								</li>
 								<li>
 									<Link to="/help">Help</Link>
 								</li>
 								<li>
-									<a href="patreon.com/feltax">Patreon</a>
+									<a href="patreon.com/feltax" target="_blank">Patreon</a>
 								</li>
 							</ul>
 						</div>
@@ -75,14 +76,18 @@ function FooterComponent() {
 									<Link to="/support">Support</Link>
 								</li>
 								<li>
-									<a href="https://discordapp.com/users/438390132538605589">Contact Us!</a>
+									<Link to="/acknowledgements">Acknowledgements</Link>
+								</li>
+								<li>
+									<a href="https://discordapp.com/users/438390132538605589" target="_blank" rel="noreferrer">Contact Us!</a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div className='copyright'>
-					Copyright © Feltax 2021 - {new Date().getFullYear()}
+					<LogoSVG size={20} strokeWidth={12} color='#c7c6ff'></LogoSVG>
+					© {new Date().getFullYear()} Feltax
 				</div>
 			</footer>
 		</React.Fragment>
