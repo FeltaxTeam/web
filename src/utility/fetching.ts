@@ -28,8 +28,7 @@ export async function postApi(url:string, body:any) {
 //438390132538605589
 export async function fetchWorkerProfile(name:string) {
 	const workerNames = {iron: '438390132538605589', thebluebanana: '417407496286633995'};
-	let a = await fetchApi(`https://feltax-api.herokuapp.com/admin/getDescription/${workerNames[name]}`);
-	if (a == '') a = JSON.stringify({"description": "no description added yet."});
-	console.log(`string recived: ${a}`);
+	let a = await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/admin/getDescription/${workerNames[name]}`);
+	if (a === '') a = JSON.stringify({"description": "no description added yet."});
 	return JSON.parse(a);
 }
