@@ -1,0 +1,3 @@
+import './Menu.scss'
+
+export {}
