@@ -6,73 +6,126 @@
   left: 300px;
   position: relative;
   min-height: calc(100vh - 120px);
+
   .command-panel {
     width: 100%;
     height: 100%;
     position: relative;
+    scroll-padding-top: 80px;
     border: none;
     gap: 30px;
     display: flex;
     flex-direction: column;
+
     div.command {
       h1.name {
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 30px;
-      margin: 0;
-    }
-    p.use {
-      width: fit-content;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      border-left: 4px solid var(--mainColor);
-      padding: 7px 12px;
-      margin: 0;
-      border-radius: 4px;
-      height: 42px;
-      box-sizing: border-box;
-      background: rgba(0, 0, 0, 0.1);
-      div.command {
-        display: flex;
-        font-size: 16px;
-        font-weight: 500;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 30px;
+        margin: 0;
       }
-      div.option {
-        color: white;
-        background: var(--navBgColor);
-        padding: 5px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 16px;
-        box-sizing: border-box;
-        border-radius: 6px;
+
+      &.dev div.use {
+        border-left: 4px solid var(--mainColor);
+      }
+
+      &.main div.use {
+        border-left: 4px solid var(--mainColor);
+      }
+
+      &.moderation div.use {
+        border-left: 4px solid var(--mainColor);
+      }
+
+      &.utility div.use {
+        border-left: 4px solid var(--mainColor);
+      }
+
+      div.use {
+        width: fit-content;
         display: flex;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 6px 0px;
-        border: 1px solid var(--mainColor);
-        align-items: center;
-        height: 28px;
-        gap: 0;
-        &.optional {
-          padding-left: 10px;
-          &::before {
-            content: '?';
-            left: -4px;
-            position: relative;
-            height: 16px;
-            width: 16px;
-            box-sizing: border-box;
-            border: 1px solid white;
-            border-radius: 50%;
-            justify-content: center;
+        gap: 8px;
+        align-items: flex-start;
+        padding: 7px 12px;
+        margin: 0;
+        border-radius: 4px;
+        flex-direction: column;
+        height: fit-content;
+        box-sizing: border-box;
+        background: rgba(6 12 30 / 0.6);
+
+        div.usage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          gap: 10px;
+
+          div.command {
             display: flex;
-            font-size: 12px;
+            font-size: 16px;
+            font-weight: 500;
+          }
+
+          div.options {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            div.option {
+              color: white;
+              background: var(--navBgColor);
+              padding: 5px;
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 16px;
+              box-sizing: border-box;
+              border-radius: 6px;
+              display: flex;
+              box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 6px 0px;
+              border: 1px solid var(--mainColor);
+              align-items: center;
+              height: 28px;
+              gap: 0;
+
+              &.optional {
+                padding-left: 10px;
+
+                &::before {
+                  content: '?';
+                  left: -4px;
+                  position: relative;
+                  height: 16px;
+                  width: 16px;
+                  box-sizing: border-box;
+                  border: 1px solid white;
+                  border-radius: 50%;
+                  justify-content: center;
+                  display: flex;
+                  font-size: 12px;
+                }
+              }
+            }
           }
         }
       }
-    }
+      ol.options {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+
+        li.option {
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+        }
+      }
     }
   }
+
   div.sidebar {
     display: flex;
     flex-direction: column;
@@ -83,13 +136,14 @@
     top: 80px;
     bottom: 0px;
     padding-top: 10px;
-    width: 300px; 
+    width: 300px;
     background-color: var(--navBgColor);
     overflow: hidden;
     border-right: 1px solid var(--lineColor);
     z-index: 999;
     box-sizing: border-box;
-    ul.list {
+
+    ul {
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -99,52 +153,70 @@
       overflow-y: scroll;
       overflow-x: hidden;
       gap: 30px;
+
       &::-webkit-scrollbar {
         width: 0.1vh;
       }
+
       div.section {
         display: flex;
         flex-direction: column;
+        gap: 6px;
+
         div.name {
           color: white;
           text-transform: uppercase;
           font-weight: bolder;
-          margin-bottom: 10px;
           font-size: 14px;
+          padding: 0 6px;
         }
+
         ul {
           display: flex;
           margin: 0;
           padding: 0;
-          gap: 8px;
+          gap: 0;
+
           a {
             text-decoration: none;
             color: white;
+
             b.command {
               display: flex;
               align-items: center;
-              height: 30px;
+              height: fit-content;
+              padding: 6px;
+              transition: all 0.2s ease;
+              box-sizing: border-box;
               position: relative;
+              border-radius: 8px;
               width: -webkit-fill-available;
               justify-content: space-between;
+
               div.name {
                 color: white;
                 font-weight: 500;
                 font-size: 20px;
                 text-transform: capitalize;
+                display: flex;
+                padding: 0;
+                align-items: center;
+                margin: 0;
               }
+
               div.features {
                 display: flex;
                 flex-direction: row;
                 margin: 0;
                 height: 30px;
                 gap: 10px;
+
                 div {
                   color: var(--navBgColor);
                   font-size: 18px;
                   position: relative;
                   height: 30px;
-                  border-radius: 7px;
+                  border-radius: 6px;
                   right: 0;
                   text-transform: uppercase;
                   padding: 0;
@@ -154,13 +226,30 @@
                   align-items: center;
                   justify-content: center;
                 }
+
                 .premium {
                   background-color: gold;
                 }
+
                 .slash {
                   background-color: lightgrey;
                 }
+
+                .dev {
+                  background-color: #f09d62;
+                  font-size: 13px;
+                }
+
+                .beta {
+                  background-color: #f07762;
+                  font-size: 20px;
+                  text-transform: lowercase;
+                }
               }
+            }
+
+            b.command:hover {
+              background-color: rgba(40 40 50 / 0.4);
             }
           }
         }
