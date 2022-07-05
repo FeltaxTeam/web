@@ -13,8 +13,8 @@ export default function Home() {
 					<div className="hihlighted-box box yellow dev"><i className="fa-solid fa-laptop-code" />This page is under constant development.</div>
 					<div className="presentation">
 						<div className="information">
-							<h1 className="name">FELTAX</h1>
-							<p className="description">The best BOT right now.</p>
+							<h1 className="name">Feltax</h1>
+							<p className="description">The bot YOU need.</p>
 							<div className="buttons">
 								<button className='addme'>Add Me</button>
 								<button className='dashboard'>Dashboard</button>

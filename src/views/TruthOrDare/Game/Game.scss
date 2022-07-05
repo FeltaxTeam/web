@@ -1,18 +1,20 @@
 div.players {
 	position: relative;
-	display: flex;
+	display: grid;
 	flex-direction: column;
 	align-items: center;
+	place-items: center;
 
 	div.circle {
+		--playerDeg: 0;
 		width: 300px;
 		height: 300px;
 		display: flex;
 		border-radius: 50%;
 		justify-content: center;
 		align-items: center;
+		transition: all 2s ease;
 		position: relative;
-		animation: rotate 4s ease infinite;
 
 		span.player {
 			position: absolute;
@@ -40,33 +42,54 @@ div.players {
 		}
 
 		@keyframes rotate {
-			0% {
+			from {
 				transform: rotateZ(0deg);
 			}
 
-			100% {
-				transform: rotateZ(360deg);
+			to {
+				transform: var(--playerDeg);
 			}
 		}
 	}
-	div.selector {
+
+	div.selectPlayer {
 		position: absolute;
-		background: none;
-		width: 40px;
-		top: 20px;
-		height: 130px;
 		display: flex;
-		justify-content: space-between;
 		flex-direction: column;
 		align-items: center;
+		height: 130px;
+		justify-content: center;
+		gap: 10px;
+		flex-direction: column;
 
-		div.marker {
-			border: 3px solid white;
-			height: 40px;
-			width: 40px;
-			border-radius: 50%;
-			box-sizing: border-box;
-      box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 8px 0px;
+		div.triangle {
+			margin: 0;
+			display: inline-block;
+			filter: url(#round);
+
+			&::before {
+				content: "";
+				display: block;
+				aspect-ratio: 70 / 40;
+				width: 70px;
+				background: currentColor;
+				clip-path: polygon(0% 100%, 50% 0%, 50% 0%, 100% 100%);
+			}
+		}
+
+		div.hexagone {
+			margin: 0;
+			display: inline-block;
+			filter: url(#round);
+
+			&::before {
+				content: "";
+				display: block;
+				aspect-ratio: 150 / 130;
+				width: 100px;
+				background: currentColor;
+				clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+			}
 		}
 	}
 }

@@ -57,10 +57,10 @@
 
 .main-page .presentation {
   display: flex;
-  gap: 40px;
   height: fit-content;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  margin-bottom: 400px;
 
   img {
     width: 400px;
@@ -72,10 +72,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    h1.name {
+      font-size: 60px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 4px;
+    }
     .buttons {
       display: flex;
-      gap: 20px;
+      gap: 40px;
       justify-content: center;
       align-items: center;
       flex-direction: row;
