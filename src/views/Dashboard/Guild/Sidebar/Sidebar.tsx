@@ -1,73 +1,118 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Sidebar.css'
+import './Sidebar.scss';
 
 export default function Sidebar(props: { guild: any }) {
-  const guild = (props.guild !== '')? props.guild : {name: 'GUILD'};
+  const guild = (props.guild !== '') ? props.guild : { name: 'GUILD' };
   if (guild == null || guild.name === 'GUILD') return <></>;
   return (
     <React.Fragment>
-      <nav className="sidebar">
-        <div className="guild-resume">
-          <img className="icon" alt="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} />
+      <aside className="sidebar">
+        <div className="guild">
+          <img alt="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} />
           <div className="name">
             {guild.name}
           </div>
         </div>
-        <ul>
-          <li>
-            <Link to={`/dashboard/${guild.id}/panel`}>
-              <i className="fa-solid fa-server"></i>
-              <div className="title">Panel</div>
-            </Link>
+        <ul className="modules">
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/panel`}>
+              <div className="icon">
+                <i className="fa-regular fa-user" />
+              </div>
+              <span className="name">Panel</span>
+            </a>
           </li>
-          <li>
-            <Link to={`/dashboard/${guild.id}/settings`}>
-              <i className="fa-solid fa-gear"></i>
-              <div className="title">Settings</div>
-            </Link>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/settings`}>
+              <div className="icon">
+                <i className="fa-solid fa-gear" />
+              </div>
+              <span className="name">Settings</span>
+            </a>
           </li>
-          <li>
-            <Link to={`/dashboard/${guild.id}/leaderboard`}>
-              <i className="fa-solid fa-trophy"></i>
-              <div className="title">Leaderboard</div>
-            </Link>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/leaderboard`}>
+              <div className="icon">
+                <i className="fa-solid fa-ranking-star" />
+              </div>
+              <span className="name">Leaderboard</span>
+            </a>
           </li>
-          <li>
-            <Link to={`/dashboard/${guild.id}`}>
-             <i className="fa-solid fa-pager"></i>
-              <div className="title">Widget</div>
-            </Link>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/widget`}>
+              <div className="icon">
+                <i className="fa-solid fa-gamepad" />
+              </div>
+              <span className="name">Widget</span>
+            </a>
           </li>
-          <li>
-            <Link to={`/dashboard/${guild.id}/premium`}>
-              <i className="fa-solid fa-circle-dollar-to-slot"></i>
-              <div className="title">Premium</div>
-            </Link>
-          </li>
-          <li className="menu">
-            <Link to="#">Server Management</Link>
-            <ul>
-              <li>
-                <Link to="#">
-                  <svg className="icon" width="24" height="24" viewBox="0 0 24 24" focusable="false">
-                    <path fill="rgb(255, 255, 255)" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
-                  </svg>
-                  <div className="title">Premium</div>
-                </Link>
-              </li>
-              <li>
-                <Link to="#">
-                  <svg className="icon" width="24" height="24" viewBox="0 0 24 24" focusable="false">
-                    <path fill="rgb(255, 255, 255)" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
-                  </svg>
-                  <div className="title">Premium</div>
-                </Link>
-              </li>
-            </ul>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/premium`}>
+              <div className="icon">
+                <i className="fa-solid fa-circle-dollar-to-slot" />
+              </div>
+              <span className="name">Premium</span>
+            </a>
           </li>
         </ul>
-      </nav>
+        <hr className='modules-divider' />
+        <ul className="modules">
+          <h3 className='title'>Server Management</h3>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/moderation`}>
+              <div className="icon">
+                <i className="fa-solid fa-shield-halved" />
+              </div>
+              <span className="name">Automoderation</span>
+            </a>
+          </li>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/placeholder`}>
+              <div className="icon">
+                <i className="fa-solid fa-robot" />
+              </div>
+              <span className="name">PlaceHolder</span>
+            </a>
+          </li>
+        </ul>
+        <hr className='modules-divider' />
+        <ul className="modules">
+          <h3 className='title'>Twitch</h3>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/twitch/bot`}>
+              <div className="icon">
+                <i className="fa-brands fa-twitch" />
+                <svg className='stream' height="10" width="10">
+                  <circle cx='50%' cy='50%' r="4" fill="red"/>
+                </svg>
+              </div>
+              <span className="name">BOT</span>
+            </a>
+          </li>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/twitch/chat`}>
+              <div className="icon">
+              <svg className='off' height="10" width="10">
+                  <circle cx='50%' cy='50%' r="4" fill="red"/>
+                </svg>
+                <i className="fa-regular fa-comments" />
+              </div>
+              <span className="name">Chat</span>
+            </a>
+          </li>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/twitch/streams`}>
+              <div className="icon">
+              <svg className='live' height="10" width="10">
+                  <circle cx='50%' cy='50%' r="4" fill="red"/>
+                </svg>
+                <i className="fa-solid fa-satellite-dish" />
+              </div>
+              <span className="name">Streams</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
     </React.Fragment>
   );
 }
