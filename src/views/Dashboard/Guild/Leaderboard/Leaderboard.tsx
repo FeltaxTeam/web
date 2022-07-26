@@ -95,7 +95,9 @@ export default function Guild(props: { dbGuild, guild }) {
         <canvas id="canvas"></canvas>
         {/* <Examples xpEqtn={eqtn} /> */}
       </div>
-      <img id="card" 
+      <img
+      alt='guild leaderboard'
+      id="card" 
       width='700px'
       src={
         'data:image/svg+xml,' + encodeURIComponent(`
