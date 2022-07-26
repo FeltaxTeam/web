@@ -9,6 +9,7 @@ import Sidebar from './Sidebar/Sidebar';
 import Widget from './Widget/Widget';
 import Loading from '../../Home/Loading/Loading';
 import NotFoundGuild from './Guild404/Guild404';
+import Twitch from './Twitch/Twitch';
 
 export default function Guild() {
 	let guildId = /[0-9]\w+/.exec(window.location.pathname);
@@ -39,7 +40,7 @@ export default function Guild() {
 			setGuildInDb(data);
 		}
 		getGuildInDb();
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	if (guild === '' || guildInDb === '')
@@ -52,15 +53,19 @@ export default function Guild() {
 
 	return (
 		<>
-			<Sidebar guild={guild} />
 			<div className="guildPage">
+				<Sidebar guild={guild} />
 				<div className="body">
+					<div className="disableModule">
+						PlaceHolder
+					</div>
 					<Routes>
 						<Route path="/" element={<Widget guild={guild} owner={owner} />} />
 						<Route path="/premium" element={<Widget guild={guild} owner={owner} />} />
 						<Route path="/panel" element={<Widget guild={guild} owner={owner} />} />
 						<Route path="/settings" element={<Settings guild={guild} dbGuild={guildInDb} />} />
 						<Route path="/leaderboard" element={<Leaderboard guild={guild} dbGuild={guildInDb} />} />
+						<Route path="/twitch/chat" element={<Twitch/>} />
 						<Route path="*" element={<Navigate to={guildId ? `/dashboard/${guildId}` : `/dashboard`} />} />
 					</Routes>
 				</div>
