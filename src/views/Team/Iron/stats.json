@@ -10,15 +10,15 @@
     {
       "displayName": "TypeScript",
       "hexColor": "#2d79c7",
-      "knowing": 40,
-      "years": 0.4,
+      "knowing": 72,
+      "years": 0.6,
       "awesomeIcon": "fa-brands fa-js"
     },
     {
       "displayName": "React.ts",
       "hexColor": "#61dbfb",
-      "knowing": 54,
-      "years": 0.3,
+      "knowing": 68,
+      "years": 0.5,
       "awesomeIcon": "fa-brands fa-react"
     },
     {
@@ -59,8 +59,8 @@
     {
       "displayName": "SASS",
       "hexColor": "#CD6799",
-      "knowing": 43,
-      "years": 0.3,
+      "knowing": 61,
+      "years": 0.5,
       "awesomeIcon": "fa-brands fa-sass"
     }
   ],
@@ -89,7 +89,7 @@
   "guilds": [
     {
       "name": "Fortnite Hispanohablante",
-      "icon": "https://cdn.discordapp.com/icons/405699020564987914/af23b75e3deaefbe6934745cee875074.webp?size=512",
+      "icon": "https://cdn.discordapp.com/icons/405699020564987914/d44a98b27360583c83ed0c654a9eadf9.webp?size=512",
       "moderatingSince": "02 / 11 / 2020",
       "aproxMembers": 221000,
       "verified": true,
@@ -122,8 +122,16 @@
     {
       "name": "CactusFire - Soporte Oficial",
       "icon": "https://cdn.discordapp.com/icons/551632213767094272/a_d9a0be9e3d855cf85e56cb8b2ddd8558.gif?size=512",
-      "moderatingSince": "08 / 05 / 2022",
+      "moderatingSince": null,
       "aproxMembers": 12000,
+      "verified": false,
+      "partnered": false
+    },
+    {
+      "name": "KM Team",
+      "icon": "https://cdn.discordapp.com/icons/935599661606129706/d52a3562e4c79ad29257df046b513ea2.webp?size=512",
+      "moderatingSince": "04 / 07 / 2022",
+      "aproxMembers": 1300,
       "verified": false,
       "partnered": false
     }
