@@ -11,6 +11,9 @@ aside.sidebar {
   padding: 10px 0;
   justify-content: left;
   gap: 6px;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
   div.user {
     display: flex;
     flex-direction: row;
