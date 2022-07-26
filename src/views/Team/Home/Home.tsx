@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { fetchWorkerProfile } from '../../../utility/fetching';
+import IronIcon from '../Assets/IronIcon.png';
+import IronBanner from '../Assets/IronBanner.png';
 
 export default function Home() {
 
@@ -24,9 +26,11 @@ export default function Home() {
           <div className="cards">
             <Link to="/team/iron" className='card'>
               <div className="card">
-                <img src="https://cdn.discordapp.com/banners/438390132538605589/535ebf3dd92511c4ea63b56d6049fd61.png?size=300" alt="Banner" className="banner" />
+              <div className="banner">
+                  <img src={IronBanner} alt="Banner" className="banner" />
+                </div>
                 <div className="header">
-                  <img src="https://cdn.discordapp.com/avatars/438390132538605589/857116f173d9036aca601fc79adbc544.webp?size=512" alt="Avatar" className="avatar" />
+                  <img src={IronIcon} alt="Avatar" className="avatar" />
                   <div className="user">
                     <h2 className="username">Iron</h2>
                     <h2 className="role">Lead Developer</h2>
@@ -38,7 +42,9 @@ export default function Home() {
             </Link>
             <Link to="/team/thebluebanana" className='card'>
               <div className="card">
-                <img src="https://cdn.discordapp.com/banners/438390132538605589/535ebf3dd92511c4ea63b56d6049fd61.png?size=300" alt="Banner" className="banner" />
+                <div className="banner">
+                  <img src={IronBanner} alt="Banner" className="banner" />
+                </div>
                 <div className="header">
                   <img src="https://cdn.discordapp.com/avatars/417407496286633995/eea944101556b77a8db861d55d3471ea.webp?size=512" alt="Avatar" className="avatar" />
                   <div className="user">
