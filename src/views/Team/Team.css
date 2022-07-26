@@ -40,7 +40,11 @@
   user-select: none;
   padding: 0;
 }
-.team-page .card img.banner {
+.team-page .card div.banner {
+  height: 160px;
+  overflow: hidden;
+}
+.team-page .card div.banner img.banner {
   position: relative;
   width: 400px;
   height: fit-content;
