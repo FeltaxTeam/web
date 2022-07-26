@@ -6,6 +6,16 @@ export default function Support() {
     <>
       <React.Fragment>
         <div className="support-body">
+          <div className="botlist">
+            <p className="description">
+              You can also support us by voting for the BOT in one of the following BotList.
+            </p>
+            <div className="botlist-links">
+              <a href="https://discordlist.gg/bot/568435616153337916">DiscordList.gg</a>
+              <a href="https://top.gg/bot/568435616153337916">Top.gg</a>
+              <a href="https://discordthings.com/bot/568435616153337916">DiscordThings.com</a>
+            </div>
+          </div>
           <div className="discord-nitro">
             <h1 className="title">Support us boosting our Discord server!</h1>
             <p className="description">
