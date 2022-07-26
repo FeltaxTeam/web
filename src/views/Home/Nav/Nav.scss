@@ -181,28 +181,7 @@ nav .container li.navbar-hamburguer {
 }
 .nav-premium-button a b {
   position: relative;
-  color: transparent;
-}
-.nav-premium-button a span {
-  position: absolute;
-  color: #5202a7;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  justify-content: center;
-  height: 100%;
-  align-items: center;
-  display: flex;
-  user-select: none;
-  bottom: 0;
-  font-size: 30px;
-}
-.nav-premium-button:hover a b {
   color: rgb(255, 255, 255);
-}
-.nav-premium-button:hover a span {
-  color: transparent;
 }
 nav .user-loged {
   width: fit-content;

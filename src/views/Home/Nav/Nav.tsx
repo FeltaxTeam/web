@@ -133,7 +133,6 @@ class NavComponent extends React.Component {
 							<ul className="container">
 								<li className="nav-premium-button">
 									<Link className="button" to="/premium">
-										<span>❖</span>
 										<b>Premium</b>
 									</Link>
 								</li>
