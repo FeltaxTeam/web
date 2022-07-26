@@ -7,7 +7,7 @@ div#cookies {
   border-top: 4px solid var(--mainColor);
   bottom: 0;
   position: fixed;
-  visibility: visible;
+  visibility: hidden;
   display: flex;
   flex-direction: row;
   padding: 20px;
