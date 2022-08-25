@@ -1,7 +1,16 @@
 import React from 'react';
 import './Twitch.scss';
 
-export default class Twitch extends React.Component {
+interface Props {}
+
+interface State {
+  twitchAnnounceStyle: string;
+}
+
+export default class Twitch extends React.Component<Props, State> {
+  state: State = {
+    twitchAnnounceStyle: 'default',
+  }
   render() {
     return (
       <div className='twitch'>
@@ -10,6 +19,7 @@ export default class Twitch extends React.Component {
             src="https://player.twitch.tv/?channel=gemita&parent=localhost&muted=false"
             allowFullScreen
             frameBorder="0"
+            title='twitch-embed'
             id="twitch-stream-embed"
           />
           <div className="panel">
@@ -49,66 +59,51 @@ export default class Twitch extends React.Component {
                     }
                   }
                 } />
-                <div role="textbox" data-a-target="chat-input" data-test-selector="chat-input" aria-label="Enviar un mensaje" data-placeholder="Enviar un mensaje" className="chat-wysiwyg-input__editor" data-slate-editor="true" data-slate-node="value" contentEditable="true" ><div data-slate-node="element"><span data-slate-node="text"><span data-slate-leaf="true" className="ScTransitionBase-sc-eg1bd7-0 fcjsVf tw-transition" data-a-target="chat-input-text"><span data-slate-zero-width="n" data-slate-length="0"><br/></span></span></span></div></div>
+                <div role="textbox" data-a-target="chat-input" data-test-selector="chat-input" aria-label="Enviar un mensaje" data-placeholder="Enviar un mensaje" className="chat-wysiwyg-input__editor" data-slate-editor="true" data-slate-node="value" ><div data-slate-node="element"><span data-slate-node="text"><span data-slate-leaf="true" className="ScTransitionBase-sc-eg1bd7-0 fcjsVf tw-transition" data-a-target="chat-input-text"><span data-slate-zero-width="n" data-slate-length="0"><br /></span></span></span></div></div>
                 <div className="colors">
                   <div
-                    className="color default selected"
+                    className={`color default ${this.state.twitchAnnounceStyle === 'default' ? 'selected' : ''}`}
                     onClick={(e) => {
-                      document.getElementsByClassName('color')[0].classList.add('selected');
-                      document.getElementsByClassName('color')[1].classList.remove('selected')
-                      document.getElementsByClassName('color')[2].classList.remove('selected')
-                      document.getElementsByClassName('color')[3].classList.remove('selected')
-                      document.getElementsByClassName('color')[4].classList.remove('selected')
-                      document.getElementsByClassName('announce')[0].classList.replace(document.getElementsByClassName('announce')[0].classList[1], 'default');
+                      this.setState({
+                        twitchAnnounceStyle: 'default',
+                      });
                     }}
                   />
                   <div
-                    className="color blue"
+                    className={`color blue ${this.state.twitchAnnounceStyle === 'blue' ? 'selected' : ''}`}
                     onClick={(e) => {
-                      document.getElementsByClassName('color')[0].classList.remove('selected')
-                      document.getElementsByClassName('color')[1].classList.add('selected');
-                      document.getElementsByClassName('color')[2].classList.remove('selected')
-                      document.getElementsByClassName('color')[3].classList.remove('selected')
-                      document.getElementsByClassName('color')[4].classList.remove('selected')
-                      document.getElementsByClassName('announce')[0].classList.replace(document.getElementsByClassName('announce')[0].classList[1], 'blue');
+                      this.setState({
+                        twitchAnnounceStyle: 'blue',
+                      });
                     }}
                   />
                   <div
-                    className="color green"
+                    className={`color green ${this.state.twitchAnnounceStyle === 'green' ? 'selected' : ''}`}
                     onClick={(e) => {
-                      document.getElementsByClassName('color')[0].classList.remove('selected')
-                      document.getElementsByClassName('color')[1].classList.remove('selected')
-                      document.getElementsByClassName('color')[2].classList.add('selected');
-                      document.getElementsByClassName('color')[3].classList.remove('selected')
-                      document.getElementsByClassName('color')[4].classList.remove('selected')
-                      document.getElementsByClassName('announce')[0].classList.replace(document.getElementsByClassName('announce')[0].classList[1], 'green');
+                      this.setState({
+                        twitchAnnounceStyle: 'green',
+                      });
                     }}
                   />
                   <div
-                    className="color orange"
+                    className={`color orange ${this.state.twitchAnnounceStyle === 'orange' ? 'selected' : ''}`}
                     onClick={(e) => {
-                      document.getElementsByClassName('color')[0].classList.remove('selected')
-                      document.getElementsByClassName('color')[1].classList.remove('selected')
-                      document.getElementsByClassName('color')[2].classList.remove('selected')
-                      document.getElementsByClassName('color')[3].classList.add('selected');
-                      document.getElementsByClassName('color')[4].classList.remove('selected')
-                      document.getElementsByClassName('announce')[0].classList.replace(document.getElementsByClassName('announce')[0].classList[1], 'orange');
+                      this.setState({
+                        twitchAnnounceStyle: 'orange',
+                      });
                     }}
                   />
                   <div
-                    className="color purple"
+                    className={`color purple ${this.state.twitchAnnounceStyle === 'purple' ? 'selected' : ''}`}
                     onClick={(e) => {
-                      document.getElementsByClassName('color')[0].classList.remove('selected')
-                      document.getElementsByClassName('color')[1].classList.remove('selected')
-                      document.getElementsByClassName('color')[2].classList.remove('selected')
-                      document.getElementsByClassName('color')[3].classList.remove('selected')
-                      document.getElementsByClassName('color')[4].classList.add('selected');
-                      document.getElementsByClassName('announce')[0].classList.replace(document.getElementsByClassName('announce')[0].classList[1], 'purple');
+                      this.setState({
+                        twitchAnnounceStyle: 'purple',
+                      });
                     }}
                   />
                 </div>
                 <div className="examples">
-                  <div className="announce default">
+                  <div className={`announce ${this.state.twitchAnnounceStyle}`}>
                     <h3 className="title">Announcement</h3>
                     <p className="message">
                     </p>

@@ -86,54 +86,69 @@
       "displayName": "Firebase"
     }
   ],
-  "guilds": [
+  "contributions": [
     {
       "name": "Fortnite Hispanohablante",
       "icon": "https://cdn.discordapp.com/icons/405699020564987914/d44a98b27360583c83ed0c654a9eadf9.webp?size=512",
-      "moderatingSince": "02 / 11 / 2020",
+      "since": "02 / 11 / 2020",
       "aproxMembers": 221000,
       "verified": true,
-      "partnered": true
+      "partnered": true,
+      "role": "Guardián",
+      "url": "https://discord.gg/fortniteesp"
     },
     {
       "name": "DiscordThings",
       "icon": "https://cdn.discordapp.com/icons/806611727684599838/921db306e6a8e8e785fe5b5b8ad6ff2e.gif?size=512",
-      "moderatingSince": null,
+      "since": null,
       "aproxMembers": 1000,
       "verified": false,
-      "partnered": false
+      "partnered": false,
+      "role": "Staff"
     },
     {
       "name": "GREFG ( ͡° ͜ʖ ͡°)",
       "icon": "https://cdn.discordapp.com/icons/715742955347902504/a_472dfb584827e4ea5dcda3d34ef9b453.gif?size=512",
-      "moderatingSince": null,
+      "since": null,
       "aproxMembers": 324000,
       "verified": true,
-      "partnered": true
+      "partnered": true,
+      "role": "Staff",
+      "url": "https://discord.gg/thegrefg"
     },
     {
       "name": "ESP CUSTOMS",
       "icon": "https://cdn.discordapp.com/icons/597084607447564319/a_8affa43a84ab6af5734315a2b1d2857c.gif?size=512",
-      "moderatingSince": "19 / 09 / 2021",
+      "since": "19 / 09 / 2021",
       "aproxMembers": 6000,
       "verified": false,
-      "partnered": false
+      "partnered": false,
+      "role": "Lead Admin"
     },
     {
       "name": "CactusFire - Soporte Oficial",
       "icon": "https://cdn.discordapp.com/icons/551632213767094272/a_d9a0be9e3d855cf85e56cb8b2ddd8558.gif?size=512",
-      "moderatingSince": null,
-      "aproxMembers": 12000,
+      "since": null,
+      "aproxMembers": 13000,
       "verified": false,
-      "partnered": false
+      "partnered": false,
+      "role": "Staff"
     },
     {
       "name": "KM Team",
-      "icon": "https://cdn.discordapp.com/icons/935599661606129706/d52a3562e4c79ad29257df046b513ea2.webp?size=512",
-      "moderatingSince": "04 / 07 / 2022",
-      "aproxMembers": 1300,
+      "icon": "https://cdn.discordapp.com/icons/935599661606129706/a_7e3ce8e9698f216359bb92bb9449993c.gif?size=512",
+      "since": "04 / 07 / 2022",
+      "aproxMembers": 2300,
       "verified": false,
-      "partnered": false
+      "partnered": false,
+      "role": "Lead Admin"
+    },
+    {
+      "name": "Discord Resources Wiki",
+      "icon": "https://cdn.discordapp.com/icons/807680068520378369/91b2214417f5262b2562bc09e68b5a27.webp?size=512",
+      "since": "03 / 08 / 2022",
+      "role": "Spanish Translator",
+      "url": "https://discordresources.com/es/"
     }
   ],
   "contacts": [

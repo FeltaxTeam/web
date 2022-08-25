@@ -36,6 +36,7 @@ export default function App() {
     getUser();
   }, [user]);
   //const mainProps = {user: user};
+
   const subDomain = window.location.hostname.split('.')[0];
   switch (subDomain) {
     case 'admin':

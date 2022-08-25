@@ -3,6 +3,78 @@ import './Nav.scss'
 import { Link, Routes, Route } from 'react-router-dom';
 import LogoSVG from '../../prefabs/LogoSVG';
 
+enum ElementType {
+	// Cambiar los strings por numeros para evitar errores de tipos
+	Link = 'link',
+	Button = 'button'
+}
+enum TargetType {
+	// Cambiar los strings por numeros para evitar errores de tipos
+	Self = '_self',
+	Blank = '_blank',
+	Parent = '_parent',
+	Top = '_top'
+}
+const data: NavList = {
+	theme: 'light',
+	elements: [
+		{
+			type: ElementType.Link,
+			name: 'Commands',
+			path: '/commands',
+			locales: {
+				en: 'Commands',
+				de: 'Befehle',
+				es: 'Comandos',
+				fr: 'Commandes',
+				it: 'Comandi',
+				pl: 'Polecenia',
+				pt: 'Comandos',
+				ru: 'Команды',
+				zh: '命令',
+				ca: 'Ordres',
+				ja: 'コマンド',
+			},
+		},
+		{
+			type: ElementType.Link,
+			name: 'Add Bot',
+			path: '/invite',
+			locales: {
+				en: 'Add Bot',
+				de: 'Bot hinzufügen',
+				es: 'Añadir Bot',
+				fr: 'Ajouter un bot',
+				it: 'Aggiungi un bot',
+				pl: 'Dodaj bot',
+				pt: 'Adicionar bot',
+				ru: 'Добавить бота',
+				zh: '添加机器人',
+				ca: 'Afegir bot',
+				ja: 'ボットを追加する',
+			}
+		},
+		{
+			type: ElementType.Link,
+			name: 'Team',
+			path: '/team',
+			locales: {
+				en: 'Team',
+				de: 'Team',
+				es: 'Equipo',
+				fr: 'Équipe',
+				it: 'Team',
+				pl: 'Zespół',
+				pt: 'Equipe',
+				ru: 'Команда',
+				zh: '团队',
+				ca: 'Equip',
+				ja: 'チーム'
+			}
+		}
+	]
+}
+
 const languages = [
 	{
 		name: 'English',
@@ -46,33 +118,73 @@ const languages = [
 	}
 ];
 
+interface Element {
+	type: ElementType,
+	name: string,
+	path?: string,
+	admin?: boolean,
+	target?: TargetType,
+	link?: {
+		protocol: string,
+		host: string,
+		path: string,
+	}
+	locales?: {
+		[key: string]: string
+	}
+}
+interface NavList {
+	theme: string;
+	elements: Element[];
+}
+class NavElement extends React.Component<
+	{
+		data?: Element
+	},
+	{}> {
+	render() {
+		return (
+			<div className="navbar-item">
+				<Link className="navbar-item" data-tooltip={this.props.data.name} to={this.props.data.link ? `${this.props.data.link.protocol}://${this.props.data.link.host}/${this.props.data.link.path}` : (this.props.data.path ? this.props.data.path : '#')} target={this.props.data.target ? this.props.data.target : '_self'}>
+					<p>{this.props.data.locales[navigator.language.slice(0, 2)]}</p>
+					<span className="underline"></span>
+				</Link>
+			</div>
+		);
+	}
+}
+
 class NavComponent extends React.Component {
 	constructor(props: any) {
 		super(props);
 		this.state = { user: props.user };
 	}
 	options = (e) => {
-		if (document.getElementById('user-options').style.display === 'flex') {
-			document.getElementById('user-options').style.display = 'none';
+		let userOptions = document.getElementById('user-options')?.style.display;
+		let languageSelector = document.getElementById('language-selector')?.style.display;
+		if (userOptions === 'flex') {
+			userOptions = 'none';
 			document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
-			document.getElementById('language-selector').style.display = 'none';
+			languageSelector = 'none';
 		} else {
-			document.getElementById('user-options').style.display = 'flex';
+			userOptions = 'flex';
 			document.getElementsByClassName('arrow-icon')[0].classList.add("open");
 		}
 	};
 	languageSelector = (e) => {
-		if (document.getElementById('language-selector').style.display === 'flex') {
-			document.getElementById('language-selector').style.display = 'none';
+		let languageSelector = document.getElementById('language-selector')?.style.display;
+		if (languageSelector === 'flex') {
+			languageSelector = 'none';
 		} else {
-			document.getElementById('language-selector').style.display = 'flex';
+			languageSelector = 'flex';
 		}
 	};
 	openMenu = (e) => {
-		if (document.getElementById('menu').style.display === 'flex') {
-			document.getElementById('menu').style.display = 'none';
+		let menu = document.getElementById('menu')?.style.display;
+		if (menu === 'flex') {
+			menu = 'none';
 		} else {
-			document.getElementById('menu').style.display = 'flex';
+			menu = 'flex';
 		}
 	};
 	componentDidUpdate(prevProps) {//@ts-ignore
@@ -87,6 +199,9 @@ class NavComponent extends React.Component {
 		return (
 			<React.Fragment>
 				<header>
+					{
+						console.log("The language is: " + navigator.language)
+					}
 					<svg className="background" viewBox="0, 0, 100, 10.1" preserveAspectRatio="none">
 						<path className="bg"
 							d="M 0 0 L 0 10 L 33 10 C 35 10 36 9 37 8 C 38 7 39 6 41 6 L 59 6 C 61 6 62 7 63 8 C 64 9 65 10 67 10 L 100 10 L 100 0 L 0 0">
@@ -97,26 +212,15 @@ class NavComponent extends React.Component {
 					<nav>
 						<div className="nav-web">
 							<ul className="container">
-								<li className="navbar-item">
-									<Link className="navbar-item" data-tooltip="Commands" to="/commands">
-										<b>Commands</b>
+								{
+									data.elements.map((element, index) => <NavElement key={index} data={element} />)
+								}
+								<div className="navbar-item">
+									<Link className="navbar-item" data-tooltip="Support" to="/support">
+										<p>Support</p>
+										<span className="underline"></span>
 									</Link>
-								</li>
-								<li className="navbar-item">
-									<Link className="navbar-item" data-tooltip="Add Bot" to="/invite">
-										<b>Add Bot</b>
-									</Link>
-								</li>
-								<li className="navbar-item">
-									<Link className="navbar-item" data-tooltip="Team" to="/team">
-										<b>Team</b>
-									</Link>
-								</li>
-								<li className="navbar-button">
-									<Link className="navbar-button" data-tooltip="Support" to="/support">
-										<b>Support</b>
-									</Link>
-								</li>
+								</div>
 								<li className="navbar-hamburguer">
 									<button className="navbar-hamburguer" onClick={this.openMenu}>
 										<i className="fa-solid fa-bars"></i>
@@ -131,20 +235,22 @@ class NavComponent extends React.Component {
 						</div>
 						<div className="navbar-user">
 							<ul className="container">
-								<li className="nav-premium-button">
+								<div className="nav-premium-button">
 									<Link className="button" to="/premium">
-										<b>Premium</b>
+										<p>Premium</p>
+										<span className="underline"></span>
 									</Link>
-								</li>
-								<li className="navbar-item">
+								</div>
+								<div className="navbar-item">
 									<Link className="navbar-item" data-tooltip="Dashboard" to="/dashboard">
-										<b>Dashboard</b>
+										<p>Dashboard</p>
+										<span className="underline"></span>
 									</Link>
-								</li>
+								</div>
 								{
 									user ?
 										(<React.Fragment>
-											<li className="user-loged" id='user' onClick={this.options}>
+											<div className="user-loged" id='user' onClick={this.options}>
 												<img
 													src={
 														`https://cdn.discordapp.com/avatars/${user['id']}/${user['avatar']}.${user['avatar'].startsWith('a_') ? 'gif' : 'webp'}?size=512`
@@ -158,7 +264,7 @@ class NavComponent extends React.Component {
 													<span className="left-bar"></span>
 													<span className="right-bar"></span>
 												</button>
-											</li>
+											</div>
 											<ul id="user-options">
 												<li className="option dashboard">Dashboard</li>
 												<li className="option language" onClick={this.languageSelector}>Language<span className="selector"><img src="assets/flags/1x1/gb.svg" alt="" /></span>
@@ -180,11 +286,11 @@ class NavComponent extends React.Component {
 											</ul>
 										</React.Fragment>
 										) : (
-											<li className="navbar-login">
+											<div className="navbar-login">
 												<Link className="navbar-login" to="/auth">
 													<b>Login</b>
 												</Link>
-											</li>
+											</div>
 										)
 								}
 							</ul>

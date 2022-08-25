@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Iron.scss';
 import languages from './stats.json';
 const langs = languages['languages'];
-const guilds = languages['guilds'];
+const guilds = languages['contributions'];
 const contacts = languages['contacts'];
 const skills = languages['skills'];
 function Language(props: { displayName: string, hexColor: string, knowing: number, years: number, awesomeIcon: string }) {
@@ -85,7 +85,7 @@ function Partnered() {
 		</div>
 	)
 }
-function Guild(props: { name: string, icon: string, moderatingSince: string | null, aproxMembers: number, verified: boolean, partnered: boolean }) {
+function Guild(props: { name: string, icon: string, since: string | null, aproxMembers: number, verified: boolean, partnered: boolean, role: string }) {
 	return (
 		<li className='guild'>
 			<div className="icon">
@@ -94,16 +94,21 @@ function Guild(props: { name: string, icon: string, moderatingSince: string | nu
 			</div>
 			<div className="stats">
 				<h4 className="name">{props.name}</h4>
-				<h5 className="members"><i className="fa-solid fa-user-group"></i>{props.aproxMembers.toLocaleString('es-ES')}</h5>
-				<h6 className={`moderating ${props.moderatingSince === null ? 'no' : 'yes'}`}>
+				{
+					props.aproxMembers !== undefined ?
+						<h5 className="members"><i className="fa-solid fa-user-group"></i>{props.aproxMembers.toLocaleString('es-ES')}</h5>
+						: <></>
+				}
+				<h5 className="members"><i className="fa-solid fa-user-group"></i>{props.role}</h5>
+				<h6 className={`moderating ${props.since === null ? 'no' : 'yes'}`}>
 					{
-						props.moderatingSince === null ?
+						props.since === null ?
 							<>
 								<i className="fa-solid fa-circle-exclamation"></i>{'Not moderating anymore.'}
 							</>
 							:
 							<>
-								<i className="fa-solid fa-calendar"></i>{props.moderatingSince}
+								<i className="fa-solid fa-calendar"></i>{props.since}
 							</>
 					}
 				</h6>
@@ -172,7 +177,7 @@ export default function Iron() {
 						<h1 className="title">Discord Moderating / Moderated</h1>
 						<ul className='guilds'>
 							{
-								guilds.map((guild, i) => { return <Guild key={i} name={guild.name} icon={guild.icon} moderatingSince={guild.moderatingSince} aproxMembers={guild.aproxMembers} verified={guild.verified} partnered={guild.partnered} /> })
+								guilds.map((guild, i) => { return <Guild key={i} name={guild.name} role={guild.role} icon={guild.icon} since={guild.since} aproxMembers={guild.aproxMembers} verified={guild.verified} partnered={guild.partnered} /> })
 							}
 						</ul>
 					</div>
