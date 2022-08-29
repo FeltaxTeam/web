@@ -15,6 +15,7 @@ enum TargetType {
 	Parent = '_parent',
 	Top = '_top'
 }
+// List of all the data of the nav buttons
 const data: NavList = {
 	theme: 'light',
 	elements: [
@@ -118,11 +119,12 @@ const languages = [
 	}
 ];
 
+// Button element for the nav
 interface Element {
 	type: ElementType,
 	name: string,
-	path?: string,
-	admin?: boolean,
+	path?: string, //to redirect
+	admin?: boolean, 
 	target?: TargetType,
 	link?: {
 		protocol: string,

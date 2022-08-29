@@ -221,22 +221,19 @@ nav .container li.navbar-hamburguer {
 
 // ñññ Aimacion 1
 .navbar-logo:hover {
-  animation: logo-shake 0.4s 1;
+  animation: logo-shake 0.2s 1;
 }
 
 @keyframes logo-shake {
   0% {
     transform: rotateZ(0deg);
   }
-
   30% {
     transform: rotateZ(15deg);
   }
-
   80% {
     transform: rotateZ(-15deg);
   }
-
   100% {
     transform: rotateZ(0deg);
   }
