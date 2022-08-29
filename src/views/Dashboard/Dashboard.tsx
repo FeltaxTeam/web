@@ -60,7 +60,8 @@ export default function DashboardComponent() {
 	//sorting guilds
 	if (guilds && botGuilds) {
 		botGuildsId = botGuilds.map((el: any) => { return el.id });
-		guilds = guilds.filter(guild => guild.owner === true).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
+		console.log(guilds[0].permissions)
+		guilds = guilds.filter(guild => ((guild.permissions >> 3) & 1) == 1).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
 			return botGuildsId.includes(b.id) - botGuildsId.includes(a.id);
 		});
 	}
