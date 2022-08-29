@@ -22,7 +22,7 @@ import CookiesPrompt from './views/CookiesPrompt/CookiesPrompt';
 
 export default function App() {
   let expires = localStorage.getItem('expires');
-  if (expires && new Date(expires).getTime() <= Date.now() + (0 * 1000 * 60 * 10)) localStorage.clear(); //10 minute margin
+  if (expires && new Date(expires).getTime() <= Date.now() + (1000 * 60 * 120)) localStorage.clear(); // 2h margin
   let [user, setUser] = useState(null);
   useEffect(() => {
     async function getUser() {
