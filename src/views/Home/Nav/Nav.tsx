@@ -160,26 +160,30 @@ class NavComponent extends React.Component {
 		this.state = { user: props.user };
 	}
 	options = (e) => {
-		let userOptions = document.getElementById('user-options')?.style.display;
-		let languageSelector = document.getElementById('language-selector')?.style.display;
-		if (userOptions === 'flex') {
-			userOptions = 'none';
+		e.preventDefault();
+		console.log('options');
+		let userOptions = document.getElementById('user-options');
+		let languageSelector = document.getElementById('language-selector');
+		if (userOptions.style.display === 'flex') {
+			userOptions.style.display = 'none';
 			document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
-			languageSelector = 'none';
+			languageSelector.style.display = 'none';
 		} else {
-			userOptions = 'flex';
+			userOptions.style.display = 'flex';
 			document.getElementsByClassName('arrow-icon')[0].classList.add("open");
 		}
 	};
 	languageSelector = (e) => {
-		let languageSelector = document.getElementById('language-selector')?.style.display;
-		if (languageSelector === 'flex') {
-			languageSelector = 'none';
+		e.preventDefault();
+		let languageSelector = document.getElementById('language-selector');
+		if (languageSelector.style.display === 'flex') {
+			languageSelector.style.display = 'none';
 		} else {
-			languageSelector = 'flex';
+			languageSelector.style.display = 'flex';
 		}
 	};
 	openMenu = (e) => {
+		e.preventDefault();
 		let menu = document.getElementById('menu')?.style.display;
 		if (menu === 'flex') {
 			menu = 'none';
