@@ -20,7 +20,7 @@ export default function Home() {
 								<button className='dashboard'>Dashboard</button>
 							</div>
 						</div>
-						<img src="assets/favicon.ico" alt="feltax" />
+						<img src="assets/logo.png" alt="feltax" />
 					</div>
 					<ul className="features">
 						<li className="feature">

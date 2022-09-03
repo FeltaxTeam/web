@@ -10,6 +10,7 @@ import Widget from './Widget/Widget';
 import Loading from '../../Home/Loading/Loading';
 import NotFoundGuild from './Guild404/Guild404';
 import Twitch from './Twitch/Twitch';
+import Embeds from './Embeds/Embeds';
 
 export default function Guild() {
 	let guildId = /[0-9]\w+/.exec(window.location.pathname);
@@ -66,6 +67,7 @@ export default function Guild() {
 						<Route path="/settings" element={<Settings guild={guild} dbGuild={guildInDb} />} />
 						<Route path="/leaderboard" element={<Leaderboard guild={guild} dbGuild={guildInDb} />} />
 						<Route path="/twitch/chat" element={<Twitch/>} />
+						<Route path="/embeds" element={<Embeds/>} />
 						<Route path="*" element={<Navigate to={guildId ? `/dashboard/${guildId}` : `/dashboard`} />} />
 					</Routes>
 				</div>

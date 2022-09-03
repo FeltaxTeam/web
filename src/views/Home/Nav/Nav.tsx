@@ -72,6 +72,24 @@ const data: NavList = {
 				ca: 'Equip',
 				ja: 'チーム'
 			}
+		},
+		{
+			type: ElementType.Link,
+			name: 'Support',
+			path: '/support',
+			locales: {
+				en: 'Support',
+				de: 'Unterstützung',
+				es: 'Soporte',
+				fr: 'Soutien',
+				it: 'Supporto',
+				pl: 'Wsparcie',
+				pt: 'Suporte',
+				ru: 'Поддержка',
+				zh: '支持',
+				ca: 'Suport',
+				ja: 'サポート'
+			}
 		}
 	]
 }
@@ -124,7 +142,7 @@ interface Element {
 	type: ElementType,
 	name: string,
 	path?: string, //to redirect
-	admin?: boolean, 
+	admin?: boolean,
 	target?: TargetType,
 	link?: {
 		protocol: string,
@@ -218,20 +236,14 @@ class NavComponent extends React.Component {
 					<nav>
 						<div className="nav-web">
 							<ul className="container">
-								{
-									data.elements.map((element, index) => <NavElement key={index} data={element} />)
-								}
-								<div className="navbar-item">
-									<Link className="navbar-item" data-tooltip="Support" to="/support">
-										<p>Support</p>
-										<span className="underline"></span>
-									</Link>
-								</div>
 								<li className="navbar-hamburguer">
 									<button className="navbar-hamburguer" onClick={this.openMenu}>
 										<i className="fa-solid fa-bars"></i>
 									</button>
 								</li>
+								{
+									data.elements.map((element, index) => <NavElement key={index} data={element} />)
+								}
 							</ul>
 						</div>
 						<div className="navbar-logo-container">

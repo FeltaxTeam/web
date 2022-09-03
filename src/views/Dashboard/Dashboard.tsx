@@ -61,7 +61,7 @@ export default function DashboardComponent() {
 	if (guilds && botGuilds) {
 		botGuildsId = botGuilds.map((el: any) => { return el.id });
 		console.log(guilds[0].permissions)
-		guilds = guilds.filter(guild => ((guild.permissions >> 3) & 1) == 1).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
+		guilds = guilds.filter(guild => ((guild.permissions >> 3) & 1) === 1).sort((a: any, b: any) => { //.filter(guild => guild.owner == true)
 			return botGuildsId.includes(b.id) - botGuildsId.includes(a.id);
 		});
 	}
@@ -78,11 +78,11 @@ export default function DashboardComponent() {
 	return (
 		<>
 			{
-				(!guilds || !botGuilds)? <LoadingDashboard /> :
+				(!guilds || !botGuilds) ? <LoadingDashboard /> :
 					<div className="serverHolder">
 						{
-							(guilds[0]!== undefined)? guilds.map((guild: Discord.Guild, i: any) => { return <Guild key={i} name={guild.name} id={guild.id} icon={guild.icon} /> })
-							: <h2>You don't have any guild you can manage :c</h2>
+							(guilds[0] !== undefined) ? guilds.map((guild: Discord.Guild, i: any) => { return <Guild key={i} name={guild.name} id={guild.id} icon={guild.icon} /> })
+								: <h2>You don't have any guild you can manage :c</h2>
 						}
 					</div>
 			}

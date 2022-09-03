@@ -6,11 +6,25 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "appAssociation": "AUTO",
     "rewrites": [
       {
-        "source": "**",
+        "source": "/**",
         "destination": "/index.html",
         "function": "bigben"
+      },
+      {
+        "source": "/link/**",
+        "dynamicLinks": true
+      },
+      {
+        "source": "!/link/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/api",
+        "function": "app",
+        "region": "us-central1"
       }
     ]
   }

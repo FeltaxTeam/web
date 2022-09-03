@@ -75,6 +75,10 @@
   font-size: 22px;
   border-radius: 8px;
   margin: 0px auto;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100%);
 }
 .guild div.container .button {
   color: white;

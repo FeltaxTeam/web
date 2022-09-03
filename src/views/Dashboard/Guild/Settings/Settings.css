@@ -31,7 +31,6 @@
 .interface .avatar img:hover {
   border-color: rgb(15 57 219);
   box-shadow: rgb(19 75 159 / 50%) 0px 0px 0px 3px;
-
 }
 .interface .custom {
   gap: 10px;

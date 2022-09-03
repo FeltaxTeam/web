@@ -11,7 +11,7 @@ aside.sidebar {
   overflow-y: scroll;
   padding: 10px 0;
   justify-content: left;
-  gap: 6px;
+  gap: 12px;
   &::-webkit-scrollbar {
     width: 0px;
   }
@@ -84,7 +84,7 @@ aside.sidebar {
   ul.modules {
     display: flex;
     padding: 0;
-    gap: 10px;
+    gap: 8px;
     flex-direction: column;
     justify-content: left;
     margin: 0;

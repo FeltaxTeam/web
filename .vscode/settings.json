@@ -8,14 +8,14 @@
         ["(", ")"],
         ["{", "}"],
         ["<", "</"],
-        ["<", "/>"],
+        [">", "/>"],
     ],
     "editor.language.colorizedBracketPairs": [
         ["[", "]"],
         ["(", ")"],
         ["{", "}"],
         ["<", "</"],
-        ["<", "/>"],
+        [">", "/>"],
     ],
     "discord.lowerDetailsEditing": "📋 Workspace: {workspace} - {file_size}"
 }

@@ -77,6 +77,21 @@ export default function Sidebar(props: { guild: any }) {
         </ul>
         <hr className='modules-divider' />
         <ul className="modules">
+          <h3 className='title'>Functions</h3>
+          <li className="module">
+            <a href={`/dashboard/${guild.id}/embeds`}>
+              <div className="icon">
+              <svg className='on' height="10" width="10">
+                  <circle cx='50%' cy='50%' r="4" fill="red"/>
+                </svg>
+                <i className="fa-solid fa-indent" />
+              </div>
+              <span className="name">Custom Embeds</span>
+            </a>
+          </li>
+        </ul>
+        <hr className='modules-divider' />
+        <ul className="modules">
           <h3 className='title'>Twitch</h3>
           <li className="module">
             <a href={`/dashboard/${guild.id}/twitch/bot`}>
