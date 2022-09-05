@@ -166,21 +166,25 @@ export default function Widget(props: { guild, owner?}) {
           </div>
           <div className="emojis">
             <div className="title">{guild.emojis.length} EMOJIS</div>
-            <div className="container">
+            { (guild.emojis.length > 0)?
+              <div className="container">
               {guild.emojis.map((emoji, i) => {
                 return <Emoji key={i} id={emoji.id} animated={emoji.animated} name={emoji.name} />
               })}
-            </div>
-            <div className="title">No hay emojis en este servidor :(</div>
+              </div>
+              : <div className="container title">No hay emojis en este servidor :(</div>
+            }
           </div>
           <div className="stickers">
             <div className="title">{guild.stickers.length} STICKERS</div>
-            <div className="container">
-              {guild.stickers.map((sticker, i) => {
-                return <Sticker key={i} id={sticker.id} name={sticker.name} />
-              })}
-            </div>
-            <div className="title">No hay stickers en este servidor :(</div>
+              { (guild.stickers.length > 0)?
+                <div  className="container">
+                  {guild.stickers.map((sticker, i) => {
+                    return <Sticker key={i} id={sticker.id} name={sticker.name} />
+                  })}
+                </div>  
+                : <div className="container title">No hay stickers en este servidor :(</div>
+              }
           </div>
           <div className="roles">
             <div className="title">{guild.roles.length} ROLES</div>
