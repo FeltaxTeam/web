@@ -117,7 +117,7 @@ export default function Widget(props: { guild, owner?}) {
             <div className="container">
               <h4 className="title">Server ID</h4>
               {guild.id}</div>
-            <button><i className="fa-regular fa-copy" /></button>
+            <button onClick={()=>{navigator.clipboard.writeText(guild.id)}}><i className="fa-regular fa-copy" /></button>
           </div>
           <div className="owner">
             {
@@ -140,7 +140,7 @@ export default function Widget(props: { guild, owner?}) {
             </svg>
           </div>
           <ul className="stats">
-            <li>{guild.max_members}</li>
+            <li>Maximun members: {guild.max_members}</li>
           </ul>
           <div className="assets">
             <div className="banner">

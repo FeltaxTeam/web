@@ -57,9 +57,10 @@ export default function Guild() {
 			<div className="guildPage">
 				<Sidebar guild={guild} />
 				<div className="body">
-					<div className="disableModule">
+					{/* Este placeholder estaba aquí no se para qué. Si no es nada importante elimínalo */}
+					{/* <div className="disableModule">
 						PlaceHolder
-					</div>
+					</div> */}
 					<Routes>
 						<Route path="/" element={<Widget guild={guild} owner={owner} />} />
 						<Route path="/premium" element={<Widget guild={guild} owner={owner} />} />
