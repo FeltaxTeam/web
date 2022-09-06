@@ -18,6 +18,12 @@
     flex-direction: column;
 
     div.command {
+      .command-focuser {
+        display: block;
+        position: relative;
+        top: -80px;
+      }
+
       h1.name {
         text-transform: uppercase;
         font-weight: 600;
