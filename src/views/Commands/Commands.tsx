@@ -1,12 +1,13 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Navigate from '../../utility/navigation';
 import './Commands.scss'
 import { COMMANDS } from './CommandComponents';
 import Sidebar from './Sidebar/Sidebar';
 let path = {
 	get path() { return window.location.href.toLocaleLowerCase(); },
-	get moduleName() { return path.path.split('/').pop()?.split('#')[0]; }
+	get moduleName() { return path.path.split('/').pop()?.split('#')[0]; },
+	get targetCommand() { return path.path.includes('#')? path.path.split('#')[1] : ''; }
 };
 
 export default class Commands extends React.Component {
@@ -66,6 +67,7 @@ export default class Commands extends React.Component {
 		return (
 			<div className="webBody">
 				<Sidebar />
+				<CommandTargeter />
 				<div className="command-panel">
 					{/* <CommandDisplay/> */}
 					<Routes>
@@ -75,4 +77,13 @@ export default class Commands extends React.Component {
 			</div>
 		);
 	}
+}
+
+function CommandTargeter(){
+	const location = useLocation()
+
+  useEffect(() => {
+    document.getElementById(path.targetCommand).scrollIntoView();
+  }, [location])
+	return <></>
 }

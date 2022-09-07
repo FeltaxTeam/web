@@ -275,6 +275,7 @@ div.id button {
   padding: 0px;
   font-size: 18px;
   border: none;
+  cursor: pointer;
 }
 /* Emoji List */
 div.emojis {
