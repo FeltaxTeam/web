@@ -272,6 +272,7 @@ div.embeds {
           border: 1px dashed rgba(230, 230, 250, 0.4);
           display: flex;
           justify-content: center;
+          overflow: hidden;
           align-items: center;
           background-size: cover;
           background-position: center;

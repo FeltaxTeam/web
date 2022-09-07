@@ -18,10 +18,6 @@
         "dynamicLinks": true
       },
       {
-        "source": "!/link/**",
-        "destination": "/index.html"
-      },
-      {
         "source": "/api",
         "function": "app",
         "region": "us-central1"

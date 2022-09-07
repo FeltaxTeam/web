@@ -17,7 +17,7 @@ function Guild(props: { name: string, id: string, icon: string | null }) {
 			<div className="container">
 				<div className="name">{props.name}</div>
 				{botGuildsId.includes(props.id) ? <Link to={`/dashboard/${props.id}`} className="configuration" >Configurar</Link> :
-					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax.xyz%2Fauth%2F&permissions=1644972474359&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
+					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax.xyz%2F&permissions=8&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
 				}
 			</div>
 		</div>
