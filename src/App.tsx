@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, BrowserRouter as Router, useLocation } from 'react-router-dom';
 import Navigate from './utility/navigation';
 import './App.css';
 import Commands from './views/Commands/Commands';
@@ -59,6 +59,7 @@ export default function App() {
     default:
       return (
         <Router>
+          <PageReseter />
           <Nav paths={['/404', '/team/iron']} user={user} />
           <Routes>
             <Route path='*' element={<Navigate to="/404" />} />
@@ -90,4 +91,12 @@ export default function App() {
     setUser(null);
     return <Navigate to="/" />;
   }
+}
+
+function PageReseter(){
+	const location = useLocation()
+  useEffect(() => {
+    document.getElementsByClassName("App")[0].scrollIntoView();
+  }, [location])
+	return <></>
 }
