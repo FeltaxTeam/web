@@ -179,6 +179,7 @@ class NavComponent extends React.Component {
 		super(props);
 		this.state = { user: props.user };
 	}
+	// user options menu
 	options = (e) => {
 		e.preventDefault();
 		console.log('options');
@@ -193,6 +194,7 @@ class NavComponent extends React.Component {
 			document.getElementsByClassName('arrow-icon')[0].classList.add("open");
 		}
 	};
+	// language menu
 	languageSelector = (e) => {
 		e.preventDefault();
 		let languageSelector = document.getElementById('language-selector');
@@ -211,6 +213,18 @@ class NavComponent extends React.Component {
 			menu = 'flex';
 		}
 	};
+	componentDidMount(){
+		//If a click is made outside the menu, it will disappear
+		window.addEventListener('click', function(e:any){   
+			let userOptions = document.getElementById('user-options');
+			let languageSelector = document.getElementById('language-selector');
+			if (!(document.getElementById('user').contains(e.target) || userOptions.contains(e.target)|| languageSelector.contains(e.target)) && document.getElementById('user-options').style.display != 'none'){
+				userOptions.style.display = 'none';
+				document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
+				languageSelector.style.display = 'none';
+			} 
+		});
+	}
 	componentDidUpdate(prevProps) {//@ts-ignore
 		if (this.props.user !== prevProps.user) {//@ts-ignore
 			this.setState({ user: this.props.user });
@@ -283,6 +297,7 @@ class NavComponent extends React.Component {
 													<span className="right-bar"></span>
 												</button>
 											</div>
+												{/* user options menu */}
 											<ul id="user-options">
 												<li className="option dashboard">Dashboard</li>
 												<li className="option language" onClick={this.languageSelector}>Language<span className="selector"><img src="assets/flags/1x1/gb.svg" alt="" /></span>
@@ -293,6 +308,7 @@ class NavComponent extends React.Component {
 												}
 												<li className="option premium"><Link to="/premium"><i className="fa-solid fa-crown" />Premium</Link></li>
 												<li className="option logout"><Link to="/logout">Logout</Link></li>
+												{/* language select menu  */}
 												<ol id='language-selector'>
 													{languages.map(language =>
 														<li className="language" key={language.code}>
