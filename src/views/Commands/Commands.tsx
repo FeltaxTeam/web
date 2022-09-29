@@ -90,6 +90,7 @@ function CommandTargeter(){
 				target.scrollIntoView();
 			}
 		}
+    document.getElementById(path.targetCommand)?.scrollIntoView();
   }, [location])
 	return <></>
 }
