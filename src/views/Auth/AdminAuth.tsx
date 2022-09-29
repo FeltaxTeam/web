@@ -14,8 +14,7 @@ function AuthLogic() {
 
 export default function AdminAuth() {
 	const searchParams= new URLSearchParams(window.location.hash.replace('#', '?'));
-	if (!searchParams.has('access_token')) window.location.assign("https://discord.com/api/oauth2/authorize?client_id=568435616153337916&redirect_uri=https%3A%2F%2Fadmin.feltax.xyz%2Fauth%2F&response_type=token&scope=guilds%20guilds.members.read%20email%20identify&prompt=none");
-	//if (!searchParams.has('access_token')) window.location.assign("https://discord.com/api/oauth2/authorize?client_id=568435616153337916&redirect_uri=http%3A%2F%2Fadmin.localhost%3A3000%2Fauth%2F&response_type=token&scope=guilds%20guilds.members.read%20email%20identify&prompt=none");
+	if (!searchParams.has('access_token')) window.location.assign(`https://discord.com/api/oauth2/authorize?client_id=568435616153337916&redirect_uri=http${window.location.host === 'admin.localhost:3000' ? '' : 's'}%3A%2F%2F${window.location.host.replace(':', '%3A')}%2Fauth%2F&response_type=token&scope=guilds%20guilds.members.read%20email%20identify&prompt=none`);
 	return (
 		<>
 			<AuthLogic />

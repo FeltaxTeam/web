@@ -1,7 +1,9 @@
 import React from 'react';
-import './Nav.scss'
+import './AdminNav.scss';
+import './../Home/Nav/Nav.scss'
 import { Link, Routes, Route } from 'react-router-dom';
-import LogoSVG from '../../prefabs/LogoSVG';
+import LogoSVG from '../prefabs/LogoSVG';
+import { NavElement } from '../Home/Nav/Nav';
 
 enum ElementType {
 	// Cambiar los strings por numeros para evitar errores de tipos
@@ -157,25 +159,9 @@ interface NavList {
 	theme: string;
 	elements: Element[];
 }
-export class NavElement extends React.Component<
-	{
-		data?: Element
-	},
-	{}> {
-	render() {
-		return (
-			<div className="navbar-item">
-				<Link className="navbar-item" data-tooltip={this.props.data.name} to={this.props.data.link ? `${this.props.data.link.protocol}://${this.props.data.link.host}/${this.props.data.link.path}` : (this.props.data.path ? this.props.data.path : '#')} target={this.props.data.target ? this.props.data.target : '_self'}>
-					<p>{this.props.data.locales[navigator.language.slice(0, 2)]}</p>
-					<span className="underline"></span>
-				</Link>
-			</div>
-		);
-	}
-}
 
-class NavComponent extends React.Component {
-	constructor(props: any) {
+class AdminNavComponent extends React.Component {
+	constructor(props?: any) {
 		super(props);
 		this.state = { user: props.user };
 	}
@@ -220,51 +206,19 @@ class NavComponent extends React.Component {
 		//@ts-ignore
 		let user = this.state.user;
 		let authIds = ['438390132538605589', '417407496286633995'];
+		console.log(user);
 		return (
 			<React.Fragment>
 				<header>
 					{
 						console.log("The language is: " + navigator.language)
 					}
-					<svg className="background" viewBox="0, 0, 100, 10.1" preserveAspectRatio="none">
-						<path className="bg"
-							d="M 0 0 L 0 10 L 33 10 C 35 10 36 9 37 8 C 38 7 39 6 41 6 L 59 6 C 61 6 62 7 63 8 C 64 9 65 10 67 10 L 100 10 L 100 0 L 0 0">
-						</path>
-						<path className="line"
-							d="M 0 10 L 33 10 C 35 10 36 9 37 8 C 38 7 39 6 41 6 L 59 6 C 61 6 62 7 63 8 C 64 9 65 10 67 10 L 100 10"></path>
-					</svg>
-					<nav className='main'>
-						<div className="nav-web">
-							<div className="container">
-								<div className="navbar-hamburguer">
-									<button className="navbar-hamburguer" onClick={this.openMenu} title="Title">
-										<i className="fa-solid fa-bars"></i>
-									</button>
-								</div>
-								{
-									data.elements.map((element, index) => <NavElement key={index} data={element} />)
-								}
-							</div>
-						</div>
-						<div className="navbar-logo-container">
-							<Link to="/">
-								<img src="/assets/logo.webp" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
-							</Link>
-						</div>
+					<nav className="admin">
+						{
+							data.elements.map((element, index) => <NavElement key={index} data={element} />)
+						}
 						<div className="navbar-user">
 							<div className="container">
-								<div className="nav-premium-button">
-									<Link className="button" to="/premium">
-										<p>Premium</p>
-										<span className="underline"></span>
-									</Link>
-								</div>
-								<div className="navbar-item">
-									<Link className="navbar-item" data-tooltip="Dashboard" to="/dashboard">
-										<p>Dashboard</p>
-										<span className="underline"></span>
-									</Link>
-								</div>
 								{
 									user ?
 										(<React.Fragment>
@@ -274,6 +228,7 @@ class NavComponent extends React.Component {
 														`https://cdn.discordapp.com/avatars/${user['id']}/${user['avatar']}.${user['avatar'].startsWith('a_') ? 'gif' : 'webp'}?size=512`
 													}
 													alt="Avatar"
+													height={40}
 													className="avatar" />
 												<div className="username">
 													{user['username']}
@@ -319,12 +274,12 @@ class NavComponent extends React.Component {
 		);
 	}
 }
-export default function Nav(props: any) {
+export default function AdminNav(props: any) {
 	let { paths, user } = props;
-	const navProps = { "user": user }
+	const navProps = { user: user }
 	return <Routes>
-		<Route path={'*'} element={<NavComponent {...navProps} />} />
-		<Route path={'/'} element={<NavComponent {...navProps} />} />
+		<Route path={'*'} element={<AdminNavComponent {...navProps} />} />
+		<Route path={'/'} element={<AdminNavComponent {...navProps} />} />
 		{paths.map((el: string, i) => {
 			return <Route key={i} path={el} element={<></>} />
 		})}

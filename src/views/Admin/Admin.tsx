@@ -1,31 +1,32 @@
-import { useEffect, useState } from "react";
-import Navigate from "../.././utility/navigation";
-import { fetchURL, fetchApi, postApi } from "../../utility/fetching";
+import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router";
+import { fetchApi, postApi } from "../../utility/fetching";
 import './Admin.scss';
+import AdminNav from "./AdminNav";
 import Sidebar from './Sidebar';
 
 let authIds = ['438390132538605589', '417407496286633995'];
-export default function Admin(props:any) {
-  let [user, setUser] = useState(props.user);
-  useEffect(()=>{ setUser(props.user)}, [props.user]);
-  
-  if (user == null || !authIds.includes(user.id)) {
-    return <Navigate to="/" />
-  }
-
-  return <>
-    <div className="admin">
-      <Sidebar />
-      <div className="body">
-        <Description user={user} />
+export default class Admin extends React.Component<{ user: any }, {}> {
+  render() {
+    if (this.props.user === null || !authIds.includes(this.props.user.id)) {
+      return <Navigate to="/" />
+    }
+    let props = { user: this.props.user };
+    return <>
+      <div className="admin">
+        <Sidebar {...props} />
+        <AdminNav paths={['/404']} user={this.props.user} />
+        <div className="body">
+          <Description />
+        </div>
       </div>
-    </div>
-  </>
+    </>
+  }
 }
 
-function Description(props:any) {
+function Description(props: any) {
   let [user, setUser] = useState(props.user);
-  useEffect(()=>{ setUser(props.user)}, [props.user]);
+  useEffect(() => { setUser(props.user) }, [props.user]);
   let [description, setDescription] = useState(null);
   let tokenType = localStorage.getItem('tokenType'), accessToken = localStorage.getItem('accessToken');
   useEffect(() => {
@@ -37,7 +38,7 @@ function Description(props:any) {
       }
     }
     getDesc();
-  }, []);
+  }, [accessToken, tokenType, user]);
 
   function postDescription() {
     //@ts-ignore

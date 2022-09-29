@@ -1,0 +1,77 @@
+.placeholder {
+  color: cyan;
+  display: inline-block;
+  text-align: center;
+  margin: 50px 250px 50px 250px;
+  font-size: 42px;
+
+}
+
+.lsd {
+  display: inline-block;
+  top: 200px;
+  color:red;
+  animation: Alsd 1s ease-in infinite, colorr 5s  ease-in infinite;
+}
+
+@keyframes Alsd {
+  0%{
+    margin-top:0px;
+    margin-left: 0px;
+  }
+  20%{
+    margin-top:10px;
+    margin-left: 0px;
+  }
+  40%{
+    margin-top: 25px;
+    margin-left: -20px;
+  }
+  60%{
+    margin-top:-1px;
+    margin-left: 5px;
+  }
+  80%{
+    margin-top:5px;
+    margin-left: -10px;
+  }
+  100%{
+    margin-top:0px;
+    margin-left: 0px;
+  }
+}
+@keyframes colorr {
+  0%{
+    color: red;
+  }
+  10%{
+    color: darkkhaki;
+  }
+  20%{
+    color: cyan;
+  }
+  30%{
+    color: orchid;
+  }
+  40%{
+    color: green;
+  }
+  50%{
+    color: palevioletred;
+  }
+  60%{
+    color: yellow;
+  }
+  70%{
+    color: lavenderblush;
+  }
+  80%{
+    color: orange;
+  }
+  80%{
+    color: wheat;
+  }
+  100%{
+    color: red;
+  }
+}

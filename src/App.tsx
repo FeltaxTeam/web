@@ -21,6 +21,7 @@ import TruthOrDare from './views/TruthOrDare/TruthOrDare';
 import CookiesPrompt from './views/CookiesPrompt/CookiesPrompt';
 
 export default function App() {
+  console.log(window.location.hostname.split('.')[0]);
   let expires = localStorage.getItem('expires');
   if (expires && new Date(expires).getTime() <= Date.now() + (1000 * 60 * 120)) localStorage.clear(); // 2h margin
   let [user, setUser] = useState(null);
@@ -42,7 +43,6 @@ export default function App() {
     case 'admin':
       return (
         <Router>
-          <Nav paths={['/404', '/team/iron']} user={user} />
           <Routes>
             <Route path='*' element={<Navigate to="/404" />} />
             <Route path='/404' element={<NotFoundElement />} />

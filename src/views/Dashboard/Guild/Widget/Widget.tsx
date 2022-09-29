@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchApi } from '../../../../utility/fetching';
-import './Widget.css';
+import './Widget.scss';
 
 export default function Widget(props: { guild, owner?}) {
   const guild = props.guild;
@@ -45,8 +45,8 @@ export default function Widget(props: { guild, owner?}) {
   let premium_subscription_count_goal = [2, 7, 14];
   return (
     <React.Fragment>
-      <div className="embed">
-        <div className="stats-container">
+      <div className='column-master'>
+        <div className="embed stats-container">
           <div className="guild-header">
             <img className="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} alt={guild.name} />
             <div className="info">
@@ -142,28 +142,7 @@ export default function Widget(props: { guild, owner?}) {
           <ul className="stats">
             <li>Maximun members: {guild.max_members}</li>
           </ul>
-          <div className="assets">
-            <div className="banner">
-              <b className="title">Banner</b>
-              {
-                guild.banner === null ?
-                  <div className="placeholder">
-                  </div>
-                  :
-                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" alt={guild.id} />
-              }
-            </div>
-            <div className="splash">
-              <b className="title">Splash</b>
-              {
-                guild.splash === null ?
-                  <div className="placeholder">
-                  </div>
-                  :
-                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" alt={guild.id} />
-              }
-            </div>
-          </div>
+          {/* assets antiguos aquí */}
           <div className="emojis">
             <div className="title">{guild.emojis.length} EMOJIS</div>
             { (guild.emojis.length > 0)?
@@ -194,6 +173,28 @@ export default function Widget(props: { guild, owner?}) {
               })}
             </div>
           </div>
+        </div>
+        <div className='right-column'>
+            <div className="banner">
+              <b className="title">Banner</b>
+              {
+                guild.banner === null ?
+                  <div className="placeholder">
+                  </div>
+                  :
+                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" alt={guild.id} />
+              }
+            </div>
+            <div className="splash">
+              <b className="title">Splash</b>
+              {
+                guild.splash === null ?
+                  <div className="placeholder">
+                  </div>
+                  :
+                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" alt={guild.id} />
+              }
+            </div>
         </div>
       </div>
     </React.Fragment>

@@ -1,14 +1,27 @@
 /* https://fonts.google.com/specimen/Baloo+2 */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
 /* ROOT */
-:root{
-    --mainColor: rgb(41 120 230);       /* #2978e6 */ /* rgb(41 120 230) */
-    --pageBgColor: #0e1015;       /* #2d2d3a */ /* rgb(45 45 58) */
-    --navBgColor: #0c0e13;        /* #1e1e28 */ /* rgb(30 30 40) */
-    --lineColor: rgb(52 55 89);         /* #343759 */ /* rgb(52 55 89) */
-    
-    --linkBaseColor: rgb(36 56 213);    /* #2438d5 */ /* rgb(36 56 213) */
-    --linkHoverColor: rgb(59 91 221);   /* #3b5bdd */ /* rgb(59 91 221) */
+:root {
+    --mainColor: rgb(41, 120, 230);
+    /* #2978e6 */
+    /* rgb(41 120 230) */
+    --pageBgColor: #0e1015;
+    /* #2d2d3a */
+    /* rgb(45 45 58) */
+    --navBgColor: #0c0e13;
+    /* #1e1e28 */
+    /* rgb(30 30 40) */
+    --lineColor: rgb(52 55 89);
+    /* #343759 */
+    /* rgb(52 55 89) */
+
+    --linkBaseColor: rgb(36 56 213);
+    /* #2438d5 */
+    /* rgb(36 56 213) */
+    --linkHoverColor: rgb(59 91 221);
+    /* #3b5bdd */
+    /* rgb(59 91 221) */
 
     /* Buttons */
     --onButton: #73cd6a;
@@ -20,11 +33,13 @@
     --scrollbar-track: rgba(110, 110, 136, 1);
     --scrollbar-track-hovered: rgba(110, 110, 136, .8);
 }
+
 /* HTML */
-html{
+html {
     background-color: var(--navBgColor);
     font-family: 'Rubik', sans-serif;
     scroll-behavior: smooth;
+    font-display: swap;
     overflow-y: scroll;
     overflow-x: hidden;
     overflow: overlay;
@@ -34,34 +49,48 @@ html{
     padding: 0;
     margin: 0;
 }
-body, #root, .App {
+
+img {
+    pointer-events: none;
+}
+
+body,
+#root,
+.App {
     background: var(--pageBgColor);
     margin: 0;
     box-sizing: border-box;
 }
+
 /* Scroll Bar */
 html::-webkit-scrollbar-corner {
     background: var(--pageBgColor);
 }
+
 html::-webkit-scrollbar {
     width: 0.6vh;
     height: 1vh;
     background: rgba(0, 0, 0, 0);
 }
+
 html::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-track);
     border-radius: 10px;
 }
+
 html::-webkit-scrollbar-track {
     margin-top: 80px;
 }
+
 html::-webkit-scrollbar-thumb:hover {
     background-color: var(--scrollbar-track-hovered);
 }
+
 /* Data ToolTip */
 [title] {
     position: relative;
 }
+
 [title]:hover::before {
     position: absolute;
     border-radius: 20px;

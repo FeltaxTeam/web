@@ -1,4 +1,5 @@
 aside.sidebar {
+  grid-area: sidebar;
   width: 300px;
   box-sizing: border-box;
   background: var(--navBgColor);

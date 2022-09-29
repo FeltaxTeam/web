@@ -132,14 +132,12 @@ export default function Iron() {
 		async function getGithubProfile() {
 			let data = await fetch('https://api.github.com/users/Iron7III');
 			let json = await data.json();
-			console.log(json);
 			setGithubProfile(json);
 		}
 		getGithubProfile();
 		async function getGithubOrganization() {
 			let data = await fetch('https://api.github.com/orgs/Feltax-Team');
 			let json = await data.json();
-			console.log(json);
 			setGithubOrganization(json);
 		}
 		getGithubOrganization();

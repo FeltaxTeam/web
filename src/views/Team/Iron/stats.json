@@ -89,7 +89,7 @@
   "contributions": [
     {
       "name": "Fortnite Hispanohablante",
-      "icon": "https://cdn.discordapp.com/icons/405699020564987914/d44a98b27360583c83ed0c654a9eadf9.webp?size=128",
+      "icon": "https://cdn.discordapp.com/icons/405699020564987914/41f84c7f1bca939f9edb0cf249bc788d.webp?size=128",
       "since": "02 / 11 / 2020",
       "aproxMembers": 221000,
       "verified": true,
@@ -176,6 +176,11 @@
       "name": "Linkedin",
       "url": "https://www.linkedin.com/in/iron7iii/",
       "icon": "fa-linkedin-in"
+    },
+    {
+      "name": "dev.to",
+      "url": "https://dev.to/iron",
+      "icon": "fa-dev"
     }
   ]
 }

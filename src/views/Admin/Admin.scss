@@ -1,10 +1,16 @@
-.admin {
+div.admin {
   width: 100vw;
-  display: flex;
+  display: grid;
   position: relative;
   min-height: calc(100vh - 80px);
   gap: 0;
+  grid-template-areas:
+    "sidebar nav"
+    "sidebar content";
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 80px 1fr;
   .body {
+    grid-area: content;
     background-color: var(--pageBgColor);
     color: var(--textColor);
     min-height: calc(100vh - 80px);
@@ -13,11 +19,10 @@
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, 400px);
-    width: calc(100% - 300px);
+    width: 100%;
     padding: 20px;
     margin: 0px;
     transition: all 0.12s ease;
-    left: 300px;
     row-gap: 20px;
     z-index: 1000;
     column-gap: 20px;
@@ -248,7 +253,7 @@
   }
 }
 @media (max-width: 500px) {
-  .admin {
+  div.admin {
     .body {
       width: 100%;
       left: 0;

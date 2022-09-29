@@ -8,9 +8,8 @@ header {
   z-index: 9999999999999999999;
 }
 
-header nav {
+header nav.main {
   display: flex;
-  justify-content: space-between;
   height: 80px;
   text-align: center;
 }
@@ -37,14 +36,14 @@ header .background path.line {
 }
 
 /* Navbar Buttons Container */
-header nav div {
+header nav.main > div {
   align-items: center;
   display: flex;
   justify-content: center;
   width: calc(100% / 3);
 }
 
-nav div ul.container {
+nav.main div div.container {
   list-style: none;
   display: flex;
   position: relative;
@@ -57,7 +56,7 @@ nav div ul.container {
   align-items: center;
 }
 
-nav ul.container div.navbar-item {
+div.navbar-item {
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -76,9 +75,10 @@ nav ul.container div.navbar-item {
   &:hover {
     a.navbar-item {
       p {
-        background: rgba(128,128,128,.3);
+        background: rgba(128, 128, 128, .3);
         border-radius: 6.4px;
       }
+
       span.underline {
         visibility: visible;
         height: 4px;
@@ -107,7 +107,7 @@ nav ul.container div.navbar-item {
     text-transform: uppercase;
     text-decoration: none;
     align-items: center;
-    width: 100%;
+    width: fit-content;
 
     p {
       padding: 7.5px 16px;
@@ -124,21 +124,21 @@ nav ul.container div.navbar-item {
 
 /* Navbar Item */
 
-nav .container li b {
+nav.main .container li b {
   display: flex;
   gap: 6px;
   font-weight: 500;
   align-items: center;
 }
 
-nav .container li .navbar-item svg {
+nav.main .container li .navbar-item svg {
   height: 20px;
   width: 20px;
 }
 
 /* Navbar Button */
-nav .container li .navbar-button,
-nav .container li .navbar-login {
+nav.main .container li .navbar-button,
+nav.main .container li .navbar-login {
   display: block;
   transition: all 0.2s ease;
   padding: 5px 12px;
@@ -149,44 +149,42 @@ nav .container li .navbar-login {
   border: 2px solid var(--mainColor);
 }
 
-nav .container li .navbar-button:hover,
-nav .container li .navbar-login:hover {
+nav.main .container li .navbar-button:hover,
+nav.main .container li .navbar-login:hover {
   background-color: var(--mainColor);
   color: rgb(255, 255, 255);
 }
 
-nav .container li.navbar-hamburguer {
+nav.main .container .navbar-hamburguer {
   display: none;
 }
 
 @media (max-width: 1200px) {
 
-  nav .container li.navbar-hamburguer,
-  nav .container li .navbar-login {
+  nav.main .container .navbar-hamburguer,
+  nav.main .container li .navbar-login {
     display: block;
   }
 
-  nav .container li.navbar-button,
-  nav .container li.navbar-item,
-  nav div li.nav-premium-button {
+  nav.main .container li.navbar-button,
+  nav.main .container li.navbar-item,
+  nav.main div li.nav-premium-button {
     display: none;
   }
 
-  header nav div:nth-child(1) {
-    width: calc(100% / 3);
+  header nav.main div:nth-child(1) {
 
-    ul.container {
+    div.container {
       justify-content: left;
     }
   }
 
-  header nav div:nth-child(2) {
+  header nav.main div:nth-child(2) {
     justify-content: center;
     width: 70px;
   }
 
-  header nav div:nth-child(3) {
-    width: calc(100% / 3);
+  header nav.main div:nth-child(3) {
 
     ul.container {
       justify-content: right;
@@ -213,6 +211,7 @@ nav .container li.navbar-hamburguer {
   align-items: baseline;
   padding: 0.3em;
   border-radius: 50%;
+  pointer-events: all;
   top: 8px;
   user-select: none;
   border: 1px solid var(--lineColor);
@@ -228,12 +227,15 @@ nav .container li.navbar-hamburguer {
   0% {
     transform: rotateZ(0deg);
   }
+
   30% {
     transform: rotateZ(15deg);
   }
+
   80% {
     transform: rotateZ(-15deg);
   }
+
   100% {
     transform: rotateZ(0deg);
   }
@@ -257,7 +259,7 @@ nav .container li.navbar-hamburguer {
   color: rgb(255, 255, 255);
 }
 
-nav .user-loged {
+nav.main .user-loged {
   width: fit-content;
   gap: 7px;
   display: flex;
@@ -265,7 +267,7 @@ nav .user-loged {
   cursor: pointer;
 }
 
-nav .user-loged .avatar {
+nav.main .user-loged .avatar {
   height: 42px;
   width: 42px;
   user-select: none;
@@ -273,7 +275,7 @@ nav .user-loged .avatar {
   border-radius: 50%;
 }
 
-nav .user-loged .username {
+nav.main .user-loged .username {
   font-size: 20px;
   display: block;
   white-space: nowrap;
@@ -285,7 +287,7 @@ nav .user-loged .username {
   font-weight: 500;
 }
 
-nav .user-loged .logout-button {
+nav.main .user-loged .logout-button {
   width: 42px;
   border-radius: 10px;
   text-decoration: none;
@@ -302,19 +304,19 @@ nav .user-loged .logout-button {
   transition: background-color 0.3s, color 0.3s;
 }
 
-nav .user-loged .logout-button:hover {
+nav.main .user-loged .logout-button:hover {
   color: white;
   background-color: red;
   transition: background-color 0.3s, color 0.3s;
 }
 
-nav .user-loged .logout-button i {
+nav.main .user-loged .logout-button i {
   font-size: 24px;
   height: fit-content;
 }
 
 @media (max-width: 1200px) {
-  nav .user-loged {
+  nav.nav-premium-button .user-loged {
     gap: 0;
 
     .username {
@@ -325,7 +327,7 @@ nav .user-loged .logout-button i {
 
 /*User Options*/
 #user-options {
-  transition: transform 300ms,opacity 300ms;
+  transition: transform 300ms, opacity 300ms;
   display: none;
   flex-direction: column;
   position: absolute;

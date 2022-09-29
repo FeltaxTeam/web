@@ -83,7 +83,13 @@ function CommandTargeter(){
 	const location = useLocation()
 
   useEffect(() => {
-    document.getElementById(path.targetCommand).scrollIntoView();
+		console.log(path)
+		if(path.targetCommand !== ''){
+			let target = document.getElementById(path.targetCommand);
+			if(target !== null){
+				target.scrollIntoView();
+			}
+		}
   }, [location])
 	return <></>
 }

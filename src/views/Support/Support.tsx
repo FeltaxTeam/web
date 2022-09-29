@@ -10,10 +10,10 @@ export default function Support() {
             <p className="description">
               You can also support us by voting for the BOT in one of the following BotList.
             </p>
-            <div className="botlist-links">
-              <a href="https://discordlist.gg/bot/568435616153337916">DiscordList.gg</a>
-              <a href="https://top.gg/bot/568435616153337916">Top.gg</a>
-              <a href="https://discordthings.com/bot/568435616153337916">DiscordThings.com</a>
+            <div className="links">
+              <a href="https://discordlist.gg/bot/568435616153337916" target="_blank" rel="noreferrer">DiscordList.gg</a>
+              <a href="https://top.gg/bot/568435616153337916" target="_blank" rel="noreferrer">Top.gg</a>
+              <a href="https://discordthings.com/bot/568435616153337916" target="_blank" rel="noreferrer">DiscordThings.com</a>
             </div>
           </div>
           <div className="discord-nitro">
@@ -42,58 +42,62 @@ export default function Support() {
               <span className="text">Buy Me a Coffee</span>
             </a>
           </div>
-          <table>
-            <tr className="header">
-              <th>Feature</th>
-              <th>Free</th>
-              <th>Premium</th>
-            </tr>
-            <tr className="feature">
-              <td>Discord Exclusive Role</td>
-              <td>
-                <i className="fa-solid fa-times" />
-              </td>
-              <td>
-                <i className="fa-solid fa-check" />
-              </td>
-            </tr>
-            <tr className="feature">
-              <td>Discord Exclusive Role</td>
-              <td>
-                <i className="fa-solid fa-times" />
-              </td>
-              <td>
-                <i className="fa-solid fa-check" />
-              </td>
-            </tr>
-            <tr className="feature">
-              <td>Discord Exclusive Role</td>
-              <td>
-                <i className="fa-solid fa-times" />
-              </td>
-              <td>
-                <i className="fa-solid fa-check" />
-              </td>
-            </tr>
-            <tr className="feature">
-              <td>Discord Exclusive Role</td>
-              <td>
-                <i className="fa-solid fa-times" />
-              </td>
-              <td>
-                <i className="fa-solid fa-check" />
-              </td>
-            </tr>
-            <tr className="feature">
-              <td>Discord Exclusive Role</td>
-              <td>
-                <i className="fa-solid fa-times" />
-              </td>
-              <td>
-                <i className="fa-solid fa-check" />
-              </td>
-            </tr>
-          </table>
+        </div>
+        <div className="new">
+          <article className="tier">
+            <header>
+              <div className="tier">Supporter</div>
+              <div className="price">Free <del>1,60€</del></div>
+            </header>
+            <div className="features">
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+            </div>
+            <div className="methods">
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+            </div>
+          </article>
+          <article className="tier">
+            <header>
+              <div className="tier">Supporter</div>
+              <div className="price">Free <del>1,60€</del></div>
+            </header>
+            <div className="features">
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+            </div>
+            <div className="methods">
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+            </div>
+          </article>
+          <article className="tier">
+            <header>
+              <div className="tier">Supporter</div>
+              <div className="price">Free <del>1,60€</del></div>
+            </header>
+            <div className="features">
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+              <div className="feature">Discord Exclusive Role</div>
+            </div>
+            <div className="methods">
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+            </div>
+          </article>
         </div>
       </React.Fragment>
     </>
