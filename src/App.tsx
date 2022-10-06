@@ -19,6 +19,7 @@ import { fetchURL } from './utility/fetching';
 import { Acknowledgements } from './views/Acknowledgements/Acknowledgements';
 import TruthOrDare from './views/TruthOrDare/TruthOrDare';
 import CookiesPrompt from './views/CookiesPrompt/CookiesPrompt';
+import CdM from './views/CdM/CdM';
 
 export default function App() {
   console.log(window.location.hostname.split('.')[0]);
@@ -51,6 +52,10 @@ export default function App() {
             <Route path="/" element={<Admin user={user} />} />
           </Routes>
         </Router>
+      );
+    case 'cdm':
+      return (
+        <CdM user={null} />
       );
     case 'tod':
       return (
@@ -93,10 +98,10 @@ export default function App() {
   }
 }
 
-function PageReseter(){
-	const location = useLocation()
+function PageReseter() {
+  const location = useLocation()
   useEffect(() => {
     document.getElementsByClassName("App")[0].scrollIntoView();
   }, [location])
-	return <></>
+  return <></>
 }

@@ -38,7 +38,7 @@ export default function Widget(props: { guild, owner?}) {
   let [owner, setOwner] = useState(null);
   useEffect(() => {
     async function getOwner() {
-      setOwner(JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guild.owner_id}`)));
+      setOwner(JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guild.owner_id}`)));
     }
     getOwner();
   }, []);
@@ -47,7 +47,7 @@ export default function Widget(props: { guild, owner?}) {
     <React.Fragment>
       <div className='column-master'>
         <div className="embed stats-container">
-          <div className="guild-header">
+          <header style={{ backgroundImage: `https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048` }}>
             <img className="icon" src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=512`} alt={guild.name} />
             <div className="info">
               <div className="title">
@@ -74,7 +74,7 @@ export default function Widget(props: { guild, owner?}) {
               </div>
               <div className="description">{guild.description !== null ? guild.description : 'No description'}</div>
             </div>
-          </div>
+          </header>
           <div className="progress-bar">
             <header>
               <div className="goal">
@@ -117,16 +117,16 @@ export default function Widget(props: { guild, owner?}) {
             <div className="container">
               <h4 className="title">Server ID</h4>
               {guild.id}</div>
-            <button onClick={()=>{navigator.clipboard.writeText(guild.id)}}><i className="fa-regular fa-copy" /></button>
+            <button onClick={() => { navigator.clipboard.writeText(guild.id) }}><i className="fa-regular fa-copy" /></button>
           </div>
           <div className="owner">
             {
-              owner!==null?
-              <img
-              src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.webp?size=64`}
-              className="avatar" alt='Avatar' />
-              :
-              <></>
+              owner !== null ?
+                <img
+                  src={`https://cdn.discordapp.com/avatars/${owner.id}/${owner.avatar}.webp?size=64`}
+                  className="avatar" alt='Avatar' />
+                :
+                <></>
             }
             <div className="name">{owner !== null ? owner.username : ''}#{owner !== null ? owner.discriminator : ''}</div>
             <svg
@@ -145,25 +145,25 @@ export default function Widget(props: { guild, owner?}) {
           {/* assets antiguos aquí */}
           <div className="emojis">
             <div className="title">{guild.emojis.length} EMOJIS</div>
-            { (guild.emojis.length > 0)?
+            {(guild.emojis.length > 0) ?
               <div className="container">
-              {guild.emojis.map((emoji, i) => {
-                return <Emoji key={i} id={emoji.id} animated={emoji.animated} name={emoji.name} />
-              })}
+                {guild.emojis.map((emoji, i) => {
+                  return <Emoji key={i} id={emoji.id} animated={emoji.animated} name={emoji.name} />
+                })}
               </div>
               : <div className="container title">No hay emojis en este servidor :(</div>
             }
           </div>
           <div className="stickers">
             <div className="title">{guild.stickers.length} STICKERS</div>
-              { (guild.stickers.length > 0)?
-                <div  className="container">
-                  {guild.stickers.map((sticker, i) => {
-                    return <Sticker key={i} id={sticker.id} name={sticker.name} />
-                  })}
-                </div>  
-                : <div className="container title">No hay stickers en este servidor :(</div>
-              }
+            {(guild.stickers.length > 0) ?
+              <div className="container">
+                {guild.stickers.map((sticker, i) => {
+                  return <Sticker key={i} id={sticker.id} name={sticker.name} />
+                })}
+              </div>
+              : <div className="container title">No hay stickers en este servidor :(</div>
+            }
           </div>
           <div className="roles">
             <div className="title">{guild.roles.length} ROLES</div>
@@ -175,26 +175,26 @@ export default function Widget(props: { guild, owner?}) {
           </div>
         </div>
         <div className='right-column'>
-            <div className="banner">
-              <b className="title">Banner</b>
-              {
-                guild.banner === null ?
-                  <div className="placeholder">
-                  </div>
-                  :
-                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" alt={guild.id} />
-              }
-            </div>
-            <div className="splash">
-              <b className="title">Splash</b>
-              {
-                guild.splash === null ?
-                  <div className="placeholder">
-                  </div>
-                  :
-                  <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" alt={guild.id} />
-              }
-            </div>
+          <div className="banner">
+            <b className="title">Banner</b>
+            {
+              guild.banner === null ?
+                <div className="placeholder">
+                </div>
+                :
+                <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.banner}.jpg?size=2048`} className="banner" alt={guild.id} />
+            }
+          </div>
+          <div className="splash">
+            <b className="title">Splash</b>
+            {
+              guild.splash === null ?
+                <div className="placeholder">
+                </div>
+                :
+                <img src={`https://cdn.discordapp.com/banners/${guild.id}/${guild.splash}.jpg?size=2048`} className="splash" alt={guild.id} />
+            }
+          </div>
         </div>
       </div>
     </React.Fragment>

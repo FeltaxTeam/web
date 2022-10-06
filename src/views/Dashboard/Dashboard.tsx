@@ -48,8 +48,8 @@ export default function DashboardComponent() {
 	useEffect(() => {
 		async function getGuilds() {
 			//setGuilds(await fetchURL(tokenType, accessToken, 'https://discord.com/api/users/@me/guilds'));
-			setGuilds(JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
-			setBotGuilds(JSON.parse(await fetchApi('https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds')));
+			setGuilds(JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
+			setBotGuilds(JSON.parse(await fetchApi('https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds')));
 		}
 		getGuilds();
 	}, []);

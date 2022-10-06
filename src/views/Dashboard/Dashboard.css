@@ -1,4 +1,5 @@
-.serverHolder, div.loading {
+.serverHolder,
+div.loading {
   padding: 100px 200px;
   display: flex;
   justify-content: center;
@@ -7,6 +8,7 @@
   z-index: 0;
   box-sizing: border-box;
 }
+
 /* Guild */
 .guild {
   width: 300px;
@@ -21,6 +23,7 @@
   box-sizing: border-box;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
 }
+
 .guild div.assets {
   height: 100px;
   width: 260px;
@@ -33,18 +36,21 @@
   display: block;
   z-index: 0
 }
-.guild div.assets > div {
+
+.guild div.assets>div {
   height: 100px;
   width: 300px;
   overflow: hidden;
 }
-.guild div.assets div .banner{
+
+.guild div.assets div .banner {
   position: relative;
   filter: blur(10px);
   opacity: 0.3;
   top: -100px;
   width: 300px;
 }
+
 .guild .icon {
   position: absolute;
   width: 100px;
@@ -56,6 +62,7 @@
   background-color: black;
   margin: 0;
 }
+
 .guild div.container {
   height: 78px;
   margin: 0px;
@@ -67,6 +74,7 @@
   flex-direction: column;
   gap: 20px;
 }
+
 .guild div.container .name {
   color: rgb(255, 255, 255);
   z-index: 0;
@@ -76,10 +84,11 @@
   border-radius: 8px;
   margin: 0px auto;
   white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100%);
 }
+
 .guild div.container .button {
   color: white;
   border-radius: 8px;
@@ -87,24 +96,29 @@
   width: 200px;
   margin: 0px auto;
 }
+
 @media (max-width: 1000px) {
   .serverHolder {
     margin: 30px;
   }
 }
+
 /* Loading */
 div.loading .guild div .banner {
-position: relative;
+  position: relative;
   left: 0;
   width: 300px;
   height: 100px;
   top: 0px;
-  filter: none;;
+  filter: none;
+  ;
   opacity: 1;
 }
+
 div.loading .guild div.container .name {
   width: 100px;
 }
+
 div.loading .guild div .icon,
 div.loading .guild div .banner,
 div.loading .guild div.container .name,
@@ -114,26 +128,30 @@ div.loading .guild div.container .button {
 
 .guild .container a {
   text-decoration: none;
-	color: white;
-	box-sizing: border-box;
-	border: 1px solid;
-	border-radius: 6px;
-	text-transform: uppercase;
-	font-weight: 800;
+  color: white;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-weight: 800;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .guild .container a.configuration {
-	border-color: #57F287;
+  border-color: #57F287;
 }
+
 .guild .container a.configuration:hover {
-	background: #57F287;
+  background: #57F287;
 }
+
 .guild .container a.invite {
-	border-color: var(--mainColor);
+  border-color: var(--mainColor);
 }
+
 .guild .container a.invite:hover {
-	background: var(--mainColor);
+  background: var(--mainColor);
 }

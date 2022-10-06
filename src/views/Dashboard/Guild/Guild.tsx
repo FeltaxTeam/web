@@ -19,13 +19,13 @@ export default function Guild() {
 	let [owner, setOwner] = useState(null);
 	useEffect(() => {
 		async function getGuild() {
-			let data = JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/guilds/${guildId}`));
+			let data = JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/guilds/${guildId}`));
 			if (data.message && data.code) {
 				data = null;
 			} else {
 				async function getOwner() {
 					let guildData = JSON.parse(guild);
-					setOwner(JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guildData !== null ? guildData.owner_id : null}`)));
+					setOwner(JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guildData !== null ? guildData.owner_id : null}`)));
 				}
 				getOwner();
 			}
@@ -33,7 +33,7 @@ export default function Guild() {
 		}
 		getGuild();
 		async function getGuildInDb() {
-			let data = JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/mongo/getDbGuild/${guildId}`));
+			let data = JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/mongo/getDbGuild/${guildId}`));
 			if (data.error) {
 				console.log(`Error fetching the guild in the db: ${data.error} / ${data.message}`);
 				data = null;

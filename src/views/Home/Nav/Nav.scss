@@ -1,5 +1,5 @@
 /* header */
-header {
+header#mainHeader {
   position: sticky;
   height: 80px;
   top: 0px;
@@ -8,14 +8,14 @@ header {
   z-index: 9999999999999999999;
 }
 
-header nav.main {
+header#mainHeader nav.main {
   display: flex;
   height: 80px;
   text-align: center;
 }
 
 /* Navbar Background Test */
-header .background {
+header#mainHeader .background {
   display: block;
   height: 100%;
   width: 100%;
@@ -24,19 +24,19 @@ header .background {
   z-index: -1;
 }
 
-header .background path.bg {
+header#mainHeader .background path.bg {
   fill: var(--navBgColor);
   stroke: none;
 }
 
-header .background path.line {
+header#mainHeader .background path.line {
   stroke: var(--lineColor);
   stroke-width: 0.2;
   fill: none;
 }
 
 /* Navbar Buttons Container */
-header nav.main > div {
+header#mainHeader nav.main>div {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -172,19 +172,19 @@ nav.main .container .navbar-hamburguer {
     display: none;
   }
 
-  header nav.main div:nth-child(1) {
+  header#mainHeader nav.main div:nth-child(1) {
 
     div.container {
       justify-content: left;
     }
   }
 
-  header nav.main div:nth-child(2) {
+  header#mainHeader nav.main div:nth-child(2) {
     justify-content: center;
     width: 70px;
   }
 
-  header nav.main div:nth-child(3) {
+  header#mainHeader nav.main div:nth-child(3) {
 
     ul.container {
       justify-content: right;

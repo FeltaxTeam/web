@@ -1,0 +1,67 @@
+/*
+background: #fff;
+*/
+:root {
+  --verdClaret: rgb(149, 197, 154);
+}
+
+::-webkit-scrollbar-corner {
+  background: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 1vh;
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--verdClaret) !important;
+  border-radius: 10px;
+  height: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 10px;
+    background: red;
+  }
+
+  &:hover {
+    background-color: rgba(149, 197, 154, 0.5) !important;
+  }
+}
+
+::-webkit-scrollbar-track {
+  margin-top: 80px;
+}
+
+div#CdM {
+  scrollbar-gutter: stable !important;
+  background: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  height: fit-content;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  a:-webkit-any-link {
+    text-decoration: none;
+  }
+
+  ::selection {
+    color: white;
+    background: var(--verdClaret);
+  }
+
+  div.body {
+    margin-top: 80px;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 80px);
+  }
+}

@@ -9,24 +9,25 @@ div.embed {
 	padding: 20px;
 	border-radius: 7px;
 
-	.stats-container {
+	&.stats-container {
 		display: flex;
 		position: relative;
 		height: fit-content;
 		flex-direction: column;
 		gap: 20px;
 		z-index: 1;
-	}
 
-	.guild-header {
-		height: 92px;
-		width: -webkit-fill-available;
-		display: flex;
-		gap: 20px;
-		flex-direction: row;
+		& > header {
+			height: 100px;
+			width: -webkit-fill-available;
+			display: flex;
+			gap: 20px;
+			flex-direction: row;
 
-		.icon {
-			width: 100px;
+			img.icon {
+				width: 100px;
+				aspect-ratio: 1;
+			}
 		}
 	}
 
@@ -107,7 +108,7 @@ div.embed {
 		color: lightgray;
 	}
 
-	.stats-container img.icon {
+	.stats-container header img.icon {
 		position: relative;
 		height: 80px;
 		border: 6px solid var(--navBgColor);
@@ -135,7 +136,7 @@ div.embed {
 		color: lightgray;
 	}
 
-	.stats-container img.icon {
+	.stats-container header img.icon {
 		position: relative;
 		height: 80px;
 		border: 6px solid var(--navBgColor);

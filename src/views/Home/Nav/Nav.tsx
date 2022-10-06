@@ -218,7 +218,7 @@ class NavComponent extends React.Component {
 		window.addEventListener('click', function(e:any){   
 			let userOptions = document.getElementById('user-options');
 			let languageSelector = document.getElementById('language-selector');
-			if (!(document.getElementById('user').contains(e.target) || userOptions.contains(e.target)|| languageSelector.contains(e.target)) && document.getElementById('user-options').style.display != 'none'){
+			if (!(document.getElementById('user').contains(e.target) || userOptions.contains(e.target)|| languageSelector.contains(e.target)) && document.getElementById('user-options').style.display !== 'none'){
 				userOptions.style.display = 'none';
 				document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
 				languageSelector.style.display = 'none';
@@ -236,7 +236,7 @@ class NavComponent extends React.Component {
 		let authIds = ['438390132538605589', '417407496286633995'];
 		return (
 			<React.Fragment>
-				<header>
+				<header id='mainHeader'>
 					{
 						console.log("The language is: " + navigator.language)
 					}

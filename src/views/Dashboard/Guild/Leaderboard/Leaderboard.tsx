@@ -4,7 +4,7 @@ const defaultXpEqtn = 'x**0.5';
 
 async function setGuildXpEqtn() {
   if (!validateXpEqtn()) return;
-  postApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/mongo/setGuildXpEqtn`, {
+  postApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/mongo/setGuildXpEqtn`, {
     tokenType: localStorage.getItem('tokenType'), accessToken: localStorage.getItem('accessToken'),
     //@ts-ignore
     newXpEqtn: inps.xpEqtn,

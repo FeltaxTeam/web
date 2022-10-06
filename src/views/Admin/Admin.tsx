@@ -33,7 +33,7 @@ function Description(props: any) {
     if (user == null) return;
     async function getDesc() {
       if (tokenType && accessToken) {
-        let adminProfile = JSON.parse(await fetchApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/admin/getDescription/${user.id}`));
+        let adminProfile = JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/admin/getDescription/${user.id}`));
         setDescription(adminProfile.description);
       }
     }
@@ -44,7 +44,7 @@ function Description(props: any) {
     //@ts-ignore
     setDescription(document.getElementById('descriptionTxtA').value);
     //@ts-ignore
-    postApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/admin/setDescription/${user.id}?accessToken=${accessToken}&tokenType=${tokenType}`, { description: document.getElementById('descriptionTxtA').value });
+    postApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/admin/setDescription/${user.id}?accessToken=${accessToken}&tokenType=${tokenType}`, { description: document.getElementById('descriptionTxtA').value });
   }
 
   if (user == null) return <></>

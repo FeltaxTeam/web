@@ -5,7 +5,7 @@ const defaultPrefix = 'f-';
 
 async function setGuildPrefix() {
   if (!validatePrefix()) return;
-  postApi(`https://us-central1-feltax-87fb9.cloudfunctions.net/app/mongo/setGuildPrefix`, {
+  postApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/mongo/setGuildPrefix`, {
     tokenType: localStorage.getItem('tokenType'), accessToken: localStorage.getItem('accessToken'),
     //@ts-ignore
     newPrefix: document.getElementById('prefixInp').value,
