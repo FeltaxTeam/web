@@ -2,24 +2,32 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navigate from '../.././utility/navigation';
 import { fetchApi } from '../../utility/fetching';
-import './Dashboard.css';
+import './Dashboard.scss';
 import Discord from 'discord.js';
 
 function Guild(props: { name: string, id: string, icon: string | null }) {
 	return (
 		<div className="guild">
-			<div className="assets">
-				<div>
-					<img alt="banner" className="banner" src={props.icon === null ? `https://cdn.discordapp.com/icons/514150100575191040/f19f982f01ea5e15925cf78eb497fa18.webp?size=512` : `https://cdn.discordapp.com/icons/${props.id}/${props.icon}.webp?size=512`} />
-				</div>
-				<img alt="icon" className="icon" src={props.icon === null ? `https://cdn.discordapp.com/icons/514150100575191040/f19f982f01ea5e15925cf78eb497fa18.webp?size=512` : `https://cdn.discordapp.com/icons/${props.id}/${props.icon}.${props.icon.startsWith('a_') ? 'gif' : 'webp'}?size=512`} />
-			</div>
-			<div className="container">
-				<div className="name">{props.name}</div>
-				{botGuildsId.includes(props.id) ? <Link to={`/dashboard/${props.id}`} className="configuration" >Configurar</Link> :
-					<a href={`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax.xyz%2F&permissions=8&client_id=568435616153337916&guild_id=${props.id}`} className="invite" >Invitar</a>
+			<img alt="bg" className='background' src={props.icon === null ? `https://cdn.discordapp.com/icons/514150100575191040/f19f982f01ea5e15925cf78eb497fa18.webp?size=512` : `https://cdn.discordapp.com/icons/${props.id}/${props.icon}.webp?size=512`} />
+			<img alt="icon" className="icon" src={props.icon === null ? `https://cdn.discordapp.com/icons/514150100575191040/f19f982f01ea5e15925cf78eb497fa18.webp?size=128` : `https://cdn.discordapp.com/icons/${props.id}/${props.icon}.${props.icon.startsWith('a_') ? 'gif' : 'webp'}?size=128`} />
+			<div className="name">{props.name}</div>
+			<div className="buttons">
+				{
+					botGuildsId.includes(props.id) ?
+						<>
+							<Link to={`/dashboard/${props.id}`} className="button config" >Configurar</Link>
+							<Link to={`/premium`} className="button premium" >Premium</Link>
+						</>
+						:
+						<button
+							className='button invite'
+							onClick={() => {
+								window.open(`https://discord.com/oauth2/authorize?scope=bot+applications.commands&response_type=code&redirect_uri=https%3A%2F%2Ffeltax.xyz%2F&permissions=8&client_id=568435616153337916&guild_id=${props.id}`, '_blank', 'width=400,height=700');
+							}}
+						>Invitar</button>
 				}
 			</div>
+
 		</div>
 	);
 }
@@ -44,17 +52,17 @@ function DefaultGuild() {
 let botGuildsId: any = [];
 export default function DashboardComponent() {
 	let [guilds, setGuilds] = useState(null);
-	let [botGuilds, setBotGuilds] = useState(null);
+	const [botGuilds, setBotGuilds] = useState(null);
 	useEffect(() => {
 		async function getGuilds() {
 			//setGuilds(await fetchURL(tokenType, accessToken, 'https://discord.com/api/users/@me/guilds'));
-			setGuilds(JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
-			setBotGuilds(JSON.parse(await fetchApi('https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/@me/guilds')));
+			setGuilds(JSON.parse(await fetchApi(`https://api.feltax.xyz/discord/users/@me/guilds?accessToken=${accessToken}&tokenType=${tokenType}`)));
+			setBotGuilds(JSON.parse(await fetchApi('https://api.feltax.xyz/discord/users/@me/guilds')));
 		}
 		getGuilds();
 	}, []);
-	let tokenType = localStorage.getItem('tokenType');
-	let accessToken = localStorage.getItem('accessToken');
+	const tokenType = localStorage.getItem('tokenType');
+	const accessToken = localStorage.getItem('accessToken');
 	if (!accessToken || !tokenType) return (<Navigate to="/" />);
 
 	//sorting guilds
@@ -78,7 +86,7 @@ export default function DashboardComponent() {
 		<>
 			{
 				(!guilds || !botGuilds) ? <LoadingDashboard /> :
-					<div className="serverHolder">
+					<div className="guilds">
 						{
 							(guilds[0] !== undefined) ? guilds.map((guild: Discord.Guild, i: any) => { return <Guild key={i} name={guild.name} id={guild.id} icon={guild.icon} /> })
 								: <h2>You don't have any guild you can manage :c</h2>

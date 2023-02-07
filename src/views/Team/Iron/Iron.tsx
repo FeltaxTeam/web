@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Iron.scss';
-import languages from './stats.json';
+import { languages } from './stats';
 const langs = languages['languages'];
 const guilds = languages['contributions'];
 const contacts = languages['contacts'];
@@ -40,7 +41,7 @@ function Language(props: { displayName: string, hexColor: string, knowing: numbe
 		</li>
 	)
 }
-function Skill(props: { hexColor: string, displayName: string }) {
+function Skill(props: { hexColor: string, displayName: string, svg: any }) {
 	return (
 		<li className="skill">
 			<svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -53,8 +54,10 @@ function Skill(props: { hexColor: string, displayName: string }) {
 				</defs>
 			</svg>
 
-			<div className="hexagone" style={{ color: props.hexColor }}></div>
+			<div className="hexagone" style={{ color: `${props.hexColor}` }}></div>
 			<div className="name">{props.displayName}</div>
+			<img className="icon" src={props.svg} />
+			<span className="shadow"></span>
 		</li>
 	)
 }
@@ -89,7 +92,12 @@ function Guild(props: { name: string, icon: string, since: string | null, aproxM
 	return (
 		<li className='guild'>
 			<div className="icon">
-				<img src={props.icon} alt='Icon' className="icon" />
+				<img src={props.icon} alt='Icon' className="icon" onError={
+					(e: any) => {
+						e.target.onerror = null;
+						e.target.src = 'https://cdn.discordapp.com/embed/avatars/0.png';
+					}
+				} />
 				{props.verified === true ? <Verified /> : (props.partnered === true ? <Partnered /> : <></>)}
 			</div>
 			<div className="stats">
@@ -126,34 +134,39 @@ function Contact(props: { name: string, url: string, icon: string }) {
 	)
 }
 export default function Iron() {
-	let [githubProfile, setGithubProfile] = useState(null);
-	let [githubOrganization, setGithubOrganization] = useState(null);
+	const [githubProfile, setGithubProfile] = useState(null);
+	const [githubOrganization, setGithubOrganization] = useState(null);
 	useEffect(() => {
 		async function getGithubProfile() {
-			let data = await fetch('https://api.github.com/users/Iron7III');
-			let json = await data.json();
+			const data = await fetch('https://api.github.com/users/Iron7III');
+			const json = await data.json();
 			setGithubProfile(json);
 		}
 		getGithubProfile();
 		async function getGithubOrganization() {
-			let data = await fetch('https://api.github.com/orgs/Feltax-Team');
-			let json = await data.json();
+			const data = await fetch('https://api.github.com/orgs/Feltax-Team');
+			const json = await data.json();
 			setGithubOrganization(json);
 		}
 		getGithubOrganization();
 	}, []);
+	document.title = 'Iron Portfolio';
 	return (
 		<>
 			<React.Fragment>
 				<div className="gotofeltax">
-					<a href="/">
+					<Link to="/">
 						<i className="fa-solid fa-arrow-left"></i><span className="text">Go to Feltax</span>
-					</a>
+					</Link>
 				</div>
 				<div className="iron">
 					<div className="intro">
 						<h1 className='name'>Iron</h1>
-						<p className="bio">I'm a 16 years old full-stack developer.</p>
+						<p className="bio">I'm a {
+							new Date('02-12-2005').getDate() > new Date().getDate() ?
+								new Date().getFullYear() - new Date('02-12-2005').getFullYear() - 1
+								: new Date().getFullYear() - new Date('02-12-2005').getFullYear()
+						} years old full-stack developer.</p>
 					</div>
 					<img src="https://avatars.githubusercontent.com/u/73746664?v=4" alt="Iron" />
 				</div>
@@ -162,12 +175,20 @@ export default function Iron() {
 						<h1 className="title">Knowledge</h1>
 						<ul className='languages'>
 							{
-								langs.map((language, i) => { return <Language key={i} displayName={language.displayName} hexColor={language.hexColor} knowing={language.knowing} years={language.years} awesomeIcon={language.awesomeIcon} /> })
+								langs.sort(
+									(a, b) => {
+										if (a.knowing < b.knowing) {
+											return 1;
+										} else {
+											return -1;
+										}
+									}
+								).map((language, i) => { return <Language key={i} displayName={language.displayName} hexColor={language.hexColor} knowing={language.knowing} years={language.years} awesomeIcon={language.awesomeIcon} /> })
 							}
 						</ul>
 						<ul className="skills">
 							{
-								skills.map((skill, i) => { return <Skill key={i} hexColor={skill.hexColor} displayName={skill.displayName} /> })
+								skills.map((skill, i) => { return <Skill key={i} hexColor={skill.hexColor} displayName={skill.displayName} svg={skill.svg} /> })
 							}
 						</ul>
 					</div>
@@ -175,7 +196,13 @@ export default function Iron() {
 						<h1 className="title">Discord Moderating / Moderated</h1>
 						<ul className='guilds'>
 							{
-								guilds.map((guild, i) => { return <Guild key={i} name={guild.name} role={guild.role} icon={guild.icon} since={guild.since} aproxMembers={guild.aproxMembers} verified={guild.verified} partnered={guild.partnered} /> })
+								guilds.sort(
+									(a, b) => {
+										if (a.since === null) return 1;
+										if (b.since === null) return -1;
+										return new Date(b.since).getTime() - new Date(a.since).getTime();
+									}
+								).map((guild, i) => { return <Guild key={i} name={guild.name} role={guild.role} icon={guild.icon} since={guild.since} aproxMembers={guild.aproxMembers} verified={guild.verified} partnered={guild.partnered} /> })
 							}
 						</ul>
 					</div>

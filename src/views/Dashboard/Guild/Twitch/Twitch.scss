@@ -76,6 +76,11 @@ div.twitch {
           padding: 20px;
           border-radius: 6px;
 
+          h3.title {
+            margin: 0;
+            margin-bottom: 10px;
+          }
+
           textarea#TwitchAnnouncementContent {
             width: 100%;
             border: none;
@@ -115,6 +120,7 @@ div.twitch {
             padding: 1rem 6.5rem 1rem 1rem;
             transition: box-shadow .1s ease-in, border .1s ease-in, background-color .1s ease-in;
             transition: box-shadow var(--timing-short) ease-in, border var(--timing-short) ease-in, background-color var(--timing-short) ease-in;
+            margin-bottom: 10px;
 
             span {
 
@@ -135,6 +141,7 @@ div.twitch {
               width: 30px;
               position: relative;
               height: 30px;
+              cursor: pointer;
               appearance: none;
               border: none;
               padding: 0;
@@ -269,7 +276,6 @@ div.twitch {
               border-image-slice: 1;
               width: 280px;
               background: #1f1f23;
-              margin: 5px 0;
 
               h3.title {
                 font-size: 14px;
@@ -326,6 +332,51 @@ div.twitch {
               }
             }
           }
+
+          div.buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 10px;
+            align-items: center;
+
+            button.button {
+              width: 80px;
+              height: 30px;
+              border: none;
+              border-radius: 4px;
+              background: rgb(145, 71, 255);
+              color: white;
+              font-size: 14px;
+              font-weight: 500;
+              cursor: pointer;
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+
+              &:hover {
+                background: #772ce8;
+              }
+            }
+
+            button#default {
+              background: rgb(253, 61, 38);
+            }
+
+            button#blue {
+              background-image: linear-gradient(#00d6d6, #9146ff);
+            }
+
+            button#green {
+              background-image: linear-gradient(#00db84, #57bee6);
+            }
+
+            button#orange {
+              background-image: linear-gradient(#ffb31a, #e0e000);
+            }
+
+            button#purple {
+              background-image: linear-gradient(#9146ff, #ff75e6);
+            }
+          }
         }
       }
     }
@@ -350,19 +401,23 @@ div.twitch {
     }
   }
 }
+
 @media (max-width: 700px) {
   div.twitch {
     section.stream {
       grid-template-columns: 1fr;
       grid-template-rows: 300px 500px 300px;
+
       iframe#twitch-stream-embed {
         grid-row: 1 / 2;
         grid-column: 1;
       }
+
       iframe#twitch-chat-embed {
         grid-row: 2 / 3;
         grid-column: 1;
       }
+
       div.panel {
         grid-row: 3 / 4;
         grid-column: 1;

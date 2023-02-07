@@ -160,16 +160,18 @@ interface NavList {
 	elements: Element[];
 }
 
-class AdminNavComponent extends React.Component {
-	constructor(props?: any) {
+class AdminNavComponent extends React.Component<{ user: any }, { user: any }> {
+	constructor(props: any) {
 		super(props);
-		this.state = { user: props.user };
+		this.state = {
+			user: props.user
+		}
 	}
 	options = (e) => {
 		e.preventDefault();
 		console.log('options');
-		let userOptions = document.getElementById('user-options');
-		let languageSelector = document.getElementById('language-selector');
+		const userOptions = document.getElementById('user-options');
+		const languageSelector = document.getElementById('language-selector');
 		if (userOptions.style.display === 'flex') {
 			userOptions.style.display = 'none';
 			document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
@@ -181,7 +183,7 @@ class AdminNavComponent extends React.Component {
 	};
 	languageSelector = (e) => {
 		e.preventDefault();
-		let languageSelector = document.getElementById('language-selector');
+		const languageSelector = document.getElementById('language-selector');
 		if (languageSelector.style.display === 'flex') {
 			languageSelector.style.display = 'none';
 		} else {
@@ -197,15 +199,14 @@ class AdminNavComponent extends React.Component {
 			menu = 'flex';
 		}
 	};
-	componentDidUpdate(prevProps) {//@ts-ignore
-		if (this.props.user !== prevProps.user) {//@ts-ignore
+	componentDidUpdate(prevProps) {
+		if (this.props.user !== prevProps.user) {
 			this.setState({ user: this.props.user });
 		}
 	}
 	render() {
-		//@ts-ignore
-		let user = this.state.user;
-		let authIds = ['438390132538605589', '417407496286633995'];
+		const user = this.state.user;
+		const authIds = ['438390132538605589', '417407496286633995'];
 		console.log(user);
 		return (
 			<React.Fragment>
@@ -275,7 +276,7 @@ class AdminNavComponent extends React.Component {
 	}
 }
 export default function AdminNav(props: any) {
-	let { paths, user } = props;
+	const { paths, user } = props;
 	const navProps = { user: user }
 	return <Routes>
 		<Route path={'*'} element={<AdminNavComponent {...navProps} />} />
@@ -284,4 +285,4 @@ export default function AdminNav(props: any) {
 			return <Route key={i} path={el} element={<></>} />
 		})}
 	</Routes>
-};
+}

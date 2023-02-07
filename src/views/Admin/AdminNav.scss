@@ -1,16 +1,19 @@
-header {
-  grid-area: nav;
-  nav.admin {
-    height: 80px;
-    box-sizing: border-box;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    border-bottom: 1px solid var(--lineColor);
-    overflow: hidden;
-    flex-direction: row;
-    background: var(--navBgColor);
+div.admin {
+  header {
+    grid-area: nav;
+
+    nav.admin {
+      height: 80px;
+      box-sizing: border-box;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      border-bottom: 1px solid var(--lineColor);
+      overflow: hidden;
+      flex-direction: row;
+      background: var(--navBgColor);
+    }
   }
 }

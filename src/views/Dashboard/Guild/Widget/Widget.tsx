@@ -21,7 +21,7 @@ export default function Widget(props: { guild, owner?}) {
     )
   }
   function decimalToHex(d: number) {
-    var hex = Number(d).toString(16);
+    let hex = Number(d).toString(16);
     hex = "000000".slice(0, 6 - hex.length) + hex;
     return hex === '000000' ? 'b9bbbe' : hex;
   }
@@ -35,14 +35,14 @@ export default function Widget(props: { guild, owner?}) {
       </span>
     )
   }
-  let [owner, setOwner] = useState(null);
+  const [owner, setOwner] = useState(null);
   useEffect(() => {
     async function getOwner() {
-      setOwner(JSON.parse(await fetchApi(`https://europe-west1-feltax-87fb9.cloudfunctions.net/app/discord/users/${guild.owner_id}`)));
+      setOwner(JSON.parse(await fetchApi(`https://api.feltax.xyz/discord/users/${guild.owner_id}`)));
     }
     getOwner();
   }, []);
-  let premium_subscription_count_goal = [2, 7, 14];
+  const premium_subscription_count_goal = [2, 7, 14];
   return (
     <React.Fragment>
       <div className='column-master'>

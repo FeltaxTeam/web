@@ -1,0 +1,129 @@
+div.guilds,
+div.loading {
+  padding: 100px 130px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: calc(100vh - 80px);
+  z-index: 0;
+  box-sizing: border-box;
+  gap: 20px;
+
+  div.guild {
+    position: relative;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    box-sizing: border-box;
+    height: 180px;
+    padding: 10px;
+    border-radius: 6px;
+    background: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    z-index: 0;
+    gap: 10px;
+    overflow: hidden;
+    grid-template-areas: "icon buttons"
+      "name name";
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 100px 1fr;
+
+    &:hover {
+      img.background {
+        width: 600px;
+      }
+    }
+
+    img.background {
+      width: 500px;
+      aspect-ratio: 1/1;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      transition: 0.1s ease-in-out;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(20px);
+    }
+
+    img.icon {
+      grid-area: icon;
+      width: 100px;
+      height: 100px;
+      border-radius: 4px;
+    }
+
+    div.buttons {
+      grid-area: buttons;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+
+      button.button,
+      a.button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        height: 45px;
+        border: none;
+        border-radius: 4px;
+        background: #2f3136;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+
+        &.invite {
+          background: rgb(47, 119, 202);
+        }
+
+        &.premium {
+          background: rgb(172, 120, 24);
+        }
+
+        &:hover {
+          background: #4e525a;
+        }
+      }
+    }
+
+    div.name {
+      grid-area: name;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: 4px;
+      background: rgba(47, 49, 54, 0.3);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.1s ease-in-out;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+      text-align: center;
+      padding: 0 10px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

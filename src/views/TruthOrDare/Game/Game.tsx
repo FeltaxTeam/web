@@ -3,7 +3,7 @@ import { GameSchema } from "../Classes/GameSchema";
 import './Game.scss';
 
 export default function Game(props: { game: GameSchema }) {
-	let colors = ['#ff0000', '#ff0077', '#f86600', '#00b4ff', '#a687ff', '#fff600', '#bbc700', '#a0db00', '#7ced00', '#3cff00'];
+	const colors = ['#ff0000', '#ff0077', '#f86600', '#00b4ff', '#a687ff', '#fff600', '#bbc700', '#a0db00', '#7ced00', '#3cff00'];
 	return (
 		<>
 			<React.Fragment>
@@ -28,10 +28,10 @@ export default function Game(props: { game: GameSchema }) {
 					</div>
 					<div className="selectPlayer" onClick={
 						async () => {
-							var n = Math.floor(Math.random() * props.game.players.length);
+							const n = Math.floor(Math.random() * props.game.players.length);
 							console.log(n);
 
-							let circle = document.querySelector('.circle') as HTMLElement;
+							const circle = document.querySelector('.circle') as HTMLElement;
 							//circle.style.animation = null;
 							//circle.style.animationPlayState = 'running';
 							await new Promise(resolve => setTimeout(resolve, 1));

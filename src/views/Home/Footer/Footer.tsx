@@ -24,7 +24,7 @@ function FooterComponent() {
 												<path fill="yellow" stroke="red" strokeWidth="11.6" d="m0,0h40v20H0"/>
 											</svg>
 										</div>
-										<Link to="/<%= i.nameId %>"><div className="country">Spain</div></Link>
+										<Link to="/es"><div className="country">Spain</div></Link>
 									</div>
 								</li>
 							</ul>
@@ -95,8 +95,8 @@ function FooterComponent() {
 }
 
 export default function Footer(props:any){
-	let {paths} = props;
+	const {paths} = props;
 	return (useRoutes(paths.map((el: string) =>{
 		return {path: el, element: <FooterComponent />}
 	})));
-};
+}

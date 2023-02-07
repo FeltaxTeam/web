@@ -3,6 +3,7 @@ div.loadingScreen {
     width: 100vw;
     height: calc(100vh - 80px);
     place-items: center;
+
     span {
         display: block;
         width: 100px;
@@ -16,10 +17,12 @@ div.loadingScreen {
         animation: rotate 1s infinite;
     }
 }
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

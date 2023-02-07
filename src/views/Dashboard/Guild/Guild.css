@@ -4,7 +4,8 @@
   width: 100%;
   min-height: calc(100vh - 80px);
 }
-.guildPage > .body {
+
+.guildPage>.body {
   width: calc(100% - 380px);
   height: -webkit-fill-available;
   left: 300px;
@@ -16,7 +17,8 @@
   background: var(--pageBgColor);
   transition: left 0.2s ease-in, width 0.2s ease-in;
 }
-.guildPage > .body > div.embed {
+
+.guildPage>.body>div.embed {
   width: -webkit-fill-available;
   height: fit-content;
   position: relative;
@@ -26,7 +28,8 @@
   background: var(--navBgColor);
   padding: 20px;
 }
-.guildPage > .body .disableModule {
+
+.guildPage>.body .disableModule {
   width: 100%;
   padding: 20px;
   height: 60px;
@@ -35,8 +38,9 @@
   box-shadow: rgb(0 0 0 / 40%) 0px 0px 6px 0px;
   z-index: 100;
 }
+
 @media (max-width: 900px) {
-  .guildPage > div.body {
+  .guildPage>div.body {
     width: calc(100% - 165px);
     left: 85px;
   }

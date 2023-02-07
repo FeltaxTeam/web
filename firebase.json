@@ -1,27 +1,39 @@
 {
-  "hosting": {
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "appAssociation": "AUTO",
-    "rewrites": [
-      {
-        "source": "/**",
-        "destination": "/index.html",
-        "function": "bigben"
-      },
-      {
-        "source": "/link/**",
-        "dynamicLinks": true
-      },
-      {
-        "source": "/api",
-        "function": "app",
-        "region": "europe-west1"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "app",
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "appAssociation": "AUTO",
+      "rewrites": [
+        {
+          "source": "/api/",
+          "function": "app",
+          "region": "europe-west1"
+        },
+        {
+          "source": "/link/**",
+          "dynamicLinks": true
+        },
+        {
+          "source": "!/@(api)/**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "api",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "app",
+          "region": "europe-west1"
+        }
+      ]
+    }
+  ]
 }

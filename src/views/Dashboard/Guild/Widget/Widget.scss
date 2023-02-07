@@ -10,14 +10,20 @@ div.embed {
 	border-radius: 7px;
 
 	&.stats-container {
-		display: flex;
+		display: grid;
+		grid-template-areas: "header header"
+			"nitro nitro"
+			"roles emojis"
+			"stickers footer";
+		grid-template-columns: 1fr 1fr;
 		position: relative;
 		height: fit-content;
 		flex-direction: column;
 		gap: 20px;
 		z-index: 1;
 
-		& > header {
+		&>header {
+			grid-area: header;
 			height: 100px;
 			width: -webkit-fill-available;
 			display: flex;
@@ -28,6 +34,11 @@ div.embed {
 				width: 100px;
 				aspect-ratio: 1;
 			}
+		}
+
+		&>div {
+			min-height: fit-content;
+			height: 100%;
 		}
 	}
 
@@ -146,9 +157,9 @@ div.embed {
 	}
 
 	/* Default List */
-	div.emojis .container,
-	div.stickers .container,
-	div.roles .container {
+	div.emojis div.container,
+	div.stickers div.container,
+	div.roles div.container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
@@ -156,12 +167,17 @@ div.embed {
 		padding: 10px;
 		background: var(--pageBgColor);
 		border-radius: 10px;
+		box-sizing: border-box;
+		height: calc(100% - 20px);
 	}
 
-	div .title {
+	div.emojis .title,
+	div.stickers .title,
+	div.roles .title {
 		font-weight: 600;
 		font-size: 14px;
 		position: relative;
+		height: 20px;
 	}
 
 	div.title {
@@ -187,7 +203,9 @@ div.embed {
 
 /* Nitro Progress Bar */
 .progress-bar {
+	grid-area: nitro;
 	width: 100%;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
@@ -388,6 +406,7 @@ div.id {
 
 /* Emoji List */
 div.emojis {
+	grid-area: emojis;
 	position: relative;
 	margin: 0;
 }
@@ -400,6 +419,7 @@ div.emojis {
 
 /* Sticker List */
 div.stickers {
+	grid-area: stickers;
 	position: relative;
 	margin: 0;
 }
@@ -434,6 +454,7 @@ div.stickers {
 
 /* Emoji Role */
 div.roles {
+	grid-area: roles;
 	position: relative;
 }
 

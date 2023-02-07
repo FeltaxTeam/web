@@ -57,9 +57,9 @@ export default function Support() {
               <div className="feature">Discord Exclusive Role</div>
             </div>
             <div className="methods">
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
-              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(255, 66, 77)' }}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(19 195 255)' }}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(88, 101, 242)' }}>Discord Nitro</a>
             </div>
           </article>
           <article className="tier">
@@ -75,9 +75,9 @@ export default function Support() {
               <div className="feature">Discord Exclusive Role</div>
             </div>
             <div className="methods">
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
-              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(255, 66, 77)' }}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(19 195 255)' }}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(88, 101, 242)' }}>Discord Nitro</a>
             </div>
           </article>
           <article className="tier">
@@ -93,9 +93,9 @@ export default function Support() {
               <div className="feature">Discord Exclusive Role</div>
             </div>
             <div className="methods">
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(255, 66, 77)'}}>Patreon</a>
-              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(19 195 255)'}}>Ko-Fi</a>
-              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{background: 'rgb(88, 101, 242)'}}>Discord Nitro</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='patreon PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(255, 66, 77)' }}>Patreon</a>
+              <a href="https://ko-fi.com/feltax" className='ko-fi PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(19 195 255)' }}>Ko-Fi</a>
+              <a href="https://www.patreon.com/bePatron?u=70438277" className='discord PremiumSourceButton' target="_blank" rel="noreferrer" style={{ background: 'rgb(88, 101, 242)' }}>Discord Nitro</a>
             </div>
           </article>
         </div>

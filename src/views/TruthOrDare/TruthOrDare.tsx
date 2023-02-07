@@ -12,7 +12,7 @@ import './TruthOrDare.scss'
 export default function TruthOrDare() {
   const [game, setGame] = useState(null);
   useEffect(() => {
-    let x = new GameSchema([
+    const x = new GameSchema([
       new PlayerSchema('A', false),
       new PlayerSchema('V', false),
       new PlayerSchema('J', false),

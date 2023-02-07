@@ -15,7 +15,58 @@ enum TargetType {
 	Parent = '_parent',
 	Top = '_top'
 }
-// List of all the data of the nav buttons
+const UserOptionsList = {
+	elements: {
+		language: {
+			locales: {
+				en: 'Languages',
+				es: 'Idiomas',
+				ca: 'Idiomes',
+				de: 'Sprachen',
+				fr: 'Langues',
+				it: 'Lingue',
+				pt: 'Línguas',
+				ru: 'Языки',
+				zh: '语言',
+				ko: '언어',
+				pl: 'Języki',
+				ja: '言語'
+			}
+		},
+		settings: {
+			locales: {
+				en: 'Settings',
+				es: 'Configuración',
+				ca: 'Configuració',
+				de: 'Einstellungen',
+				fr: 'Paramètres',
+				it: 'Impostazioni',
+				pt: 'Configurações',
+				ru: 'Настройки',
+				zh: '设置',
+				ko: '설정',
+				pl: 'Ustawienia',
+				ja: '設定'
+			}
+		},
+		logout: {
+			locales: {
+				en: 'Logout',
+				es: 'Cerrar sesión',
+				ca: 'Tancar sessió',
+				de: 'Abmelden',
+				fr: 'Déconnexion',
+				it: 'Esci',
+				pt: 'Sair',
+				ru: 'Выйти',
+				zh: '登出',
+				ko: '로그아웃',
+				pl: 'Wyloguj',
+				ja: 'ログアウト'
+			}
+		}
+	}
+}
 const data: NavList = {
 	theme: 'light',
 	elements: [
@@ -33,6 +84,7 @@ const data: NavList = {
 				pt: 'Comandos',
 				ru: 'Команды',
 				zh: '命令',
+				ko: '명령어',
 				ca: 'Ordres',
 				ja: 'コマンド',
 			},
@@ -41,6 +93,7 @@ const data: NavList = {
 			type: ElementType.Link,
 			name: 'Add Bot',
 			path: '/invite',
+			target: TargetType.Blank,
 			locales: {
 				en: 'Add Bot',
 				de: 'Bot hinzufügen',
@@ -51,6 +104,7 @@ const data: NavList = {
 				pt: 'Adicionar bot',
 				ru: 'Добавить бота',
 				zh: '添加机器人',
+				ko: '봇 추가',
 				ca: 'Afegir bot',
 				ja: 'ボットを追加する',
 			}
@@ -69,6 +123,7 @@ const data: NavList = {
 				pt: 'Equipe',
 				ru: 'Команда',
 				zh: '团队',
+				ko: '팀',
 				ca: 'Equip',
 				ja: 'チーム'
 			}
@@ -87,18 +142,18 @@ const data: NavList = {
 				pt: 'Suporte',
 				ru: 'Поддержка',
 				zh: '支持',
+				ko: '지원',
 				ca: 'Suport',
 				ja: 'サポート'
 			}
 		}
 	]
 }
-
 const languages = [
 	{
 		name: 'English',
 		code: 'en',
-		flag: 'gb'
+		flag: 'en'
 	},
 	{
 		name: 'Français',
@@ -108,7 +163,7 @@ const languages = [
 	{
 		name: 'Catalá',
 		code: 'ca',
-		flag: 'es-ct'
+		flag: 'ca'
 	},
 	{
 		name: 'Español',
@@ -123,12 +178,12 @@ const languages = [
 	{
 		name: '日本語',
 		code: 'ja',
-		flag: 'jp'
+		flag: 'ja'
 	},
 	{
 		name: '한국어',
 		code: 'ko',
-		flag: 'kr'
+		flag: 'ko'
 	},
 	{
 		name: 'Português',
@@ -136,8 +191,6 @@ const languages = [
 		flag: 'pt'
 	}
 ];
-
-// Button element for the nav
 interface Element {
 	type: ElementType,
 	name: string,
@@ -159,14 +212,15 @@ interface NavList {
 }
 export class NavElement extends React.Component<
 	{
-		data?: Element
+		data?: Element,
+		locale?: string,
 	},
 	{}> {
 	render() {
 		return (
 			<div className="navbar-item">
 				<Link className="navbar-item" data-tooltip={this.props.data.name} to={this.props.data.link ? `${this.props.data.link.protocol}://${this.props.data.link.host}/${this.props.data.link.path}` : (this.props.data.path ? this.props.data.path : '#')} target={this.props.data.target ? this.props.data.target : '_self'}>
-					<p>{this.props.data.locales[navigator.language.slice(0, 2)]}</p>
+					<p>{this.props.data.locales[this.props.locale]}</p>
 					<span className="underline"></span>
 				</Link>
 			</div>
@@ -174,17 +228,15 @@ export class NavElement extends React.Component<
 	}
 }
 
-class NavComponent extends React.Component {
+class NavComponent extends React.Component<{ user: any }, { user: any, language: string }> {
 	constructor(props: any) {
 		super(props);
-		this.state = { user: props.user };
+		this.state = { user: props.user, language: navigator.language.slice(0, 2) };
 	}
-	// user options menu
-	options = (e) => {
+	options(e) {
 		e.preventDefault();
-		console.log('options');
-		let userOptions = document.getElementById('user-options');
-		let languageSelector = document.getElementById('language-selector');
+		const userOptions = document.getElementById('user-options');
+		const languageSelector = document.getElementById('language-selector');
 		if (userOptions.style.display === 'flex') {
 			userOptions.style.display = 'none';
 			document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
@@ -193,18 +245,17 @@ class NavComponent extends React.Component {
 			userOptions.style.display = 'flex';
 			document.getElementsByClassName('arrow-icon')[0].classList.add("open");
 		}
-	};
-	// language menu
-	languageSelector = (e) => {
+	}
+	languageSelector(e) {
 		e.preventDefault();
-		let languageSelector = document.getElementById('language-selector');
+		const languageSelector = document.getElementById('language-selector');
 		if (languageSelector.style.display === 'flex') {
 			languageSelector.style.display = 'none';
 		} else {
 			languageSelector.style.display = 'flex';
 		}
-	};
-	openMenu = (e) => {
+	}
+	openMenu(e) {
 		e.preventDefault();
 		let menu = document.getElementById('menu')?.style.display;
 		if (menu === 'flex') {
@@ -212,34 +263,31 @@ class NavComponent extends React.Component {
 		} else {
 			menu = 'flex';
 		}
-	};
-	componentDidMount(){
-		//If a click is made outside the menu, it will disappear
-		window.addEventListener('click', function(e:any){   
-			let userOptions = document.getElementById('user-options');
-			let languageSelector = document.getElementById('language-selector');
-			if (!(document.getElementById('user').contains(e.target) || userOptions.contains(e.target)|| languageSelector.contains(e.target)) && document.getElementById('user-options').style.display !== 'none'){
-				userOptions.style.display = 'none';
-				document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
-				languageSelector.style.display = 'none';
-			} 
+	}
+	componentDidMount() {
+		window.addEventListener('click', function (e: any) {
+			const userOptions = document.getElementById('user-options');
+			const languageSelector = document.getElementById('language-selector');
+			if (userOptions && !userOptions.contains(e.target)) {
+				if (!(document.getElementById('user').contains(e.target) || userOptions.contains(e.target) || languageSelector.contains(e.target)) && document.getElementById('user-options').style.display !== 'none') {
+					userOptions.style.display = 'none';
+					document.getElementsByClassName('arrow-icon')[0].classList.remove("open");
+					languageSelector.style.display = 'none';
+				}
+			}
 		});
 	}
-	componentDidUpdate(prevProps) {//@ts-ignore
-		if (this.props.user !== prevProps.user) {//@ts-ignore
-			this.setState({ user: this.props.user });
+	componentDidUpdate(prevProps) {
+		if (this.props.user !== prevProps.user && this.state.language !== prevProps.language) {
+			this.setState({ user: this.props.user, language: navigator.language.slice(0, 2) });
 		}
 	}
 	render() {
-		//@ts-ignore
-		let user = this.state.user;
-		let authIds = ['438390132538605589', '417407496286633995'];
+		const user = this.state.user;
+		const authIds = ['438390132538605589', '417407496286633995'];
 		return (
 			<React.Fragment>
 				<header id='mainHeader'>
-					{
-						console.log("The language is: " + navigator.language)
-					}
 					<svg className="background" viewBox="0, 0, 100, 10.1" preserveAspectRatio="none">
 						<path className="bg"
 							d="M 0 0 L 0 10 L 33 10 C 35 10 36 9 37 8 C 38 7 39 6 41 6 L 59 6 C 61 6 62 7 63 8 C 64 9 65 10 67 10 L 100 10 L 100 0 L 0 0">
@@ -256,21 +304,27 @@ class NavComponent extends React.Component {
 									</button>
 								</div>
 								{
-									data.elements.map((element, index) => <NavElement key={index} data={element} />)
+									data.elements.map((element, index) => <NavElement key={index} data={element} locale={this.state.language} />)
 								}
 							</div>
 						</div>
 						<div className="navbar-logo-container">
 							<Link to="/">
-								<img src="/assets/logo.webp" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
+								<img src="/assets/logo116.webp" alt="awd" title="logo" className="navbar-logo" width="70px" height="70px" />
 							</Link>
 						</div>
 						<div className="navbar-user">
 							<div className="container">
-								<div className="nav-premium-button">
-									<Link className="button" to="/premium">
+								<div className="navbar-item">
+									<Link className="navbar-item" data-tooltip="Premium" to="/premium" style={{
+										cursor: 'not-allowed'
+									}}>
 										<p>Premium</p>
-										<span className="underline"></span>
+										<span
+											className="underline"
+											style={{
+												backgroundColor: 'gold'
+											}}></span>
 									</Link>
 								</div>
 								<div className="navbar-item">
@@ -280,39 +334,49 @@ class NavComponent extends React.Component {
 									</Link>
 								</div>
 								{
-									user ?
+									this.state.user !== null ?
 										(<React.Fragment>
 											<div className="user-loged" id='user' onClick={this.options}>
 												<img
+													loading="lazy"
 													src={
-														`https://cdn.discordapp.com/avatars/${user['id']}/${user['avatar']}.${user['avatar'].startsWith('a_') ? 'gif' : 'webp'}?size=512`
+														`https://cdn.discordapp.com/avatars/${user['id']}/${user['avatar']}.${user['avatar'].startsWith('a_') ? 'gif' : 'webp'}?size=128`
 													}
 													alt="Avatar"
 													className="avatar" />
 												<div className="username">
 													{user['username']}
 												</div>
-												<button className="arrow-icon">
+												<div className="arrow-icon">
 													<span className="left-bar"></span>
 													<span className="right-bar"></span>
-												</button>
+												</div>
 											</div>
-												{/* user options menu */}
 											<ul id="user-options">
 												<li className="option dashboard">Dashboard</li>
-												<li className="option language" onClick={this.languageSelector}>Language<span className="selector"><img src="assets/flags/1x1/gb.svg" alt="" /></span>
+												<li className="option language" onClick={this.languageSelector}>{UserOptionsList.elements['language'].locales[this.state.language]}<span className="selector"><img src={`assets/flags/1x1/${this.state.language}.svg`} alt="Language" loading='lazy' /></span>
 												</li>
-												<li className="option">Settings</li>
+												<li className="option">{UserOptionsList.elements['settings'].locales[this.state.language]}</li>
 												{
 													authIds.includes(user.id) ? (<li className="option"><Link to="/admin"><LogoSVG size={20} strokeWidth={12} color="#2978e6" />Admin</Link></li>) : ''
 												}
 												<li className="option premium"><Link to="/premium"><i className="fa-solid fa-crown" />Premium</Link></li>
-												<li className="option logout"><Link to="/logout">Logout</Link></li>
-												{/* language select menu  */}
+												<li className="option logout"><Link to="/logout">{UserOptionsList.elements['logout'].locales[this.state.language]}</Link></li>
 												<ol id='language-selector'>
 													{languages.map(language =>
-														<li className="language" key={language.code}>
-															<img src={`assets/flags/4x3/${language.flag}.svg`} alt={language.code} />
+														<li className="language" key={language.code} onClick={
+															() => {
+																if (language.code !== this.state.language) {
+																	console.log(language.code)
+																	this.setState({ language: language.code })
+																	document.documentElement.lang = language.code
+																}
+															}
+														}>
+															<img
+																src={`assets/flags/4x3/${language.flag}.svg`}
+																loading="lazy"
+																alt={language.code} />
 															{language.name}
 														</li>
 													)}
@@ -320,9 +384,10 @@ class NavComponent extends React.Component {
 											</ul>
 										</React.Fragment>
 										) : (
-											<div className="navbar-login">
-												<Link className="navbar-login" to="/auth">
-													<b>Login</b>
+											<div className="navbar-item">
+												<Link className="navbar-item" data-tooltip="Login" to="/auth">
+													<p>Login</p>
+													<span className="underline"></span>
 												</Link>
 											</div>
 										)
@@ -336,13 +401,13 @@ class NavComponent extends React.Component {
 	}
 }
 export default function Nav(props: any) {
-	let { paths, user } = props;
+	const { paths, user } = props;
 	const navProps = { "user": user }
 	return <Routes>
 		<Route path={'*'} element={<NavComponent {...navProps} />} />
 		<Route path={'/'} element={<NavComponent {...navProps} />} />
-		{paths.map((el: string, i) => {
+		{paths.map((el: string, i: number) => {
 			return <Route key={i} path={el} element={<></>} />
 		})}
 	</Routes>
-};
+}

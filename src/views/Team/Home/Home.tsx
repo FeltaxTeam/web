@@ -6,11 +6,11 @@ import IronBanner from '../Assets/IronBanner.png';
 
 export default function Home() {
 
-  let [descState, setDescState] = useState({iron:'', thebluebanana:''});
-  let descriptions={iron:'', thebluebanana:''};
+  const [descState, setDescState] = useState({iron:'', thebluebanana:''});
+  const descriptions={iron:'', thebluebanana:''};
   useEffect(()=>{
     async function getIt(){
-      for (var i in descriptions){
+      for (const i in descriptions){
         descriptions[i] = (await fetchWorkerProfile(i)).description;
       }
       console.dir(descriptions);

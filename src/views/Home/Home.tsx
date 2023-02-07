@@ -1,15 +1,17 @@
 import React from 'react';
 import './Home.scss';
 import DiscordEmbed from './../prefabs/DiscordEmbed/DiscordEmbed';
+import Profesor from '../prefabs/Profesor/Profesor';
+import CookiesPrompt from '../CookiesPrompt/CookiesPrompt';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
 	return (
 		<>
 			<React.Fragment>
 				<div className="main-page">
-					<DiscordEmbed>
-
-					</DiscordEmbed>
+					{/*<Profesor></Profesor>*/}
+					<DiscordEmbed />
 					<div className="hihlighted-box box yellow dev"><i className="fa-solid fa-laptop-code" />This page is under constant development.</div>
 					<div className="presentation">
 						<div className="information">
@@ -17,10 +19,15 @@ export default function Home() {
 							<p className="description">The bot YOU need.</p>
 							<div className="buttons">
 								<button className='addme'>Add Me</button>
-								<button className='dashboard'>Dashboard</button>
+								<button
+									className='dashboard'
+									onClick={() => {
+										window.open(`${window.location.protocol}//${window.location.hostname === 'localhost' ? 'localhost:3000' : window.location.hostname}/dashboard`, '_self');
+									}}
+								> Dashboard</button>
 							</div>
 						</div>
-						<img src="assets/logo.webp" alt="feltax" />
+						<img src="assets/logo648.webp" alt="feltax" />
 					</div>
 					<ul className="features">
 						<li className="feature">

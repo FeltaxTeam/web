@@ -1,4 +1,4 @@
-export const COMMANDS: {[key:string]: CommandIntf[]} = {
+export const COMMANDS: { [key: string]: CommandIntf[] } = {
   /* DEV */
   dev: [
     {
@@ -148,7 +148,7 @@ interface CommandIntf {
   options: Argument[],
 }
 interface Argument {
-  name: string, 
+  name: string,
   description: string,
   optional: boolean
 }

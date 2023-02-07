@@ -1,26 +1,25 @@
 import React from 'react';
 import './Sidebar.scss';
 
-export default class Sidebar extends React.Component {
+export default class Sidebar extends React.Component<{ user: any }, { user: any }> {
   constructor(props?: any) {
-		super(props);
-		this.state = { user: props.user };
-	}
-  componentDidUpdate(prevProps) {//@ts-ignore
-    if (this.props.user !== prevProps.user) {//@ts-ignore
+    super(props);
+    this.state = { user: props.user };
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
       this.setState({ user: this.props.user });
     }
   }
   render() {
-    //@ts-ignore
-		let user = this.state.user;
+    const user = this.state.user;
     return (
       <aside className="sidebar">
         <div className="user">
-          <img src={user?`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=512`:''} alt="avatar" />
+          <img src={user ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=512` : ''} alt="avatar" />
           <div className="name">
-            <span className="username">{user?user.username:''}</span>
-            <span className="discriminator">#{user?user.discriminator:''}</span>
+            <span className="username">{user ? user.username : ''}</span>
+            <span className="discriminator">#{user ? user.discriminator : ''}</span>
           </div>
         </div>
         <ul className="modules">

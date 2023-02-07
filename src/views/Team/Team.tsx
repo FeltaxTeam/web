@@ -9,14 +9,11 @@ import './Team.css'
 export default function Team() {
   return (
     <>
-      <React.Fragment>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/iron" element={<Iron />} />
-          <Route path="/thebluebanana" element={<TheBlueBanana />} />
-          <Route path='*' element={<NotFoundTeamMember />} />
-        </Routes>
-      </React.Fragment>
+      <Routes>
+        <Route path="*" element={<Home />} />
+        <Route path="iron" element={<Iron />} />
+        <Route path="thebluebanana" element={<TheBlueBanana />} />
+      </Routes>
     </>
   );
 }

@@ -1,0 +1,29 @@
+{
+  "name": "Feltax",
+  "short_name": "Feltax",
+  "description": "Feltax is a bot that can help you with your taxes.",
+  "icons": [
+    {
+      "src": "https://feltax.xyz/assets/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16"
+    },
+    {
+      "src": "https://feltax.xyz/assets/logo192.png",
+      "sizes": "192x192 512x512 384x384 256x256 128x128 96x96 72x72 48x48 32x32 24x24 16x16"
+    },
+    {
+      "src": "https://feltax.xyz/assets/logo512.png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./",
+  "scope": "./",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": [
+    "bot"
+  ],
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

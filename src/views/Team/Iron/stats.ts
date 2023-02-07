@@ -1,89 +1,121 @@
-{
-  "languages": [
+import FirebaseSVG from './assets/firebase.svg';
+import VSCodeSVG from './assets/vscode.svg';
+import HerokuSVG from './assets/heroku.svg';
+import MongoDBSVG from './assets/mongodb.svg';
+import CloudFlareSVG from './assets/cloudflare.svg';
+import GCPSVG from './assets/gcp.svg';
+
+
+export const languages = {
+  languages: [
     {
-      "displayName": "JavaScript",
-      "hexColor": "#f7e018",
-      "knowing": 96,
-      "years": 5,
-      "awesomeIcon": "fa-brands fa-js"
+      displayName: "JavaScript",
+      hexColor: "#f7e018",
+      knowing: 96,
+      years: 5,
+      awesomeIcon: "fa-brands fa-js"
     },
     {
-      "displayName": "TypeScript",
-      "hexColor": "#2d79c7",
-      "knowing": 72,
-      "years": 0.6,
-      "awesomeIcon": "fa-brands fa-js"
+      displayName: "TypeScript",
+      hexColor: "#2d79c7",
+      knowing: 83,
+      years: 1,
+      awesomeIcon: "fa-brands fa-js"
     },
     {
-      "displayName": "React.ts",
-      "hexColor": "#61dbfb",
-      "knowing": 68,
-      "years": 0.5,
-      "awesomeIcon": "fa-brands fa-react"
+      displayName: "React.ts",
+      hexColor: "#61dbfb",
+      knowing: 78,
+      years: 1,
+      awesomeIcon: "fa-brands fa-react"
     },
     {
-      "displayName": "Node.js",
-      "hexColor": "#7faf1b",
-      "knowing": 98,
-      "years": 5,
-      "awesomeIcon": "fa-brands fa-node-js"
+      displayName: "Node.js",
+      hexColor: "#7faf1b",
+      knowing: 98,
+      years: 5,
+      awesomeIcon: "fa-brands fa-node-js"
     },
     {
-      "displayName": "discord.js",
-      "hexColor": "#5865F2",
-      "knowing": 100,
-      "years": 5,
-      "awesomeIcon": "fa-brands fa-discord"
+      displayName: "discord.js",
+      hexColor: "#5865F2",
+      knowing: 100,
+      years: 5,
+      awesomeIcon: "fa-brands fa-discord"
     },
     {
-      "displayName": "MarkDown",
-      "hexColor": "#005b96",
-      "knowing": 67,
-      "years": 5,
-      "awesomeIcon": "fa-brands fa-markdown"
+      displayName: "MarkDown",
+      hexColor: "#005b96",
+      knowing: 72,
+      years: 5,
+      awesomeIcon: "fa-brands fa-markdown"
     },
     {
-      "displayName": "HTML 5",
-      "hexColor": "#e54c21",
-      "knowing": 86,
-      "years": 4,
-      "awesomeIcon": "fa-brands fa-html5"
+      displayName: "HTML 5",
+      hexColor: "#e54c21",
+      knowing: 91,
+      years: 4,
+      awesomeIcon: "fa-brands fa-html5"
     },
     {
-      "displayName": "CSS 3",
-      "hexColor": "#2965f1",
-      "knowing": 92,
-      "years": 4,
-      "awesomeIcon": "fa-brands fa-css3"
+      displayName: "CSS 3",
+      hexColor: "#2965f1",
+      knowing: 95,
+      years: 4,
+      awesomeIcon: "fa-brands fa-css3"
     },
     {
-      "displayName": "SASS",
-      "hexColor": "#CD6799",
-      "knowing": 61,
-      "years": 0.5,
-      "awesomeIcon": "fa-brands fa-sass"
+      displayName: "SASS",
+      hexColor: "#CD6799",
+      knowing: 61,
+      years: 0.7,
+      awesomeIcon: "fa-brands fa-sass"
+    },
+    {
+      displayName: "SQLI",
+      hexColor: "#CD6799",
+      knowing: 0,
+      years: 0,
+      awesomeIcon: "fa-brands fa-sass"
+    },
+    {
+      displayName: "Q#",
+      hexColor: "#CD6799",
+      knowing: 4,
+      years: 0.1,
+      awesomeIcon: "fa-brands fa-sass"
     }
   ],
   "skills": [
     {
-      "hexColor": "#0098FF",
-      "displayName": "VS Code"
+      hexColor: "#0098FF",
+      displayName: "VS Code",
+      svg: VSCodeSVG
     },
     {
-      "hexColor": "#430098",
-      "displayName": "Heroku"
+      hexColor: "#430098",
+      displayName: "Heroku",
+      svg: HerokuSVG
     },
     {
-      "hexColor": "#4DB33D",
-      "displayName": "MongoDB"
+      hexColor: "#4DB33D",
+      displayName: "MongoDB",
+      svg: MongoDBSVG
     },
     {
-      "hexColor": "#F48120",
-      "displayName": "CloudFlare"
+      hexColor: "#F48120",
+      displayName: "CloudFlare",
+      svg: CloudFlareSVG
     },
     {
-      "hexColor": "#FFCA28",
-      "displayName": "Firebase"
+      hexColor: "#FFCA28",
+      displayName: "Firebase",
+      svg: FirebaseSVG
+    },
+    {
+      hexColor: "#FFFFFF",
+      displayName: "GCP",
+      svg: GCPSVG
     }
   ],
   "contributions": [
@@ -91,7 +123,7 @@
       "name": "Fortnite Hispanohablante",
       "icon": "https://cdn.discordapp.com/icons/405699020564987914/41f84c7f1bca939f9edb0cf249bc788d.webp?size=128",
       "since": "02 / 11 / 2020",
-      "aproxMembers": 221000,
+      "aproxMembers": 325000,
       "verified": true,
       "partnered": true,
       "role": "Guardián",
@@ -137,7 +169,7 @@
     {
       "name": "KM Team",
       "icon": "https://cdn.discordapp.com/icons/935599661606129706/a_7e3ce8e9698f216359bb92bb9449993c.gif?size=128",
-      "since": "04 / 07 / 2022",
+      "since": null,
       "aproxMembers": 2300,
       "verified": false,
       "partnered": false,

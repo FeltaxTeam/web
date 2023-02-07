@@ -51,8 +51,8 @@ export default function Home(props: { game: GameSchema }) {
     props.game.removePlayer(name);
     setPlayers(players.filter(player => player.name !== name));
   };
-  const openSettings = (e) => {
-    let modal = document.getElementById('modal');
+  const openSettings = () => {
+    const modal = document.getElementById('modal');
     modal.style.visibility = 'visible';
     modal.style.opacity = '1';
   }

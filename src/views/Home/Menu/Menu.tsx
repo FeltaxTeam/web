@@ -1,3 +1,3 @@
 import './Menu.scss'
 
-export {}
+export { }

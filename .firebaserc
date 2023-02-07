@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "feltax-87fb9"
+  },
+  "targets": {
+    "feltax-87fb9": {
+      "hosting": {
+        "app": [
+          "feltax-87fb9"
+        ],
+        "api": [
+          "feltaxapi"
+        ]
+      }
+    }
   }
 }

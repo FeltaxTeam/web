@@ -6,7 +6,7 @@ type MyProps = { game: GameSchema };
 type MyState = { game: GameSchema };
 export default class Select extends React.Component<MyProps, MyState> {
   render() {
-    let player = this.props.game?.players[0];
+    const player = this.props.game?.players[0];
     return (
       <div key={player?.name} className="select">
         <h1 className="player">
