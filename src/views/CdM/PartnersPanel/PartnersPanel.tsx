@@ -11,7 +11,7 @@ interface Member {
   weight: string;
 }
 
-let members: Member[] = [
+const members: Member[] = [
   {
     name: "Aarón",
     surname: "Sánchez Jiménez",

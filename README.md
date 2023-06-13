@@ -26,9 +26,9 @@ PLACEHOLDER
 | User         | Project Role            |
 | :--:         | :--:            |
 | **`Iron`**   | CEO & Developer |
-| **`Alex`**   | Developer       |
+| **`Alex`**   | ExDeveloper       |
 | **`Aidar`**  | Contributor     |
-| **`Victor`** | Contributor, DEV & Tester |
+| **`TheBLueBanana`** | Developer |
 | **`Shxdow`** | Helper          |
 <hr>
 

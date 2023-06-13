@@ -32,9 +32,53 @@ div#CdM {
       div.name {
         margin-left: 10px;
         font-size: 20px;
+        line-height: 20px;
         font-weight: 600;
         color: #000;
         transition: all 0.2s ease;
+      }
+    }
+
+    nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      transition: all 0.2s ease;
+
+      ul {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        transition: all 0.2s ease;
+
+        li {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+
+          a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            transition: all 0.2s ease;
+
+            &:hover {
+              color: #000;
+              transition: all 0.2s ease;
+            }
+          }
+        }
       }
     }
   }

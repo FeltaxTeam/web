@@ -1,0 +1,44 @@
+div#CdM {
+	footer {
+		display: grid;
+		grid-template-areas: "top top top"
+			"bottom bottom bottom";
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+
+		div.supporters {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			grid-area: top;
+			flex-direction: column;
+
+			div.logos {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: 40px;
+
+				a {
+					filter: grayscale(100%);
+					transition: all 0.26s ease-out;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					&:hover {
+						filter: grayscale(0%);
+					}
+
+					img {
+						width: auto;
+						max-width: 150px;
+						height: auto;
+						max-height: 80px;
+					}
+				}
+			}
+		}
+	}
+}

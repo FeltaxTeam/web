@@ -1,0 +1,293 @@
+$dayWidth: 50px;
+$daysGap: 10px;
+$daysHeight: calc(6 * $dayWidth + 5 * $daysGap);
+$daysWidth: calc(7 * $dayWidth + 6 * $daysGap);
+$daysFontSize: calc($dayWidth / 2);
+
+div.calendar {
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 470px 1fr;
+  grid-template-rows: 1fr;
+  height: 800px;
+  aspect-ratio: 1/1;
+  background: white;
+
+  main.month {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: screen;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .3;
+      filter: blur(1px);
+      z-index: -1;
+      background: url('https://pbs.twimg.com/media/FgpVPQAWYAE-Cbw?format=jpg&name=large');
+      background-size: cover;
+      background-position: center;
+    }
+
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 60px;
+      width: 100%;
+      color: black;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    section.days {
+      display: grid;
+      width: $daysWidth;
+      height: $daysHeight;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      grid-template-areas:
+        "DL DM DC DJ DV DS DG"
+        "w1d1 w1d2 w1d3 w1d4 w1d5 w1d6 w1d7"
+        "w2d1 w2d2 w2d3 w2d4 w2d5 w2d6 w2d7"
+        "w3d1 w3d2 w3d3 w3d4 w3d5 w3d6 w3d7"
+        "w4d1 w4d2 w4d3 w4d4 w4d5 w4d6 w4d7"
+        "w5d1 w5d2 w5d3 w5d4 w5d5 w5d6 w5d7";
+      gap: $daysGap;
+      overflow-x: hidden;
+
+      div.day {
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        color: black;
+        background: rgba($color: #000000, $alpha: 0.3);
+        font-size: $daysFontSize;
+        font-weight: 500;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        border: none;
+
+        span {
+          z-index: 2;
+        }
+
+        &[data-week="2"],
+        &[data-week="4"] {
+          border: 3px solid var(--verdClaret);
+        }
+
+        &.name {
+          background: rgba($color: #000000, $alpha: 0.5);
+          -webkit-text-stroke: 0;
+          color: #000;
+        }
+
+        &.event1 {
+          background: hsl(126, 29%, 48%);
+          color: white;
+          border: none !important;
+          -webkit-text-stroke: 1px #000;
+          font-size: calc($daysFontSize + 2px);
+
+          &::before {
+            content: "";
+            display: flex;
+            background-image: radial-gradient(#fafafa 20%, transparent 40%);
+            background-color: #e53935;
+            background-position: 0 0, 0 0;
+            background-size: 7px 7px;
+            height: 90px;
+            width: 90px;
+            rotate: 30deg;
+            position: absolute;
+            top: -70px;
+            right: -50px;
+            z-index: 1;
+          }
+        }
+
+        &.event0 {
+          background: var(--verdClaret);
+          color: white;
+          -webkit-text-stroke: 1px #000;
+          font-size: calc(($dayWidth / 2) + 2px);
+
+          &:has(+ div.event.v) {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+            &::after {
+              content: "";
+              position: absolute;
+              right: -10px;
+              height: 40px;
+              width: 10px;
+              background: var(--verdClaret);
+              border-bottom-right-radius: 0;
+              border-top-right-radius: 0;
+            }
+          }
+
+          &+div.event.v {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+
+            &::before {
+              content: "";
+              position: absolute;
+              left: -10px;
+              height: 40px;
+              width: 10px;
+              background: var(--verdClaret);
+              border-bottom-left-radius: 0;
+              border-top-left-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  aside.events {
+    background: var(--verdClaret);
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 0;
+
+    &>ol {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 0;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+      gap: 6px;
+
+      &>li {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        min-height: 50px;
+        height: fit-content;
+        width: 100%;
+        gap: 10px;
+
+        div.days {
+          width: 40px;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          column-gap: 5px;
+          row-gap: 5px;
+          height: 40px;
+          position: relative;
+          border-radius: 10px;
+          padding: 0;
+          box-sizing: border-box;
+          align-content: flex-start;
+
+
+          span.day {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            box-sizing: border-box;
+            color: black;
+            font-size: 20px;
+            background: #fff;
+            font-weight: 500;
+            position: relative;
+            border-radius: 20px;
+          }
+
+          &:has(span.day:not(:only-child)) {
+            border: 1px solid white;
+            width: 125px;
+            padding: 5px;
+            height: 100% !important;
+          }
+        }
+
+        &>ul {
+          list-style: none;
+          display: flex;
+          padding: 0;
+          flex-direction: column;
+          width: calc(100% - 50px);
+          gap: 4px;
+
+          &>li {
+            width: 100%;
+            display: grid;
+            column-gap: 6px;
+            grid-template-columns: 1fr 90px;
+            grid-template-rows: auto 3fr;
+            grid-template-areas: "name name" "place time";
+
+            span {
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+
+              &.name {
+                grid-area: name;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                font-weight: 500;
+                color: white;
+              }
+
+              &.place {
+                grid-area: place;
+                font-size: 0.8rem;
+                font-weight: 500;
+                color: #262626
+              }
+
+              &.time {
+                grid-area: time;
+                font-size: 0.8rem;
+                font-weight: 500;
+                color: #262626
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,9 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@font-face {
+	font-family: 'AurebeshAfCanon-K7Ope';
+	src: local('AurebeshAfCanon-K7Ope') url('../public/fonts/AurebeshAfCanon-K7Ope.otf') format('opentype'),
+		local('AurebeshAfCanon-K7Ope') url('../public/fonts/AurebeshAfCanon-K7Ope.ttf') format('truetype');
+}
+
 /* ROOT */
 :root {
-	--mainColor: rgb(41, 120, 230);
+	--mainColor: #2978e6;
 	/* #2978e6 */
 	/* rgb(41 120 230) */
 	--pageBgColor: #0e1015;
@@ -30,9 +36,22 @@
 
 	color: white;
 	font-family: 'Rubik', sans-serif;
+	backface-visibility: hidden;
+	-webkit-font-smoothing: subpixel-antialiased;
 
 	--scrollbar-track: rgba(110, 110, 136, 1);
 	--scrollbar-track-hovered: rgba(110, 110, 136, .8);
+
+	--discordGreen: #57F287;
+	--discordYellow: #FEE75C;
+	--discordRed: #ED4245;
+	--discordFucsia: #EB459E;
+	--discordBurple: #5865F2;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: var(--mainColor);
 }
 
 /* HTML */
@@ -57,7 +76,7 @@ img {
 }
 
 *:focus-visible {
-	outline: var(--mainColor) solid 2px;
+	outline: rgba(41, 120, 230, 0.1) solid 2px;
 	border-radius: 4px;
 }
 
@@ -68,10 +87,6 @@ body,
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-
-html * {
-	-webkit-tap-highlight-color: var(--mainColor);
 }
 
 /* Scroll Bar */

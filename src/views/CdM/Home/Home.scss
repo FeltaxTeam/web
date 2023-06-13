@@ -1,59 +1,151 @@
 div#CdM {
   div.body {
     div.home {
-      div.stats {
+      &>div {
+        margin-bottom: 40px;
+      }
+
+      section.stats {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 50% 50%;
         grid-template-rows: repeat(3, 1fr);
         height: 600px;
-        align-items: center;
+        align-items: end;
         justify-items: center;
         margin-bottom: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
-        div.castell {
+        span.castell {
           grid-column: 1;
           grid-row: 1 / 4;
-          height: 600px;
+          width: calc(100% - 20px);
+          max-width: 500px;
+          aspect-ratio: 600 / 495;
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
 
           img {
-            height: 400px;
+            height: 100%;
+            aspect-ratio: 600 / 495;
           }
         }
 
-        div.number {
+        div.statsContainer {
           grid-column: 2;
-          height: 80px;
+          aspect-ratio: 5 / 4;
+          margin: 20px;
+          width: calc(100% - 40px);
+          grid-row: 1 / 4;
+          height: 100%;
+          max-height: calc(100% - 40px);
           display: flex;
           flex-direction: column;
-          align-items: center;
           justify-content: space-between;
+          background-color: white;
+          border-radius: 10px;
+          box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
-          div.value {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--verdClaret);
+          div.stat {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            div.statTitle {
+              font-size: 1.5em;
+              font-weight: 500;
+              color: #5f6368;
+            }
+
+            span.statValue {
+              font-size: 2em;
+              font-weight: 500;
+              color: black;
+            }
+          }
+        }
+      }
+
+      section.rrss {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        grid-template-areas: "facebook twitter intagram"
+          "youtube youtube youtube";
+
+        &>.facebook {
+          grid-area: facebook;
+        }
+
+        &>.twitter {
+          grid-area: twitter;
+        }
+
+        &>.instagram {
+          grid-area: intagram;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div#CdM {
+    div.body {
+      div.home {
+        section.stats {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 20px;
+          height: fit-content;
+
+          span.castell {
+            max-width: 400px;
+            width: calc(100% - 40px);
+            min-width: none;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
           }
 
-          div.label {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #fff;
-            text-transform: uppercase;
-          }
+          div.statsContainer {
+            margin: 0 20px 20px 20px;
+            width: calc(100% - 40px);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
-          &:nth-child(1) {
-            grid-row: 1;
-          }
+            div.stat {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
 
-          &:nth-child(2) {
-            grid-row: 2;
-          }
+              div.statTitle {
+                font-size: 1.5em;
+                font-weight: 500;
+                color: #5f6368;
+              }
 
-          &:nth-child(3) {
-            grid-row: 3;
+              span.statValue {
+                font-size: 2em;
+                font-weight: 500;
+                color: black;
+              }
+            }
           }
         }
       }

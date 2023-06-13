@@ -1,38 +1,39 @@
-import { Suspense, useEffect, useState } from 'react';
+import React from 'react';
+import { Suspense, useEffect } from 'react';
 import { Routes, Route, BrowserRouter as Router, useLocation } from 'react-router-dom';
 import Navigate from './utility/navigation';
 import './App.css';
-import Commands from './views/Commands/Commands';
-import Home from './views/Home/Home';
-import Nav from './views/Home/Nav/Nav';
-import Footer from './views/Home/Footer/Footer';
+const Commands = React.lazy(() => import('./views/App/Commands/Commands'));
+import Home from './views/App/Home/Home';
+import Nav from './views/App/Home/Nav/Nav';
+import Footer from './views/App/Home/Footer/Footer';
 import NotFoundElement from './views/404/404';
 import Auth from './views/Auth/Auth';
-import Guild from './views/Dashboard/Guild/Guild';
-import Dashboard from './views/Dashboard/Dashboard';
-import Team from './views/Team/Team';
-import Admin from './views/Admin/Admin';
-import Invite from './views/Invite/Invite'
-import Support from './views/Support/Support';
+import TwitchAuth from './views/Auth/TwitchAuth';
+const Guild = React.lazy(() => import('./views/App/Dashboard/Guild/Guild'));
+const Dashboard = React.lazy(() => import('./views/App/Dashboard/Dashboard'));
+const Team = React.lazy(() => import('./views/App/Team/Team'));
+const Admin = React.lazy(() => import('./views/Admin/Admin'));
+import Invite from './views/App/Invite/Invite'
+const Support = React.lazy(() => import('./views/App/Support/Support'));
 import AdminAuth from './views/Auth/AdminAuth';
 import { fetchURL } from './utility/fetching';
-import { Acknowledgements } from './views/Acknowledgements/Acknowledgements';
+import { Acknowledgements } from './views/App/Acknowledgements/Acknowledgements';
+import CookiesPrompt from './views/App/CookiesPrompt/CookiesPrompt';
 const TruthOrDare = React.lazy(() => import('./views/TruthOrDare/TruthOrDare'));
-import CookiesPrompt from './views/CookiesPrompt/CookiesPrompt';
 const CdM = React.lazy(() => import('./views/CdM/CdM'));
-import React from 'react';
-import Edith from './Edith/Edith';
+const Edith = React.lazy(() => import('./views/Edith/Edith'));
+const StarWars = React.lazy(() => import('./views/StarWars/StarWars'));
+const Music = React.lazy(() => import('./views/Music/Music'));
+const DnD = React.lazy(() => import('./views/DnD/DnD'));
+import Loading from './views/App/Home/Loading/Loading';
 
-interface Props { }
 interface State {
   user: any;
 }
-export default class App extends React.Component<Props, State> {
+export default class App extends React.Component<{}, State> {
   state: State = {
     user: null
-  }
-  constructor(props: Props) {
-    super(props);
   }
 
   async componentDidMount() {
@@ -72,6 +73,12 @@ export default class App extends React.Component<Props, State> {
             <CdM user={null} />
           </Suspense>
         );
+      case 'dnd':
+        return (
+          <Suspense fallback={<div>Loading...</div>}>
+            <DnD />
+          </Suspense>
+        );
       case 'edith':
         return (
           <Suspense fallback={<div>Loading...</div>}>
@@ -84,27 +91,68 @@ export default class App extends React.Component<Props, State> {
             <TruthOrDare />
           </Suspense>
         );
+      case 'starwars':
+        return (
+          <Suspense fallback={<div>Loading...</div>}>
+            <StarWars />
+          </Suspense>
+        );
+      case 'music':
+        return (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Music />
+          </Suspense>
+        );
       default:
         return (
           <Router>
             <PageReseter />
             <Nav paths={['/404', '/team/iron', '/admin']} user={this.state.user} />
             <Routes>
-              <Route path='*' element={<Navigate to="/404" />} />
+              <Route path='*' element={<NotFoundElement />} />
               <Route path='/404' element={<NotFoundElement />} />
               <Route path="/" element={<Home />} />
               <Route path="/commands" element={<Navigate to="/commands/main" />} />
-              <Route path="/commands/*" element={<Commands />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard/:guildId/*" element={<Guild />} />
+              <Route path="/commands/*" element={
+                <Suspense fallback={<Loading />}>
+                  <Commands />
+                </Suspense>
+              } />
+              <Route path="/dashboard" element={
+                <Suspense fallback={<Loading />}>
+                  <Dashboard />
+                </Suspense>
+              } />
+              <Route path="/dashboard/:guildId/*" element={
+                <Suspense fallback={<Loading />}>
+                  <Guild />
+                </Suspense>
+              } />
+              <Route path="/twitch/auth" element={<TwitchAuth />} />
               <Route path="/auth/*" element={<Auth />} />
               <Route path="/logout" element={<Logout app={this} />} />
-              <Route path="/team/*" element={<Team />} />
+              <Route path="/team/*" element={
+                <Suspense fallback={<Loading />}>
+                  <Team />
+                </Suspense>
+              } />
               <Route path="/terms" element={<Team />} />
               <Route path="/privacy" element={<Team />} />
-              <Route path="/admin" element={<Admin user={this.state.user} />} />
-              <Route path="/support" element={<Support />} />
-              <Route path="/premium" element={<Support />} />
+              <Route path="/admin" element={
+                <Suspense fallback={<Loading />}>
+                  <Admin user={this.state.user} />
+                </Suspense>
+              } />
+              <Route path="/support" element={
+                <Suspense fallback={<Loading />}>
+                  <Support />
+                </Suspense>
+              } />
+              <Route path="/premium" element={
+                <Suspense fallback={<Loading />}>
+                  <Support />
+                </Suspense>
+              } />
               <Route path="/invite" element={<Invite />} />
               <Route path="/acknowledgements" element={<Acknowledgements />} />
             </Routes>

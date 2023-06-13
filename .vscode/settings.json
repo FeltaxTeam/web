@@ -1,21 +1,80 @@
 {
-    "editor.tabSize": 2,
-    "editor.maxTokenizationLineLength": 100000000,
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "editor.guides.bracketPairs": "active",
-    "editor.language.brackets": [
-        ["[", "]"],
-        ["(", ")"],
-        ["{", "}"],
-        ["<", "</"],
-        [">", "/>"],
+  "editor.tabSize": 2,
+  "editor.maxTokenizationLineLength": 100000000,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.insertSpaces": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.autoClosingBrackets": "languageDefined",
+  "[javascript]": {
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "editor.acceptSuggestionOnEnter": "off"
+  },
+  "editor.language.brackets": [
+    [
+      "[",
+      "]"
     ],
-    "editor.language.colorizedBracketPairs": [
-        ["[", "]"],
-        ["(", ")"],
-        ["{", "}"],
-        ["<", "</"],
-        [">", "/>"],
+    [
+      "(",
+      ")"
     ],
-    "discord.lowerDetailsEditing": "📋 Workspace: {workspace} - {file_size}"
+    [
+      "{",
+      "}"
+    ],
+    [
+      "<",
+      "</"
+    ],
+    [
+      ">",
+      "/>"
+    ]
+  ],
+  "editor.language.colorizedBracketPairs": [
+    [
+      "[",
+      "]"
+    ],
+    [
+      "(",
+      ")"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "<",
+      "</"
+    ],
+    [
+      ">",
+      "/>"
+    ]
+  ],
+  "discord.lowerDetailsEditing": "📋 Workspace: {workspace} - {file_size}",
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "all",
 }

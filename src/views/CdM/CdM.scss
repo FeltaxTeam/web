@@ -1,67 +1,81 @@
 /*
 background: #fff;
 */
-:root {
+
+html:has(div#CdM) {
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  min-height: 100vh;
+  box-sizing: border-box;
+  height: 100%;
+  scrollbar-gutter: stable;
+  background: none;
+  width: 100vw;
+
+  body {
+    background: none;
+  }
+}
+
+html:has(div#CdM):root {
   --verdClaret: rgb(149, 197, 154);
+  color: black;
 }
 
-::-webkit-scrollbar-corner {
-  background: white;
+html::-webkit-scrollbar {
+  width: 6px;
+  background: none;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 1vh;
-  background: rgba(0, 0, 0, 0);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--verdClaret) !important;
-  border-radius: 10px;
-  height: 10px;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 10px;
-    background: red;
-  }
-
-  &:hover {
-    background-color: rgba(149, 197, 154, 0.5) !important;
-  }
-}
-
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
+  background: none;
+  width: 6px;
   margin-top: 80px;
+  box-shadow: inset 0 9px 4px -7px rgba(0 0 0 / 10%);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--verdClaret);
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar * {
+  background: transparent;
 }
 
 div#CdM {
-  scrollbar-gutter: stable !important;
   background: #fff;
   min-height: 100vh;
   box-sizing: border-box;
-  height: fit-content;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable;
 
   a:-webkit-any-link {
     text-decoration: none;
   }
 
-  ::selection {
+  & ::selection {
     color: white;
     background: var(--verdClaret);
   }
 
-  div.body {
+  &>div.body {
     margin-top: 80px;
-    padding: 20px;
+    width: 100%;
+    padding: 20px 0;
     box-sizing: border-box;
     min-height: calc(100vh - 80px);
+  }
+
+  &:has(div#CdM):root {
+    --verdClaret: rgb(149, 197, 154);
+    color: black;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

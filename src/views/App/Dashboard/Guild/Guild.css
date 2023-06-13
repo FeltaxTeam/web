@@ -1,0 +1,47 @@
+.guildPage {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+}
+
+.guildPage>.body {
+  width: calc(100% - 300px);
+  height: -webkit-fill-available;
+  left: 300px;
+  padding: 40px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--pageBgColor);
+  transition: left 0.2s ease-in, width 0.2s ease-in;
+}
+
+.guildPage>.body>div.embed {
+  width: -webkit-fill-available;
+  height: fit-content;
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--navBgColor);
+  padding: 20px;
+}
+
+.guildPage>.body .disableModule {
+  width: 100%;
+  padding: 20px;
+  height: 60px;
+  box-sizing: border-box;
+  background: var(--navBgColor);
+  box-shadow: rgb(0 0 0 / 40%) 0px 0px 6px 0px;
+  z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .guildPage>div.body {
+    width: calc(100% - 165px);
+    left: 85px;
+  }
+}

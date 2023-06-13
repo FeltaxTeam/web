@@ -1,62 +1,125 @@
-div.error {
+div.pageNotFound {
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: var(--bgColor);
+  background: linear-gradient(-30deg, #2978e6, #5082c9, #2978e6);
 }
+
 div.numbers {
   width: fit-content;
   display: flex;
   gap: 16px;
+  z-index: 2;
 }
+
 div.numbers h1.number {
   font-size: 160px;
+  font-weight: 600;
   margin: 0;
   height: fit-content;
   user-select: none;
 }
-div.numbers h1.number:first-child, div.numbers h1.number:last-child {
-  animation: moveUp 1.7s ease-in-out infinite;
+
+div.numbers h1.number:first-child,
+div.numbers h1.number:last-child {
+  animation: moveUp 9s ease-in-out infinite;
 }
+
 div.numbers h1.number:nth-child(2) {
-  animation: moveDown 1.7s ease-in-out infinite;
+  animation: moveDown 10s ease-in-out infinite;
 }
+
 @keyframes moveUp {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
 }
+
 @keyframes moveDown {
-  0%, 100% {
-    transform: translateY(-20px);
+
+  0%,
+  100% {
+    transform: translateY(20px);
   }
+
   50% {
     transform: translateY(0);
   }
 }
+
 .back {
   box-sizing: border-box;
-  background: red;
   padding: 10px;
   display: flex;
   height: 50px;
   width: fit-content;
-  gap: 16px;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
-  background: var(--navBgColor);
+  background: transparent;
   transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
   color: white;
-  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 2px solid #fff;
   font-size: 20px;
   text-decoration: none;
   user-select: none;
+  z-index: 2;
 }
+
 .back:hover {
   transform: scale(1.1);
+}
+
+span.bubble {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(1px);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
+  animation: bubble 10s ease-in-out infinite;
+  background-size: 200% 200%;
+  border: 2px solid #fff;
+  box-shadow: inset 30px 30px 30px 0px rgba(255, 255, 255, 0.8), inset -10px -20px 30px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+@keyframes bubble {
+
+  0%,
+  100% {
+    border-radius: 50% 60% 50% 70% / 60% 50% 70% 50%;
+    background-position: 10% 0%;
+  }
+
+  20% {
+    border-radius: 45% 60% 45% 70% / 50% 70% 50% 60%;
+    background-position: 30% 100%;
+  }
+
+  40% {
+    border-radius: 45% 60% 70% 60% / 60% 70% 60% 50%;
+    background-position: 50% 100%
+  }
+
+  60% {
+    border-radius: 60% 50% 60% 70% / 45% 60% 70% 60%;
+    background-position: 70% 100%
+  }
+
+  80% {
+    border-radius: 70% 60% 45% 60% / 60% 50% 60% 70%;
+    background-position: 90% 100%
+  }
 }

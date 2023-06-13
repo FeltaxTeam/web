@@ -24,6 +24,8 @@ module.exports = {
     'no-inner-declarations': 'off',
     'prefer-const': 'off',
     'no-constant-condition': 'off',
+    'no-control-regex': 'off',
+    'no-useless-escape': 'off',
   },
   "ignorePatterns": ["**/build/*"],
 };

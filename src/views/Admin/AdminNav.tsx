@@ -1,9 +1,9 @@
 import React from 'react';
 import './AdminNav.scss';
-import './../Home/Nav/Nav.scss'
+import './../App/Home/Nav/Nav.scss'
 import { Link, Routes, Route } from 'react-router-dom';
 import LogoSVG from '../prefabs/LogoSVG';
-import { NavElement } from '../Home/Nav/Nav';
+import { NavElement } from '../App/Home/Nav/Nav';
 
 enum ElementType {
 	// Cambiar los strings por numeros para evitar errores de tipos
